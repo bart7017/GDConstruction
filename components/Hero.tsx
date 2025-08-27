@@ -1,11 +1,11 @@
 'use client';
 
+import { motion, useScroll } from "framer-motion";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BlurImage } from "./BlurImage";
 import Button from "./Button";
 import { GridPattern } from "./GridPattern";
-import { motion, useScroll } from "framer-motion";
 
 export const Hero = () => {
   const pattern = {
@@ -104,12 +104,12 @@ export const Hero = () => {
                 mass: 0.5,
               },
             }}
-            className="relative w-[100%] overflow-x-hidden md:w-3/4 mx-auto h-[12rem] sm:h-[16rem] md:h-[24rem] lg:h-[32rem] mb-8 md:mb-8 max-w-5xl"
+            className="relative w-[100%] overflow-x-hidden md:w-3/4 mx-auto aspect-[16/9] mb-8 md:mb-8 max-w-5xl"
           >
             <BlurImage
               src={"/images/GDConstructionLogo.png"}
               layout="fill"
-              className=" rounded-xl md:rounded-3xl border mx-auto object-contain shadow-sm bg-white p-8"
+              className=" rounded-xl md:rounded-3xl border mx-auto object-contain shadow-2xl"
             />
           </motion.div>
         </div>

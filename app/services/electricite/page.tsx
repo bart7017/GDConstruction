@@ -1,6 +1,7 @@
 import { Container } from "@components/Container";
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Électricien à Pamfou | Électricité Seine-et-Marne',
@@ -126,7 +127,7 @@ export default function Electricite() {
   return (
     <Container>
       <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Header */}
+        {/* Header avec photo */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
             <span className="text-4xl">⚡</span>
@@ -135,11 +136,56 @@ export default function Electricite() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Électricien Professionnel à Pamfou
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
             GD Construction maîtrise tous les aspects de l'électricité en Seine-et-Marne. 
             Installation complète, mise aux normes, domotique : nos électriciens qualifiés 
             garantissent votre sécurité et votre confort électrique.
           </p>
+          
+          {/* Photo d'illustration */}
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-8">
+            <Image
+              src="/images/electricite-tableau.webp"
+              alt="Installation de tableau électrique professionnel"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute bottom-6 left-6 text-white">
+              <p className="text-sm font-medium">Installation tableau électrique - Réalisation GD Construction</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Galerie de nos réalisations électriques */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
+            Nos Réalisations en Électricité
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/electricite-ampoule.webp"
+                alt="Installation d'éclairage moderne"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
+                <p className="text-sm font-medium">Éclairage LED moderne</p>
+              </div>
+            </div>
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/electricite-tableau.webp"
+                alt="Tableau électrique aux normes"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
+                <p className="text-sm font-medium">Tableau électrique NF C 15-100</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Services Grid */}

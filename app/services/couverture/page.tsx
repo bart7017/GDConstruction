@@ -1,6 +1,7 @@
 import { Container } from "@components/Container";
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Couverture Toiture à Pamfou | Couvreur Seine-et-Marne',
@@ -110,12 +111,27 @@ export default function Couverture() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Couvreur Professionnel à Pamfou
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
             GD Construction assure tous vos travaux de couverture en Seine-et-Marne. 
             Toiture neuve, réparation, charpente, gouttières : notre savoir-faire artisanal 
             protège votre habitat durablement.
           </p>
+          
+          {/* Photo d'illustration */}
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-8">
+            <Image
+              src="/images/charpente-toiture.webp"
+              alt="Charpente et toiture en construction"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute bottom-6 left-6 text-white">
+              <p className="text-sm font-medium">Charpente et couverture - Réalisation GD Construction</p>
+            </div>
+          </div>
         </div>
+
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

@@ -9,7 +9,7 @@ export const navItems = [
   },
   {
     name: "Réalisations",
-    link: "/#realisations",
+    link: "/realisations",
   },
   {
     name: "À Propos",

@@ -1,6 +1,7 @@
 import { Container } from "@components/Container";
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Maçonnerie Générale à Pamfou',
@@ -43,7 +44,7 @@ export default function MaconnerieGenerale() {
   return (
     <Container>
       <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Header */}
+        {/* Header avec photo */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
             <span className="text-4xl">🏗️</span>
@@ -52,11 +53,25 @@ export default function MaconnerieGenerale() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Expert en Maçonnerie Générale à Pamfou
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
             GD Construction réalise tous vos travaux de maçonnerie générale en Seine-et-Marne. 
             De la simple réparation aux constructions neuves, notre expertise technique garantit 
             des réalisations durables et conformes aux normes.
           </p>
+          
+          {/* Photo d'illustration */}
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-8">
+            <Image
+              src="/images/maconnerie-brique.webp"
+              alt="Travaux de maçonnerie - Construction de murs en brique"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute bottom-6 left-6 text-white">
+              <p className="text-sm font-medium">Construction de mur en brique - Réalisation GD Construction</p>
+            </div>
+          </div>
         </div>
 
         {/* Services détaillés */}
@@ -79,6 +94,48 @@ export default function MaconnerieGenerale() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* Galerie de nos réalisations */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
+            Nos Réalisations en Maçonnerie
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/maconnerie-enduit.webp"
+                alt="Application d'enduit sur mur"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
+                <p className="text-sm font-medium">Finition enduit extérieur</p>
+              </div>
+            </div>
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/maconnerie-decoupe-mur.webp"
+                alt="Découpe précise de mur"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
+                <p className="text-sm font-medium">Découpe de mur porteur</p>
+              </div>
+            </div>
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/charpente-toiture.webp"
+                alt="Charpente et gros œuvre"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
+                <p className="text-sm font-medium">Gros œuvre et charpente</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Pourquoi nous choisir */}
