@@ -84,112 +84,76 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Formulaire de contact */}
+          {/* Contact direct */}
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-semibold mb-6 text-primary">
               Demande de devis gratuit
             </h2>
             
-            <form className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Nom complet *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                />
+            {/* Message informatif */}
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-6">
+              <div className="flex items-center">
+                <div className="text-yellow-600 text-2xl mr-3">📞</div>
+                <div>
+                  <h3 className="text-lg font-semibold text-yellow-800 mb-2">
+                    Formulaire temporairement indisponible
+                  </h3>
+                  <p className="text-yellow-700 mb-3">
+                    Pour une réponse immédiate, contactez-nous directement par téléphone.
+                  </p>
+                </div>
               </div>
+            </div>
 
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Téléphone *
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
-                  Ville *
-                </label>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                  Type de travaux *
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            {/* Contact rapide */}
+            <div className="space-y-6">
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                  Appelez-nous maintenant
+                </h3>
+                <a 
+                  href="tel:0695918103"
+                  className="inline-flex items-center justify-center w-full bg-primary text-white py-4 px-6 rounded-lg hover:bg-primary/90 transition-colors font-semibold text-lg"
                 >
-                  <option value="">Sélectionnez un service</option>
-                  <option value="maconnerie">Maçonnerie générale</option>
-                  <option value="renovation-interieure">Rénovation intérieure</option>
-                  <option value="renovation-exterieure">Rénovation extérieure</option>
-                  <option value="plomberie">Plomberie</option>
-                  <option value="electricite">Électricité</option>
-                  <option value="couverture">Couverture</option>
-                  <option value="carrelage">Carrelage</option>
-                  <option value="peinture">Peinture</option>
-                  <option value="autre">Autre</option>
-                </select>
+                  <span className="mr-2">📞</span>
+                  06 95 91 81 03
+                </a>
+                <p className="text-sm text-gray-600 mt-2">
+                  Devis gratuit par téléphone
+                </p>
               </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Description du projet *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  required
-                  placeholder="Décrivez votre projet en détail..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                ></textarea>
+              <div className="border-t pt-6">
+                <h3 className="font-semibold text-gray-800 mb-3">
+                  Informations à préparer pour votre appel :
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">•</span>
+                    <span>Type de travaux souhaités</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">•</span>
+                    <span>Localisation du chantier</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">•</span>
+                    <span>Description du projet</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">•</span>
+                    <span>Délai souhaité</span>
+                  </li>
+                </ul>
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-primary text-white py-3 px-6 rounded-md hover:bg-primary/90 transition-colors font-semibold"
-              >
-                Envoyer ma demande de devis
-              </button>
-            </form>
-
-            <p className="text-sm text-gray-500 mt-4">
-              * Champs obligatoires. Réponse sous 24h maximum.
-            </p>
+              <div className="bg-green-50 p-4 rounded-lg">
+                <div className="flex items-center text-green-800">
+                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="font-medium">Disponible 6j/7 • Devis gratuit • Déplacement gratuit dans un rayon de 50km</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
