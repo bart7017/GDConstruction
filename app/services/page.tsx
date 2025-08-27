@@ -115,20 +115,24 @@ export default function Services() {
         <div className="bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Zone d'Intervention</h2>
           <p className="text-xl mb-6">
-            Nous intervenons à Pamfou et dans un rayon de 30 km
+            Nous intervenons à Pamfou et dans un rayon de 50 km
           </p>
-          <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             <div className="bg-white/10 rounded-lg p-4">
               <h3 className="font-semibold mb-2">Seine-et-Marne (77)</h3>
-              <p className="text-sm">Melun, Fontainebleau, Montereau-Fault-Yonne</p>
+              <p className="text-sm">Pamfou, Melun, Fontainebleau, Montereau-Fault-Yonne, Nemours</p>
             </div>
             <div className="bg-white/10 rounded-lg p-4">
               <h3 className="font-semibold mb-2">Essonne (91)</h3>
-              <p className="text-sm">Milly-la-Forêt, La Ferté-Alais</p>
+              <p className="text-sm">Milly-la-Forêt, La Ferté-Alais, Boutigny-sur-Essonne</p>
             </div>
             <div className="bg-white/10 rounded-lg p-4">
               <h3 className="font-semibold mb-2">Yonne (89)</h3>
-              <p className="text-sm">Sens, Villeneuve-sur-Yonne</p>
+              <p className="text-sm">Sens, Villeneuve-sur-Yonne, Pont-sur-Yonne</p>
+            </div>
+            <div className="bg-white/10 rounded-lg p-4">
+              <h3 className="font-semibold mb-2">Val-de-Marne (94)</h3>
+              <p className="text-sm">Communes limitrophes</p>
             </div>
           </div>
         </div>

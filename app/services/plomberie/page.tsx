@@ -201,7 +201,7 @@ export default function Plomberie() {
             <span className="text-4xl mr-3">🚨</span>
             <div>
               <h2 className="text-3xl font-bold text-red-800">Dépannage Urgence 24h/24</h2>
-              <p className="text-red-600 text-lg">Intervention rapide sur Pamfou et 30km</p>
+              <p className="text-red-600 text-lg">Intervention rapide sur Pamfou et 50km</p>
             </div>
           </div>
           
@@ -251,7 +251,7 @@ export default function Plomberie() {
             ))}
           </div>
           <p className="text-center text-sm text-gray-600 mt-6">
-            * Tarifs TTC, déplacement gratuit dans un rayon de 30km de Pamfou
+            * Tarifs TTC, déplacement gratuit dans un rayon de 50km de Pamfou
           </p>
         </div>
 

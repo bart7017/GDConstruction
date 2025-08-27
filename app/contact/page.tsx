@@ -77,7 +77,7 @@ export default function Contact() {
                   <h3 className="font-semibold">Zone d'intervention</h3>
                   <p className="text-gray-600">
                     Pamfou et communes environnantes<br />
-                    Rayon de 30 km
+                    Rayon de 50 km
                   </p>
                 </div>
               </div>

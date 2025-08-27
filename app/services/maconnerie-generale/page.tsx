@@ -156,7 +156,7 @@ export default function MaconnerieGenerale() {
                 <span className="text-white text-2xl">⚡</span>
               </div>
               <h3 className="font-semibold text-lg mb-2">Réactivité</h3>
-              <p className="text-gray-600 text-sm">Devis sous 48h, intervention rapide sur Pamfou et 30km</p>
+              <p className="text-gray-600 text-sm">Devis sous 48h, intervention rapide sur Pamfou et 50km</p>
             </div>
             <div className="text-center">
               <div className="bg-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
@@ -187,7 +187,7 @@ export default function MaconnerieGenerale() {
               <ul className="space-y-2">
                 <li className="flex items-center space-x-2">
                   <span className="text-primary">✓</span>
-                  <span>Déplacement gratuit dans un rayon de 30km</span>
+                  <span>Déplacement gratuit dans un rayon de 50km</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="text-primary">✓</span>

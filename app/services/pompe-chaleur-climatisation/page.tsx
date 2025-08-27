@@ -166,7 +166,7 @@ export default function PompeAChaleurClimatisation() {
             </a>
           </div>
           <p className="text-sm text-gray-500 mt-4">
-            📍 Zone d'intervention : Pamfou et 30km • Installation certifiée RGE • Aides d'État possibles
+            📍 Zone d'intervention : Pamfou et 50km • Installation certifiée RGE • Aides d'État possibles
           </p>
         </div>
       </div>

@@ -320,7 +320,7 @@ export default function Electricite() {
             </div>
           </div>
           <p className="text-center text-sm text-gray-600 mt-6">
-            * Prix TTC installation comprise, déplacement gratuit dans un rayon de 30km
+            * Prix TTC installation comprise, déplacement gratuit dans un rayon de 50km
           </p>
         </div>
 
