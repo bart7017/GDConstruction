@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Électricité | GD Construction Pamfou',
     description: 'Électricien professionnel à Pamfou. Installation, dépannage, mise aux normes.',
-    url: 'https://gd-construction.fr/services/electricite',
+    url: 'https://www.gdconstruction.net/services/electricite',
   },
   alternates: {
-    canonical: 'https://gd-construction.fr/services/electricite',
+    canonical: 'https://www.gdconstruction.net/services/electricite',
   },
 };
 

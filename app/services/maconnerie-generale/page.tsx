@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Maçonnerie Générale | GD Construction Pamfou',
     description: 'Expert en maçonnerie générale à Pamfou. Construction, extensions, fondations.',
-    url: 'https://gd-construction.fr/services/maconnerie-generale',
+    url: 'https://www.gdconstruction.net/services/maconnerie-generale',
   },
   alternates: {
-    canonical: 'https://gd-construction.fr/services/maconnerie-generale',
+    canonical: 'https://www.gdconstruction.net/services/maconnerie-generale',
   },
 };
 

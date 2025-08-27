@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Couverture Toiture | GD Construction Pamfou',
     description: 'Couvreur professionnel à Pamfou. Toiture, charpente, gouttières.',
-    url: 'https://gd-construction.fr/services/couverture',
+    url: 'https://www.gdconstruction.net/services/couverture',
   },
   alternates: {
-    canonical: 'https://gd-construction.fr/services/couverture',
+    canonical: 'https://www.gdconstruction.net/services/couverture',
   },
 };
 

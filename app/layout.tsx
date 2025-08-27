@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://gd-construction.fr'),
+  metadataBase: new URL('https://www.gdconstruction.net'),
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://gd-construction.fr',
+    url: 'https://www.gdconstruction.net',
     title: 'GD Construction | Maçonnerie Générale et Rénovation à Pamfou',
     description: 'Entreprise de maçonnerie générale et rénovation à Pamfou (77830). Spécialistes tous corps d\'état.',
     siteName: 'GD Construction',

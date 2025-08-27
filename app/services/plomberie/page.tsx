@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Plomberie | GD Construction Pamfou',
     description: 'Plombier professionnel à Pamfou. Installation, réparation, dépannage.',
-    url: 'https://gd-construction.fr/services/plomberie',
+    url: 'https://www.gdconstruction.net/services/plomberie',
   },
   alternates: {
-    canonical: 'https://gd-construction.fr/services/plomberie',
+    canonical: 'https://www.gdconstruction.net/services/plomberie',
   },
 };
 

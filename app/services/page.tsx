@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Nos Services | GD Construction',
     description: 'Découvrez tous les services de GD Construction à Pamfou : maçonnerie, rénovation, plomberie, électricité, couverture.',
-    url: 'https://gd-construction.fr/services',
+    url: 'https://www.gdconstruction.net/services',
   },
   alternates: {
-    canonical: 'https://gd-construction.fr/services',
+    canonical: 'https://www.gdconstruction.net/services',
   },
 };
 

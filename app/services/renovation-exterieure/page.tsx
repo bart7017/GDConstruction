@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Rénovation Extérieur | GD Construction Pamfou',
     description: 'Expert en rénovation extérieur à Pamfou. Façades, terrasses, toiture.',
-    url: 'https://gd-construction.fr/services/renovation-exterieure',
+    url: 'https://www.gdconstruction.net/services/renovation-exterieure',
   },
   alternates: {
-    canonical: 'https://gd-construction.fr/services/renovation-exterieure',
+    canonical: 'https://www.gdconstruction.net/services/renovation-exterieure',
   },
 };
 

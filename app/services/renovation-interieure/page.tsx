@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Rénovation Intérieure | GD Construction Pamfou',
     description: 'Expert en rénovation intérieure à Pamfou. Cuisine, salle de bain, sols.',
-    url: 'https://gd-construction.fr/services/renovation-interieure',
+    url: 'https://www.gdconstruction.net/services/renovation-interieure',
   },
   alternates: {
-    canonical: 'https://gd-construction.fr/services/renovation-interieure',
+    canonical: 'https://www.gdconstruction.net/services/renovation-interieure',
   },
 };
 

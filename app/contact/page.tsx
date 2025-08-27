@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact | GD Construction',
     description: 'Contactez GD Construction pour tous vos travaux de maçonnerie et rénovation à Pamfou.',
-    url: 'https://gd-construction.fr/contact',
+    url: 'https://www.gdconstruction.net/contact',
   },
   alternates: {
-    canonical: 'https://gd-construction.fr/contact',
+    canonical: 'https://www.gdconstruction.net/contact',
   },
 };
 

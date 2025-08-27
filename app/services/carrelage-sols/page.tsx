@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Carrelage et Sols | GD Construction Pamfou',
     description: 'Carreleur professionnel à Pamfou. Carrelage, parquet, sols PVC.',
-    url: 'https://gd-construction.fr/services/carrelage-sols',
+    url: 'https://www.gdconstruction.net/services/carrelage-sols',
   },
   alternates: {
-    canonical: 'https://gd-construction.fr/services/carrelage-sols',
+    canonical: 'https://www.gdconstruction.net/services/carrelage-sols',
   },
 };
 

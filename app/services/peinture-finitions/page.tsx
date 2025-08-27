@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Peinture et Finitions | GD Construction Pamfou',
     description: 'Peintre professionnel à Pamfou. Peinture intérieure, extérieure, finitions.',
-    url: 'https://gd-construction.fr/services/peinture-finitions',
+    url: 'https://www.gdconstruction.net/services/peinture-finitions',
   },
   alternates: {
-    canonical: 'https://gd-construction.fr/services/peinture-finitions',
+    canonical: 'https://www.gdconstruction.net/services/peinture-finitions',
   },
 };
 
