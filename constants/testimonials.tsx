@@ -1,44 +1,45 @@
 export const testimonials = [
   {
-    name: "Manu Arora",
-    designation: "Senior Meme Officer",
+    name: "Marie D.",
+    designation: "Propriétaire à Melun",
     content:
-      "This is my application so i'll only say good things about it. It's the piece of crap. Although it took me so much time and energy to build. I'm proud of it.",
-    avatar: "/images/testimonials/manu.png",
+      "Excellente prestation pour la rénovation complète de ma cuisine. L'équipe de GD Construction a été professionnelle, ponctuelle et le résultat dépasse mes attentes. Je recommande vivement !",
+    avatar: "/images/testimonials/1.png",
   },
 
   {
-    name: "Alfred J. Pennyworth",
-    designation: "MD at Wayne Enterprises",
+    name: "Pierre L.",
+    designation: "Artisan à Fontainebleau",
     content:
-      "Backed by Wayne enterprises, Foxtrot is the best platform any business can ever imagine. Worth every penny.",
+      "GD Construction a réalisé l'extension de mon atelier. Travail soigné, respect des délais et prix très correct. Une équipe à l'écoute qui maîtrise parfaitement son métier.",
     avatar: "/images/testimonials/2.png",
   },
   {
-    name: "Elon Must",
-    designation: "Twiteeer CEO, Developer, Writer, Memer, etc.",
+    name: "Sophie M.",
+    designation: "Particulier à Pamfou",
     content:
-      "What did you get done this week? stop with this application and start fixing the search damnit.",
+      "Rénovation de salle de bain parfaitement réalisée. Plomberie, carrelage, électricité : tout a été coordonné à la perfection. Merci à toute l'équipe pour ce beau travail !",
     avatar: "/images/testimonials/3.png",
   },
   {
-    name: "Lord Voldemort",
-    designation: "Head boy at Slytherin House",
+    name: "Jean-Claude B.",
+    designation: "Retraité à Montereau",
     content:
-      "Harry Potter, the boy who bought Foxtrot Analytics. He is stronger than me now. Highly recommended.",
+      "Ravalement de façade et isolation extérieure réalisés avec beaucoup de professionnalisme. Devis détaillé, travail propre et finitions impeccables. Je suis très satisfait.",
     avatar: "/images/testimonials/4.png",
   },
   {
-    name: "Tyler Durden",
-    designation: "Project Mayhem Coordinator",
+    name: "Isabelle R.",
+    designation: "Commerçante à Sens",
     content:
-      "Tried to incorporate in project mayhem but it didn't work. I don't know why. I'm not a developer. I'm a salesman. I sell soap. Also this platform is hella expensive.",
-    avatar: "/images/testimonials/1.png",
+      "Rénovation complète de mon local commercial. GD Construction a su respecter mes contraintes d'ouverture tout en livrant un travail de qualité dans les temps. Parfait !",
+    avatar: "/images/testimonials/5.png",
   },
   {
-    name: "Groot",
-    designation: "Groot at Groot Industries",
-    content: "I am groot. I am groot, I am groot, I am groot. I AM GROOOOOT!",
-    avatar: "/images/testimonials/5.png",
+    name: "Philippe G.",
+    designation: "Propriétaire à La Ferté-Alais",
+    content:
+      "Construction d'un mur de clôture et dalle béton pour mon garage. Travail réalisé rapidement et proprement. Prix honnête et équipe sympathique. Je recommande !",
+    avatar: "/images/testimonials/manu.png",
   },
 ];

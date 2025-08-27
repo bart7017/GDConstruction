@@ -4,7 +4,10 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 module.exports = {
-  content: ["./**/*.{ts,tsx}", "./_app.tsx"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       animation: {
@@ -17,28 +20,40 @@ module.exports = {
         },
       },
       colors: {
-        primary: "#00ABB3",
-        secondary: "#3C4048",
-        tertiary: "#B2B2B2",
-        quaternary: "#EAEAEA",
-        vulcan: {
-          50: "#f4f4f4",
-          100: "#e8e8e9",
-          200: "#c6c6c8",
-          300: "#a4a4a7",
-          400: "#605f64",
-          500: "#1c1b22",
-          600: "#19181f",
-          700: "#15141a",
-          800: "#111014",
-          900: "#0e0d11",
+        primary: "#2563eb", // Bleu professionnel
+        secondary: "#1e40af", // Bleu plus foncé
+        tertiary: "#64748b", // Gris ardoise
+        quaternary: "#f1f5f9", // Gris très clair
+        accent: "#f59e0b", // Orange pour les CTA
+        construction: {
+          50: "#fef7ed",
+          100: "#fef0d9",
+          200: "#fed7aa",
+          300: "#fdba74",
+          400: "#fb923c",
+          500: "#f97316", // Orange construction
+          600: "#ea580c",
+          700: "#c2410c",
+          800: "#9a3412",
+          900: "#7c2d12",
+        },
+        building: {
+          50: "#f8fafc",
+          100: "#f1f5f9",
+          200: "#e2e8f0",
+          300: "#cbd5e1",
+          400: "#94a3b8",
+          500: "#64748b", // Gris construction
+          600: "#475569",
+          700: "#334155",
+          800: "#1e293b",
+          900: "#0f172a",
         },
       },
     },
   },
   plugins: [
     require("@tailwindcss/forms"),
-    require("@tailwindcss/line-clamp"),
     require("@tailwindcss/typography"),
     function ({ matchUtilities, theme }) {
       matchUtilities(

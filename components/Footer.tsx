@@ -1,72 +1,126 @@
 import React from "react";
+import Image from "next/image";
 import Logo from "./Logo";
 import { navItems } from "constants/navItems";
 import { CustomLink } from "./CustomLink";
 import {
-  AiOutlineGithub,
-  AiOutlineLinkedin,
-  AiOutlineTwitter,
+  AiOutlinePhone,
+  AiOutlineMail,
+  AiOutlineEnvironment,
 } from "react-icons/ai";
 
 export const Footer = () => {
-  const socials = [
+  const contacts = [
     {
-      name: "twitter",
+      name: "Téléphone",
       icon: (
-        <AiOutlineTwitter className="h-5 w-5 hover:text-primary transition duration-150" />
+        <AiOutlinePhone className="h-5 w-5 hover:text-primary transition duration-150" />
       ),
-      link: "https://twitter.com/aceternitylabs",
+      link: "tel:0695918103",
+      text: "06 95 91 81 03",
     },
     {
-      name: "LinkedIn",
+      name: "Adresse",
       icon: (
-        <AiOutlineLinkedin className="h-5 w-5 hover:text-primary transition duration-150" />
+        <AiOutlineEnvironment className="h-5 w-5 hover:text-primary transition duration-150" />
       ),
-      link: "https://linkedin.com/in/manuarora28",
-    },
-    {
-      name: "GitHub",
-      icon: (
-        <AiOutlineGithub className="h-5 w-5 hover:text-primary transition duration-150" />
-      ),
-      link: "https://github.com/aceternity",
+      link: "https://maps.google.com/?q=Pamfou+77830",
+      text: "77830 Pamfou",
     },
   ];
+  
   return (
-    <div className="border-t border-slate-900/5 py-10 max-w-6xl mx-auto px-8">
-      <div className="flex flex-col justify-center items-center py-10 ">
-        <Logo textClassName="text-black text-xl" />
-
-        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-4">
-          {navItems.map((navItem: any, idx: number) => (
-            <CustomLink
-              key={`footer-link-${idx}`}
-              href={navItem.link}
-              className="text-zinc-500 text-sm relative"
-            >
-              <span className="relative z-10 px-2 py-2 inline-block">
-                {navItem.name}
-              </span>
-            </CustomLink>
-          ))}
+    <div className="bg-white text-gray-800 py-16 border-t border-gray-200">
+      <div className="max-w-6xl mx-auto px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-block mb-8">
+            <Image
+              src="/images/GDConstructionLogo.png"
+              alt="GD Construction Logo"
+              width={320}
+              height={320}
+              className="object-contain"
+            />
+          </div>
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
+            Votre expert en maçonnerie générale et rénovation à Pamfou. 
+            Spécialistes tous corps d'état pour un service complet.
+          </p>
         </div>
-        <p className="text-slate-500 text-sm font-light text-center mt-8 border-t border-zinc-100 pt-4">
-          © {new Date().getFullYear()} Foxtrot Marketing Template. All rights
-          reserved.
-        </p>
-        <div className="flex flex-row justify-center space-x-2 mt-2">
-          {socials.map((socialLink: any, idx: number) => (
-            <a
-              key={`footer-link-${idx}`}
-              href={socialLink.link}
-              className="text-zinc-500 text-sm relative"
-              target="__blank"
-            >
-              <span className="relative z-10 px-2 py-2 inline-block">
-                {socialLink.icon}
-              </span>
-            </a>
-          ))}
+
+        {/* Content Grid */}
+        <div className="grid md:grid-cols-3 gap-8 mb-12 text-center">
+          {/* Navigation */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Navigation</h3>
+            <div className="space-y-2">
+              {navItems.map((navItem: any, idx: number) => (
+                <CustomLink
+                  key={`footer-link-${idx}`}
+                  href={navItem.link}
+                  className="text-gray-600 hover:text-primary transition-colors block"
+                >
+                  {navItem.name}
+                </CustomLink>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <div className="space-y-3">
+              {contacts.map((contact: any, idx: number) => (
+                <a
+                  key={`contact-${idx}`}
+                  href={contact.link}
+                  className="text-gray-600 hover:text-primary transition-colors flex items-center justify-center space-x-3"
+                  target={contact.link.startsWith('http') ? '_blank' : undefined}
+                  rel={contact.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
+                  {contact.icon}
+                  <span>{contact.text}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Nos Services</h3>
+            <div className="space-y-2 text-gray-600">
+              <p>• Maçonnerie générale</p>
+              <p>• Rénovation intérieure</p>
+              <p>• Rénovation extérieure</p>
+              <p>• Plomberie</p>
+              <p>• Électricité</p>
+              <p>• Couverture</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="border-t border-gray-300 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="text-center md:text-left">
+            <p className="text-gray-500 text-sm mb-2">
+              © {new Date().getFullYear()} GD Construction. Tous droits réservés.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-2 text-gray-400 text-xs">
+              <a href="/mentions-legales" className="hover:text-primary transition-colors">
+                Mentions légales
+              </a>
+              <span className="hidden sm:inline">•</span>
+              <span>Politique de confidentialité</span>
+              <span className="hidden sm:inline">•</span>
+              <span>RGPD</span>
+            </div>
+          </div>
+          <div className="flex items-center space-x-6 mt-4 md:mt-0">
+            <p className="text-gray-500 text-sm text-center">
+              SIRET : À venir • Assurance décennale
+            </p>
+          </div>
         </div>
       </div>
     </div>

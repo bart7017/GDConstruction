@@ -1,26 +1,38 @@
+'use client';
+
 import { CustomLink } from "@components/CustomLink";
-import Logo from "@components/Logo";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { AiOutlinePhone, AiOutlineWhatsApp } from "react-icons/ai";
 
 export const DesktopNav = ({ navItems }: any) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   return (
-    <div className="flex flex-row space-x-8 items-center antialiased border px-2 py-2 rounded-2xl bg-vulcan-800">
-      <Logo />
+    <div className="flex flex-row space-x-8 items-center antialiased border px-6 py-3 rounded-2xl bg-gray-100 w-fit max-w-5xl mx-auto">
+      <Link href="/" className="flex items-center justify-center">
+        <div className="relative w-48 h-24">
+          <Image
+            src="/images/GDConstructionLogo.png"
+            alt="GD Construction Logo"
+            fill
+            className="object-contain"
+          />
+        </div>
+      </Link>
       {navItems.map((navItem: any, idx: number) => (
         <CustomLink
           key={`link=${idx}`}
           href={navItem.link}
-          className="text-white text-sm relative"
+          className="text-gray-700 text-base relative hover:text-white transition-colors"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0  transform  bg-gradient-to-b from-[#464d55] to-[#25292e] scale-105 rounded-xl"
+                className="absolute inset-0  transform  bg-gradient-to-b from-orange-400 to-orange-500 scale-105 rounded-xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -39,12 +51,26 @@ export const DesktopNav = ({ navItems }: any) => {
           </span>
         </CustomLink>
       ))}
-      <Link
-        href="/signup"
-        className="font-medium text-white inline-flex items-center justify-center rounded-[10px] bg-gradient-to-b from-[#464d55] to-[#25292e] text-sm px-4 py-2 transition duration-150 shadow-[0_10px_20px_rgba(0,_0,_0,_.1),0_3px_6px_rgba(0,_0,_0,_.05)] hover:shadow-[rgba(0,_1,_0,_.2)_0_2px_8px] active:outline-none hover:opacity-80 "
-      >
-        Sign Up
-      </Link>
+      
+      {/* Icônes téléphone et WhatsApp */}
+      <div className="flex items-center space-x-4 ml-4">
+        <a
+          href="tel:0695918103"
+          className="text-orange-500 hover:text-orange-600 transition-colors p-2 rounded-full hover:bg-orange-50"
+          title="Appelez-nous"
+        >
+          <AiOutlinePhone className="h-5 w-5" />
+        </a>
+        <a
+          href="https://wa.me/33695918103"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-green-500 hover:text-green-600 transition-colors p-2 rounded-full hover:bg-green-50"
+          title="Contactez-nous sur WhatsApp"
+        >
+          <AiOutlineWhatsApp className="h-5 w-5" />
+        </a>
+      </div>
     </div>
   );
 };

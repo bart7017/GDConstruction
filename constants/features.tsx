@@ -1,44 +1,57 @@
-import { AiFillPieChart, AiOutlineTeam } from "react-icons/ai";
-import { BsBarChartFill, BsServer } from "react-icons/bs";
-import { GrOrganization } from "react-icons/gr";
-import { GiLockSpy } from "react-icons/gi";
-import { MdDarkMode } from "react-icons/md";
+import { AiFillHome, AiOutlineTool } from "react-icons/ai";
+import { BsBuilding, BsTools } from "react-icons/bs";
+import { GiConcreteBag, GiFloorHatch } from "react-icons/gi";
+import { MdElectricalServices, MdPlumbing, MdRoofing } from "react-icons/md";
+import { TbAirConditioning } from "react-icons/tb";
 
 export const features = [
   {
-    heading: "Amazing Analytics you will never ever use.",
+    heading: "Maçonnerie Générale",
     description:
-      "Just like any other analytics tool, you will never use all the features. But we have them all just in case you needed some of them.",
-    icon: <AiFillPieChart className="text-primary h-4 w-4 relative z-50" />,
+      "Construction de murs, dalles béton, fondations, extensions et tous travaux de gros œuvre. Notre expertise technique garantit la solidité et la durabilité de vos projets.",
+    icon: <GiConcreteBag className="text-primary h-6 w-6 relative z-50" />,
+    link: "/services/maconnerie-generale"
   },
   {
-    heading: "Charts, graphs and everything at your fingertips",
+    heading: "Rénovation Intérieure",
     description:
-      "Bar graphs, Pie Charts, Line graphs, Area graphs, you name it. We have it. And if we don't, we will add it.",
-    icon: <BsBarChartFill className="text-primary h-4 w-4 relative z-50" />,
+      "Rénovation complète de cuisine, salle de bain, création d'espaces et aménagements intérieurs. Nous transformons votre habitat selon vos envies.",
+    icon: <AiFillHome className="text-primary h-6 w-6 relative z-50" />,
+    link: "/services/renovation-interieure"
   },
   {
-    heading: "Create teams. Invite your friends and families.",
+    heading: "Plomberie",
     description:
-      "Creation of teams is a breeze. Invite your friends to Foxtrot Analytics so that they can bang their head against a pie chart.",
-    icon: <AiOutlineTeam className="text-primary h-4 w-4 relative z-50" />,
+      "Installation, réparation et maintenance de systèmes de plomberie. Création de salles de bains, mise aux normes et dépannage d'urgence.",
+    icon: <MdPlumbing className="text-primary h-6 w-6 relative z-50" />,
+    link: "/services/plomberie"
   },
   {
-    heading: "Self host your analytics. Own your mistakes",
+    heading: "Électricité",
     description:
-      "With Foxtrot Analytics, you can self host incase you don't wish to pay us or see us grow to a billion dollar company.",
-    icon: <BsServer className="text-primary h-4 w-4 relative z-50" />,
+      "Installation électrique, mise aux normes, dépannage et création de tableaux électriques. Votre sécurité électrique est notre priorité.",
+    icon: <MdElectricalServices className="text-primary h-6 w-6 relative z-50" />,
+    link: "/services/electricite"
   },
   {
-    heading: "We don't track you. We don't sell your data.",
+    heading: "Couverture",
     description:
-      "Lol. We don't even have a database. We are just a bunch of guys who are trying to make a living. wink wink.",
-    icon: <GiLockSpy className="text-primary h-4 w-4 relative z-50" />,
+      "Réfection de toitures, démoussage, zinguerie et isolation. Protection complète de votre habitat contre les intempéries.",
+    icon: <MdRoofing className="text-primary h-6 w-6 relative z-50" />,
+    link: "/services/couverture"
   },
   {
-    heading: "Lastly, we have support for dark mode. Yay!",
+    heading: "Carrelage & Sols",
     description:
-      "Dark mode is as necessary to a developer as a cup of coffee. We have both. We won't give you coffee though.",
-    icon: <MdDarkMode className="text-primary h-4 w-4 relative z-50" />,
+      "Pose de carrelage, parquet, sols souples. Finitions de qualité pour sublimer vos espaces intérieurs et extérieurs.",
+    icon: <GiFloorHatch className="text-primary h-6 w-6 relative z-50" />,
+    link: "/services/carrelage-sols"
+  },
+  {
+    heading: "Pompe à Chaleur & Climatisation",
+    description:
+      "Installation de pompes à chaleur air-air, air-eau et systèmes de climatisation. Solutions énergétiques performantes pour votre confort thermique.",
+    icon: <TbAirConditioning className="text-primary h-6 w-6 relative z-50" />,
+    link: "/services/pompe-chaleur-climatisation"
   },
 ];

@@ -1,18 +1,22 @@
 export const navItems = [
   {
-    name: "Features",
-    link: "/#features",
+    name: "Accueil",
+    link: "/",
   },
   {
-    name: "Testimonials",
-    link: "/#testimonials",
+    name: "Nos Services",
+    link: "/services",
   },
   {
-    name: "Pricing",
-    link: "/#pricing",
+    name: "Réalisations",
+    link: "/#realisations",
   },
   {
-    name: "Blogs",
-    link: "/blogs",
+    name: "À Propos",
+    link: "/#about",
+  },
+  {
+    name: "Contact",
+    link: "/contact",
   },
 ];
