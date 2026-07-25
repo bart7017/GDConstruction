@@ -1,30 +1,15 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import { useState } from "react";
 import { cn } from "../lib/utils";
 
-interface IBlurImage {
-  height?: any;
-  width?: any;
-  src?: string | any;
-  objectFit?: any;
-  className?: string | any;
-  alt?: string | undefined;
-  layout?: any;
-  [x: string]: any;
-}
+// Variante locale de @components/BlurImage : transition et alt par defaut
+// differents. Les deux meriteraient d'etre fusionnees en rendant ces deux
+// points parametrables.
+type BlurImageProps = Omit<ImageProps, "alt"> & { alt?: string };
 
-const BlurImage = ({
-  height,
-  width,
-  src,
-  className,
-  objectFit,
-  alt,
-  layout,
-  ...rest
-}: IBlurImage) => {
+const BlurImage = ({ className, alt, ...rest }: BlurImageProps) => {
   const [isLoading, setLoading] = useState(true);
   return (
     <Image
@@ -34,12 +19,8 @@ const BlurImage = ({
         className
       )}
       onLoad={() => setLoading(false)}
-      src={src}
-      width={width}
-      height={height}
       loading="lazy"
       decoding="async"
-      blurDataURL={src}
       alt={alt ? alt : "Réalisation GD Construction"}
       {...rest}
     />

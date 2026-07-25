@@ -1,4 +1,4 @@
-import { AiFillHome, AiOutlineTool } from "react-icons/ai";
+import { AiFillHome } from "react-icons/ai";
 import { BsBuilding, BsTools } from "react-icons/bs";
 import { GiConcreteBag, GiFloorHatch } from "react-icons/gi";
 import { MdElectricalServices, MdPlumbing, MdRoofing } from "react-icons/md";

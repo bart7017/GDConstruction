@@ -9,6 +9,10 @@ export const CookieBanner = () => {
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent');
     if (!consent) {
+      // localStorage n'existe pas au rendu serveur : l'etat initial doit valoir
+      // false pour que l'hydratation corresponde, et la vraie valeur ne peut
+      // etre lue qu'ici. Le double rendu est inherent a ce pattern.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowBanner(true);
     }
   }, []);

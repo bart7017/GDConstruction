@@ -8,7 +8,7 @@ import Button from "./Button";
 import { GridPattern } from "./GridPattern";
 
 export const Hero = () => {
-  const pattern = {
+  const pattern: { y: number; squares: [number, number][] } = {
     y: -6,
     squares: [
       [-1, 2],
@@ -108,7 +108,7 @@ export const Hero = () => {
           >
             <BlurImage
               src={"/images/GDConstructionLogo.png"}
-              layout="fill"
+              fill
               className=" rounded-xl md:rounded-3xl border mx-auto object-contain shadow-2xl"
             />
           </motion.div>

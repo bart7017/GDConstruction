@@ -5,13 +5,12 @@ import { useMotionValue } from "framer-motion";
 import React from "react";
 import Link from "next/link";
 
-import { AiFillPieChart } from "react-icons/ai";
 import { CardPattern } from "./CardPattern";
 
 type FeatureType = {
   heading: string;
-  description: string | any;
-  icon: any;
+  description: string;
+  icon: React.ReactNode;
   link?: string;
 };
 
@@ -19,7 +18,7 @@ export const SubHero = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  function onMouseMove({ currentTarget, clientX, clientY }: any) {
+  function onMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
     const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
@@ -106,7 +105,7 @@ const Card = ({ heading, description, icon, link }: FeatureType) => {
   );
 };
 
-const IconContainer = ({ icon }: any) => {
+const IconContainer = ({ icon }: { icon: React.ReactNode }) => {
   return (
     <div className="relative">
       <div className="absolute inset-0 bg-primary/50 transform  rounded-md blur-lg" />
