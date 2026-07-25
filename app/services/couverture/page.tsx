@@ -125,7 +125,7 @@ export default function Couverture() {
           </p>
           
           {/* Photo d'illustration */}
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-8">
+          <div className="relative aspect-16/9 rounded-2xl overflow-hidden shadow-xl mb-8">
             <Image
               src="/images/charpente-toiture.webp"
               alt="Charpente et toiture en construction"
@@ -166,7 +166,7 @@ export default function Couverture() {
         </div>
 
         {/* Matériaux de couverture */}
-        <div className="bg-gradient-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Types de Couvertures Réalisées
           </h2>
@@ -237,7 +237,7 @@ export default function Couverture() {
         <RelatedServices slugs={["renovation-exterieure", "maconnerie-generale", "peinture-finitions"]} />
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
+        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Projet de Couverture à Pamfou ?
           </h2>

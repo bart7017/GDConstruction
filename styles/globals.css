@@ -1,10 +1,80 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@source '../app';
+@source '../components';
+
+/* Design system, anciennement dans theme.extend de tailwind.config.js. */
+@theme {
+  --color-primary: #2563eb; /* Bleu professionnel */
+  --color-secondary: #1e40af; /* Bleu plus foncé */
+  --color-tertiary: #64748b; /* Gris ardoise */
+  --color-quaternary: #f1f5f9; /* Gris très clair */
+  --color-accent: #f59e0b; /* Orange pour les CTA */
+
+  --color-construction-50: #fef7ed;
+  --color-construction-100: #fef0d9;
+  --color-construction-200: #fed7aa;
+  --color-construction-300: #fdba74;
+  --color-construction-400: #fb923c;
+  --color-construction-500: #f97316; /* Orange construction */
+  --color-construction-600: #ea580c;
+  --color-construction-700: #c2410c;
+  --color-construction-800: #9a3412;
+  --color-construction-900: #7c2d12;
+
+  --color-building-50: #f8fafc;
+  --color-building-100: #f1f5f9;
+  --color-building-200: #e2e8f0;
+  --color-building-300: #cbd5e1;
+  --color-building-400: #94a3b8;
+  --color-building-500: #64748b; /* Gris construction */
+  --color-building-600: #475569;
+  --color-building-700: #334155;
+  --color-building-800: #1e293b;
+  --color-building-900: #0f172a;
+
+  --animate-text-shimmer: text-shimmer 2.5s ease-out infinite alternate;
+
+  @keyframes text-shimmer {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -100% 0;
+    }
+  }
+}
+
+/* Tailwind 3 donnait `border-color: gray-200` par defaut ; Tailwind 4 utilise
+   currentColor. Les cartes du site s'appuient sur la classe `border` seule, on
+   restaure donc l'ancien comportement. */
 @layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
   html {
     font-family: "Inter", sans-serif;
     scroll-behavior: smooth;
   }
+}
+
+/* Motifs de fond, anciennement un plugin matchUtilities appuye sur
+   flattenColorPalette. Ce helper interne n'existe plus en v4, et les couleurs y
+   sont desormais des variables CSS : un plugin JS ne peut plus recuperer la
+   valeur litterale exigee par l'URI de donnees SVG. Les deux variantes
+   reellement utilisees sont donc declarees en dur, a l'identique de v3. */
+@utility bg-grid-white\/10 {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+
+@utility bg-grid-extrasmall-zinc-200 {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='8' height='8' fill='none' stroke='%23e4e4e7'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
 }

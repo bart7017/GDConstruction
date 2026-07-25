@@ -8,8 +8,8 @@ export const About = () => {
       className="px-4 bg-white py-20 md:py-32 relative overflow-hidden"
     >
       {/* Effets de fond subtils */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-gradient-to-br from-primary/10 to-secondary/5 blur-3xl rounded-full"></div>
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tl from-building-100/60 to-transparent blur-3xl rounded-full"></div>
+      <div className="absolute top-20 right-10 w-72 h-72 bg-linear-to-br from-primary/10 to-secondary/5 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-linear-to-tl from-building-100/60 to-transparent blur-3xl rounded-full"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* En-tête */}
@@ -25,7 +25,7 @@ export const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Contenu principal */}
           <div className="space-y-6">
-            <div className="bg-gradient-to-br from-primary/5 to-secondary/5 p-8 rounded-2xl border border-primary/10">
+            <div className="bg-linear-to-br from-primary/5 to-secondary/5 p-8 rounded-2xl border border-primary/10">
               <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                 <span className="text-primary text-3xl mr-3">👨‍🔧</span>
                 Grégory DA COSTA

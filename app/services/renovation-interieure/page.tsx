@@ -195,7 +195,7 @@ export default function RenovationInterieure() {
         </div>
 
         {/* Process */}
-        <div className="bg-gradient-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Notre Méthode de Rénovation Intérieure
           </h2>
@@ -257,7 +257,7 @@ export default function RenovationInterieure() {
         </div>
 
         {/* Exemples de réalisations */}
-        <div className="bg-gradient-to-r from-building-100 to-blue-100 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-building-100 to-blue-100 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Exemples de Rénovations Intérieures
           </h2>
@@ -285,7 +285,7 @@ export default function RenovationInterieure() {
         <RelatedServices slugs={["peinture-finitions", "carrelage-sols", "plomberie"]} />
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
+        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Projet de Rénovation Intérieure ?
           </h2>

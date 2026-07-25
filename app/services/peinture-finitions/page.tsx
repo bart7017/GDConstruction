@@ -125,7 +125,7 @@ export default function PeintureFinition() {
           </p>
           
           {/* Photo d'illustration */}
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-8">
+          <div className="relative aspect-16/9 rounded-2xl overflow-hidden shadow-xl mb-8">
             <Image
               src="/images/peinture-preparation.webp"
               alt="Préparation pour travaux de peinture"
@@ -165,7 +165,7 @@ export default function PeintureFinition() {
         </div>
 
         {/* Types de peintures */}
-        <div className="bg-gradient-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Peintures et Finitions Disponibles
           </h2>
@@ -213,7 +213,7 @@ export default function PeintureFinition() {
         </div>
 
         {/* Marques de peinture */}
-        <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-primary/5 to-secondary/5 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Peintures de Marques Reconnues
           </h2>
@@ -254,7 +254,7 @@ export default function PeintureFinition() {
         <RelatedServices slugs={["renovation-interieure", "renovation-exterieure", "carrelage-sols"]} />
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
+        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Projet Peinture à Pamfou ?
           </h2>

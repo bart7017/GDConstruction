@@ -48,28 +48,28 @@ export default function APropos() {
               <h3 className="text-xl font-semibold mb-4 text-primary">Son Parcours</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm flex-shrink-0">👶</div>
+                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm shrink-0">👶</div>
                   <div>
                     <p className="font-medium">Enfance</p>
                     <p className="text-sm text-gray-600">Initiation sur les chantiers avec son père maçon</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm flex-shrink-0">16</div>
+                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm shrink-0">16</div>
                   <div>
                     <p className="font-medium">Formation d'excellence</p>
                     <p className="text-sm text-gray-600">École des Compagnons de France - BEP en alternance</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm flex-shrink-0">23</div>
+                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm shrink-0">23</div>
                   <div>
                     <p className="font-medium">Expérience professionnelle</p>
                     <p className="text-sm text-gray-600">23 ans d'expertise tous corps d'état</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm flex-shrink-0">🏢</div>
+                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm shrink-0">🏢</div>
                   <div>
                     <p className="font-medium">2014 - Création GD Construction</p>
                     <p className="text-sm text-gray-600">10 ans d'entreprise familiale à Pamfou</p>

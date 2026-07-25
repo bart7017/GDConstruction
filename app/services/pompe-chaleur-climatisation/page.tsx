@@ -119,28 +119,28 @@ export default function PompeAChaleurClimatisation() {
           </h2>
           <div className="space-y-8">
             <div className="flex items-start space-x-6">
-              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">1</div>
+              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shrink-0">1</div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Étude et Devis Gratuit</h3>
                 <p className="text-gray-600">Visite technique, calcul des besoins, étude thermique et proposition personnalisée</p>
               </div>
             </div>
             <div className="flex items-start space-x-6">
-              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">2</div>
+              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shrink-0">2</div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Planification des Travaux</h3>
                 <p className="text-gray-600">Organisation du chantier, commande du matériel, coordination des équipes</p>
               </div>
             </div>
             <div className="flex items-start space-x-6">
-              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">3</div>
+              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shrink-0">3</div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Installation Professionnelle</h3>
                 <p className="text-gray-600">Pose des unités, raccordements, mise en service par techniciens certifiés</p>
               </div>
             </div>
             <div className="flex items-start space-x-6">
-              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">4</div>
+              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shrink-0">4</div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Mise en Service et Formation</h3>
                 <p className="text-gray-600">Tests de fonctionnement, réglages optimaux, formation à l'utilisation</p>
