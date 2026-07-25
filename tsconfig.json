@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2017",
     "lib": [
       "dom",
       "dom.iterable",
@@ -13,39 +13,41 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
     "paths": {
+      "@components/*": [
+        "./components/*"
+      ],
+      "@constants/*": [
+        "./constants/*"
+      ],
       "@pages/*": [
-        "pages/*"
+        "./pages/*"
       ],
       "@db/*": [
-        "prisma/*"
+        "./prisma/*"
       ],
       "@layouts/*": [
-        "layouts/*"
+        "./layouts/*"
       ],
       "@utils/*": [
-        "utils/*"
-      ],
-      "@components/*": [
-        "components/*"
+        "./utils/*"
       ],
       "@images/*": [
-        "images/*"
+        "./images/*"
       ],
       "@context/*": [
-        "context/*"
+        "./context/*"
       ],
       "@hooks/*": [
-        "hooks/*"
+        "./hooks/*"
       ],
       "@server/*": [
-        "server/*"
+        "./server/*"
       ]
     },
     "plugins": [

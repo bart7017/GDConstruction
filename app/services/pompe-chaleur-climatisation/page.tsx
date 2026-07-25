@@ -1,4 +1,6 @@
 import { Container } from "@components/Container";
+import { ServiceJsonLd } from "@components/JsonLd";
+import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -10,6 +12,11 @@ export const metadata: Metadata = {
 export default function PompeAChaleurClimatisation() {
   return (
     <Container>
+      <ServiceJsonLd
+        name="Pompe à chaleur et climatisation"
+        description="Installation de pompes à chaleur air-air, air-eau et systèmes de climatisation à Pamfou et en Seine-et-Marne."
+        slug="pompe-chaleur-climatisation"
+      />
       <div className="px-4 py-16">
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto text-center mb-16">
@@ -141,6 +148,8 @@ export default function PompeAChaleurClimatisation() {
             </div>
           </div>
         </div>
+
+        <RelatedServices slugs={["electricite", "plomberie", "renovation-interieure"]} />
 
         {/* CTA Section */}
         <div className="bg-quaternary border border-primary/20 rounded-2xl p-8 text-center">

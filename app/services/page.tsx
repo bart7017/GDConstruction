@@ -27,16 +27,16 @@ const services = [
   {
     title: "Rénovation Intérieure", 
     slug: "renovation-interieure",
-    description: "Cuisine, salle de bain, sols, cloisons, peinture",
+    description: "Cuisine, salle de bain, cloisons, menuiseries intérieures",
     icon: "🏠",
     keywords: "rénovation intérieure Pamfou, cuisine, salle de bain"
   },
   {
     title: "Rénovation Extérieure",
-    slug: "renovation-exterieure", 
-    description: "Façades, isolation, terrasses, allées, cours",
+    slug: "renovation-exterieure",
+    description: "Ravalement de façade, ITE, bardage, terrasses bois",
     icon: "🏡",
-    keywords: "ravalement façade, isolation extérieure, terrasse"
+    keywords: "ravalement façade, isolation thermique extérieure, bardage"
   },
   {
     title: "Plomberie",
@@ -72,6 +72,13 @@ const services = [
     description: "Peinture intérieure/extérieure, enduits, finitions",
     icon: "🎨",
     keywords: "peintre Seine-et-Marne, peinture intérieure, enduits"
+  },
+  {
+    title: "Pompe à Chaleur & Climatisation",
+    slug: "pompe-chaleur-climatisation",
+    description: "Installation pompe à chaleur air-air, air-eau, climatisation",
+    icon: "❄️",
+    keywords: "pompe à chaleur Pamfou, climatisation Seine-et-Marne, PAC air-eau"
   }
 ];
 

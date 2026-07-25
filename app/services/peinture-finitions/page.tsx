@@ -1,4 +1,6 @@
 import { Container } from "@components/Container";
+import { ServiceJsonLd } from "@components/JsonLd";
+import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -24,24 +26,24 @@ const services = [
     description: "Peinture et décoration de tous vos espaces intérieurs",
     details: [
       "Peinture murs et plafonds",
-      "Sous-couche et préparation",
       "Peinture acrylique et glycéro",
-      "Finitions mate, satinée, brillante",
-      "Peinture anti-humidité",
-      "Lessivage et dégraissage"
+      "Finitions mate, satinée, velours, brillante",
+      "Plafonds tendus et sous-pente",
+      "Nuancier et conseils couleurs",
+      "Chantier occupé : travail par pièce"
     ]
   },
   {
-    title: "Peinture Extérieure", 
+    title: "Peinture Extérieure",
     icon: "🏠",
-    description: "Protection et embellissement de vos façades",
+    description: "Mise en peinture des façades et boiseries extérieures",
     details: [
-      "Ravalement de façade",
       "Peinture pliolite et siloxane",
-      "Traitement anti-mousse",
-      "Peinture bois extérieur",
-      "Volets et menuiseries",
-      "Garantie longue durée"
+      "Peinture minérale sur support ancien",
+      "Peinture bois extérieur et bardage",
+      "Volets, portails et garde-corps",
+      "Lasure et saturateur",
+      "Teintes conformes au PLU"
     ]
   },
   {
@@ -52,7 +54,7 @@ const services = [
       "Enduit à la chaux",
       "Crépi d'intérieur",
       "Stuc et tadelakt",
-      "Enduit béton ciré",
+      "Béton ciré mural et plan de travail",
       "Patines et effets",
       "Techniques traditionnelles"
     ]
@@ -71,16 +73,16 @@ const services = [
     ]
   },
   {
-    title: "Préparation Supports",
+    title: "Préparation des Murs et Plafonds",
     icon: "🔨",
     description: "Préparation soignée avant finitions", 
     details: [
-      "Rebouchage fissures",
+      "Rebouchage fissures et trous",
+      "Ratissage et enduit de lissage",
       "Ponçage et égrenage",
-      "Lessivage des murs",
-      "Dégraissage et dépoussiérage",
-      "Traitement anti-humidité",
-      "Protection des sols"
+      "Lessivage et dépoussiérage",
+      "Sous-couche adaptée au support",
+      "Bâchage et protection des sols"
     ]
   },
   {
@@ -88,7 +90,7 @@ const services = [
     icon: "🎯",
     description: "Peintures techniques et spécialisées",
     details: [
-      "Peinture anti-humidité",
+      "Peinture anti-humidité et anti-salpêtre",
       "Peinture isolante thermique",
       "Sol garage et atelier",
       "Peinture magnétique",
@@ -101,6 +103,11 @@ const services = [
 export default function PeintureFinition() {
   return (
     <Container>
+      <ServiceJsonLd
+        name="Peinture et finitions"
+        description="Peinture intérieure et extérieure, enduits décoratifs et finitions à Pamfou et en Seine-et-Marne."
+        slug="peinture-finitions"
+      />
       <div className="max-w-6xl mx-auto px-4 py-16">
         {/* Header avec photo */}
         <div className="text-center mb-16">
@@ -243,6 +250,8 @@ export default function PeintureFinition() {
             </div>
           </div>
         </div>
+
+        <RelatedServices slugs={["renovation-interieure", "renovation-exterieure", "carrelage-sols"]} />
 
         {/* CTA */}
         <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">

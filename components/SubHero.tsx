@@ -1,6 +1,6 @@
 'use client';
 
-import { features } from "constants/features";
+import { features } from "@constants/features";
 import { useMotionValue } from "framer-motion";
 import React from "react";
 import Link from "next/link";

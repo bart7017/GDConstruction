@@ -1,4 +1,6 @@
 import { Container } from "@components/Container";
+import { ServiceJsonLd } from "@components/JsonLd";
+import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -84,7 +86,7 @@ const services = [
     ]
   },
   {
-    title: "Préparation Supports",
+    title: "Préparation et Ragréage des Sols",
     icon: "🔨",
     description: "Mise à niveau et préparation parfaite",
     details: [
@@ -101,6 +103,11 @@ const services = [
 export default function CarrelageSols() {
   return (
     <Container>
+      <ServiceJsonLd
+        name="Carrelage et sols"
+        description="Pose de carrelage, parquet et sols PVC à Pamfou et en Seine-et-Marne."
+        slug="carrelage-sols"
+      />
       <div className="max-w-6xl mx-auto px-4 py-16">
         {/* Header avec photo */}
         <div className="text-center mb-16">
@@ -280,6 +287,8 @@ export default function CarrelageSols() {
             * Prix indicatifs fourniture et pose, devis personnalisé selon matériaux choisis
           </p>
         </div>
+
+        <RelatedServices slugs={["peinture-finitions", "renovation-interieure", "maconnerie-generale"]} />
 
         {/* CTA */}
         <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">

@@ -15,9 +15,16 @@ export const features = [
   {
     heading: "Rénovation Intérieure",
     description:
-      "Rénovation complète de cuisine, salle de bain, création d'espaces et aménagements intérieurs. Nous transformons votre habitat selon vos envies.",
+      "Cuisine, salle de bain, cloisons, menuiseries et rangements sur-mesure. Nous coordonnons tous les corps d'état pour un chantier clé en main.",
     icon: <AiFillHome className="text-primary h-6 w-6 relative z-50" />,
     link: "/services/renovation-interieure"
+  },
+  {
+    heading: "Rénovation Extérieure",
+    description:
+      "Ravalement de façade, isolation par l'extérieur, bardage, menuiseries et terrasses bois. Nous protégeons le bâti et transformons son allure.",
+    icon: <BsBuilding className="text-primary h-6 w-6 relative z-50" />,
+    link: "/services/renovation-exterieure"
   },
   {
     heading: "Plomberie",
@@ -46,6 +53,13 @@ export const features = [
       "Pose de carrelage, parquet, sols souples. Finitions de qualité pour sublimer vos espaces intérieurs et extérieurs.",
     icon: <GiFloorHatch className="text-primary h-6 w-6 relative z-50" />,
     link: "/services/carrelage-sols"
+  },
+  {
+    heading: "Peinture & Finitions",
+    description:
+      "Peinture intérieure et extérieure, enduits décoratifs et finitions soignées. La touche finale qui met en valeur vos travaux.",
+    icon: <BsTools className="text-primary h-6 w-6 relative z-50" />,
+    link: "/services/peinture-finitions"
   },
   {
     heading: "Pompe à Chaleur & Climatisation",

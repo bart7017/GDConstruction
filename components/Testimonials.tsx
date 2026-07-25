@@ -1,4 +1,4 @@
-import { testimonials } from "constants/testimonials";
+import { testimonials } from "@constants/testimonials";
 import React from "react";
 import { BlurImage } from "./BlurImage";
 
