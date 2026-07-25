@@ -2,6 +2,7 @@ import { Container } from "@components/Container";
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { realisationSlugs, RealisationSlug } from '@constants/realisations';
 
 // Types
 interface Realisation {
@@ -30,7 +31,7 @@ interface Realisation {
 }
 
 // Base de données des réalisations (en production, cela viendrait d'un CMS)
-const realisationsData: { [key: string]: Realisation } = {
+const realisationsData: Record<RealisationSlug, Realisation> = {
   'renovation-cuisine-pamfou-2024': {
     id: 'renovation-cuisine-pamfou-2024',
     title: 'Rénovation complète cuisine - Pamfou',
@@ -377,11 +378,15 @@ const realisationsData: { [key: string]: Realisation } = {
   }
 };
 
+function getRealisation(slug: string): Realisation | undefined {
+  return realisationsData[slug as RealisationSlug];
+}
+
 // Génération des métadonnées dynamiques
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const realisation = realisationsData[slug];
-  
+  const realisation = getRealisation(slug);
+
   if (!realisation) {
     return {
       title: 'Réalisation non trouvée | GD Construction',
@@ -399,6 +404,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       'réalisation',
       realisation.category
     ],
+    alternates: {
+      canonical: `https://www.gdconstruction.net/realisations/${slug}`,
+    },
     openGraph: {
       title: realisation.title,
       description: realisation.description,
@@ -412,14 +420,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 // Génération des routes statiques
 export async function generateStaticParams() {
-  return Object.keys(realisationsData).map((slug) => ({
+  return realisationSlugs.map((slug) => ({
     slug,
   }));
 }
 
 export default async function RealisationDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const realisation = realisationsData[slug];
+  const realisation = getRealisation(slug);
 
   if (!realisation) {
     notFound();
