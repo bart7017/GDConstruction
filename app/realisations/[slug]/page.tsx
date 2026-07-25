@@ -503,7 +503,7 @@ export default async function RealisationDetail({ params }: { params: Promise<{ 
             <h2 className="text-2xl font-bold mb-6">Galerie Photos</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {realisation.images.map((image, index) => (
-                <div key={index} className="bg-gradient-to-br from-building-100 to-building-200 rounded-xl overflow-hidden h-64 flex items-center justify-center">
+                <div key={index} className="bg-linear-to-br from-building-100 to-building-200 rounded-xl overflow-hidden h-64 flex items-center justify-center">
                   <div className="text-center text-gray-500">
                     <div className="text-3xl mb-2">📷</div>
                     <div className="text-sm">{image.caption || image.alt}</div>

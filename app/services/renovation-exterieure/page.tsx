@@ -126,7 +126,7 @@ export default function RenovationExterieur() {
           </p>
           
           {/* Photo d'illustration */}
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-8">
+          <div className="relative aspect-16/9 rounded-2xl overflow-hidden shadow-xl mb-8">
             <Image
               src="/images/maconnerie-enduit.webp"
               alt="Rénovation façade et enduit extérieur"
@@ -146,7 +146,7 @@ export default function RenovationExterieur() {
             Nos Réalisations en Façade et Extérieur
           </h2>
           <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/maconnerie-brique.webp"
                 alt="Mur extérieur en brique avant enduit de façade"
@@ -157,7 +157,7 @@ export default function RenovationExterieur() {
                 <p className="text-sm font-medium">Support de façade avant ravalement</p>
               </div>
             </div>
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/maconnerie-decoupe-mur.webp"
                 alt="Ouverture en façade pour pose de menuiserie extérieure"
@@ -168,7 +168,7 @@ export default function RenovationExterieur() {
                 <p className="text-sm font-medium">Préparation d'une baie avant pose</p>
               </div>
             </div>
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/menuiserie-rabotage.webp"
                 alt="Travaux menuiserie extérieure"
@@ -339,7 +339,7 @@ export default function RenovationExterieur() {
         </div>
 
         {/* Avantages rénovation extérieur */}
-        <div className="bg-gradient-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Pourquoi Rénover l'Extérieur de Votre Maison ?
           </h2>
@@ -371,7 +371,7 @@ export default function RenovationExterieur() {
         <RelatedServices slugs={["couverture", "peinture-finitions", "maconnerie-generale"]} />
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
+        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Projet de Ravalement ou d'Isolation Extérieure à Pamfou ?
           </h2>

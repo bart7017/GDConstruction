@@ -104,7 +104,7 @@ export const Hero = () => {
                 mass: 0.5,
               },
             }}
-            className="relative w-[100%] overflow-x-hidden md:w-3/4 mx-auto aspect-[16/9] mb-8 md:mb-8 max-w-5xl"
+            className="relative w-[100%] overflow-x-hidden md:w-3/4 mx-auto aspect-16/9 mb-8 md:mb-8 max-w-5xl"
           >
             <BlurImage
               src={"/images/GDConstructionLogo.png"}

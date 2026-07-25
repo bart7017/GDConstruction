@@ -119,7 +119,7 @@ export default function Services() {
         </div>
 
         {/* Zone d'intervention */}
-        <div className="bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg p-8 text-center">
+        <div className="bg-linear-to-r from-primary to-primary/80 text-white rounded-lg p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Zone d'Intervention</h2>
           <p className="text-xl mb-6">
             Nous intervenons à Pamfou et dans un rayon de 50 km

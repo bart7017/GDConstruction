@@ -125,7 +125,7 @@ export default function CarrelageSols() {
           </p>
           
           {/* Photo d'illustration */}
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-8">
+          <div className="relative aspect-16/9 rounded-2xl overflow-hidden shadow-xl mb-8">
             <Image
               src="/images/carrelage-sol.webp"
               alt="Pose de carrelage au sol - Travaux de carrelage professionnel"
@@ -145,7 +145,7 @@ export default function CarrelageSols() {
             Nos Réalisations en Carrelage
           </h2>
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/carrelage-laser.webp"
                 alt="Pose de carrelage avec laser d'alignement"
@@ -156,7 +156,7 @@ export default function CarrelageSols() {
                 <p className="text-sm font-medium">Pose avec laser d'alignement pour précision parfaite</p>
               </div>
             </div>
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/sol-parquet.webp"
                 alt="Pose de parquet professionnel"
@@ -196,7 +196,7 @@ export default function CarrelageSols() {
         </div>
 
         {/* Types de carrelage */}
-        <div className="bg-gradient-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Carrelages et Matériaux Disponibles
           </h2>
@@ -244,7 +244,7 @@ export default function CarrelageSols() {
         </div>
 
         {/* Réalisations types */}
-        <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-primary/5 to-secondary/5 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Exemples de Réalisations
           </h2>
@@ -291,7 +291,7 @@ export default function CarrelageSols() {
         <RelatedServices slugs={["peinture-finitions", "renovation-interieure", "maconnerie-generale"]} />
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
+        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Projet Carrelage à Pamfou ?
           </h2>

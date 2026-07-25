@@ -132,7 +132,7 @@ export default function Plomberie() {
           </p>
           
           {/* Photo d'illustration */}
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-8">
+          <div className="relative aspect-16/9 rounded-2xl overflow-hidden shadow-xl mb-8">
             <Image
               src="/images/plomberie-robinet.webp"
               alt="Installation de robinetterie - Plomberie professionnelle"
@@ -152,7 +152,7 @@ export default function Plomberie() {
             Nos Réalisations en Plomberie
           </h2>
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/plomberie-vanne.webp"
                 alt="Installation de vannes et tuyauterie"
@@ -163,7 +163,7 @@ export default function Plomberie() {
                 <p className="text-sm font-medium">Installation vannes et tuyauterie</p>
               </div>
             </div>
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/chauffage-tuyaux.webp"
                 alt="Installation système de chauffage"
@@ -237,7 +237,7 @@ export default function Plomberie() {
         </div>
 
         {/* Tarifs indicatifs */}
-        <div className="bg-gradient-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Tarifs Plomberie Indicatifs
           </h2>
@@ -304,7 +304,7 @@ export default function Plomberie() {
         <RelatedServices slugs={["renovation-interieure", "carrelage-sols", "electricite"]} />
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
+        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Besoin d'un Plombier à Pamfou ?
           </h2>

@@ -32,7 +32,7 @@ export const DesktopNav = ({ navItems }: any) => {
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0  transform  bg-gradient-to-b from-orange-400 to-orange-500 scale-105 rounded-xl"
+                className="absolute inset-0  transform  bg-linear-to-b from-orange-400 to-orange-500 scale-105 rounded-xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{

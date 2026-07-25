@@ -8,13 +8,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run dev` - Start the development server
 - `npm run build` - Build the application for production
 - `npm start` - Start the production server
+- `npm run lint` - Run ESLint (`next lint` no longer exists in Next 16)
 
 ### Package Management
-Uses npm with package-lock.json. The project also has a pnpm-lock.yaml file present.
+Uses npm with package-lock.json. Do not introduce a second lockfile: a stale
+`pnpm-lock.yaml` used to sit here and caused tooling to silently switch to pnpm.
 
 ## Architecture
 
-This is a **Next.js marketing website template** (originally called "Foxtrot") built with React, TypeScript, and Tailwind CSS. The project follows a pages-based routing structure with MDX blog support.
+Marketing website for GD Construction, a general contractor in Pamfou (77830),
+Seine-et-Marne. Built with Next.js (App Router), React, TypeScript and Tailwind CSS.
+It started from a template called "Foxtrot"; some component names still come from it.
 
 ### Key Architectural Patterns
 
@@ -23,6 +27,12 @@ This is a **Next.js marketing website template** (originally called "Foxtrot") b
 - Components use TypeScript with `.tsx` extensions
 - Styled with Tailwind CSS using custom design system
 - Framer Motion used for animations
+
+**Routing:** App Router (`/app`). Routes are `/`, `/services`, `/services/<slug>`
+(nine trade pages), `/realisations` + `/realisations/[slug]`, `/a-propos`,
+`/contact`, `/mentions-legales`. `app/sitemap.ts` and `app/robots.ts` generate
+`/sitemap.xml` and `/robots.txt` — keep the sitemap's slug list in sync when
+adding a page.
 
 **Path Aliases (tsconfig.json):**
 - `@components/*` → `components/*`
@@ -40,27 +50,32 @@ There is no `baseUrl` (deprecated in TS 7), so `paths` entries are relative to t
 root and bare imports like `constants/features` no longer resolve — always use an alias.
 
 **Data Management:**
-- Static constants in `/constants/` (navigation, features, testimonials)
-- Blog content stored as MDX files in `/data/blogs/`
-- Custom MDX utilities in `/lib/mdx.ts` for file processing
+- Static constants in `/constants/`: `navItems`, `features` (homepage cards),
+  `testimonials`, and `services` (the registry backing `RelatedServices`)
+- No CMS and no MDX: every page's copy lives inline in its `page.tsx`
 
-**Styling System:**
-- Custom Tailwind configuration with brand colors (primary: #00ABB3, secondary: #3C4048)
-- Custom utility classes for background patterns (bg-grid, bg-dot variants)
-- Vulcan color palette defined for dark theme elements
-- PostCSS with Tailwind and Autoprefixer
+**Styling System (Tailwind 4):**
+- Configured entirely in `styles/globals.css` — there is no `tailwind.config.js`
+- Brand colors and the `construction-*` / `building-*` scales are declared as
+  `--color-*` custom properties inside `@theme` (primary: #2563eb, secondary: #1e40af)
+- `postcss.config.js` uses `@tailwindcss/postcss`; autoprefixer is gone, v4
+  handles vendor prefixing itself
+- The `bg-grid-*` background patterns are plain `@utility` rules with the colour
+  baked into the SVG data URI. They used to be a `matchUtilities` plugin driven by
+  `flattenColorPalette`, which v4 removed — and since v4 colours are CSS variables,
+  a JS plugin can no longer read the literal value an SVG data URI needs. Adding a
+  new colour variant means adding another `@utility` by hand.
+- A base rule restores Tailwind 3's default `border-color: gray-200`; without it
+  the many cards using a bare `border` class would inherit `currentColor`
 
 ### Page Structure
-- **Home page**: Composed of Hero, SubHero, Testimonials, Pricing, CTA sections
-- **Blog system**: Dynamic routing with `[slug].tsx` for individual blog posts
-- **Container component**: Provides consistent layout with SEO meta tags, Banner, Navbar, Footer
-
-### Blog/Content System
-The MDX blog system processes markdown files with:
-- Front matter parsing via gray-matter
-- Reading time calculation
-- Word count statistics
-- Serialization via next-mdx-remote
+- **Home page**: Hero, SubHero, About, Testimonials, CTA
+- **Service pages**: each owns a distinct scope and links to sibling trades rather
+  than repeating their content — keep it that way, the overlap previously kept two
+  pages out of Google's index
+- **Container component**: wraps pages with Navbar, Footer and CookieBanner
 
 ### SEO Configuration
-Container component handles meta tags with hardcoded branding for "Foxtrot" and "aceternity.com" domains.
+`app/layout.tsx` holds the site-wide metadata and the `GeneralContractor` JSON-LD;
+each page sets its own title, description and canonical. Service pages add a
+`Service` JSON-LD via `components/JsonLd.tsx`.

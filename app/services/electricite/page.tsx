@@ -150,7 +150,7 @@ export default function Electricite() {
           </p>
           
           {/* Photo d'illustration */}
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-8">
+          <div className="relative aspect-16/9 rounded-2xl overflow-hidden shadow-xl mb-8">
             <Image
               src="/images/electricite-tableau.webp"
               alt="Installation de tableau électrique professionnel"
@@ -170,7 +170,7 @@ export default function Electricite() {
             Nos Réalisations en Électricité
           </h2>
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/electricite-ampoule.webp"
                 alt="Installation d'éclairage moderne"
@@ -181,7 +181,7 @@ export default function Electricite() {
                 <p className="text-sm font-medium">Éclairage LED moderne</p>
               </div>
             </div>
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/electricite-tableau.webp"
                 alt="Tableau électrique aux normes"
@@ -249,7 +249,7 @@ export default function Electricite() {
         </div>
 
         {/* Types de logements */}
-        <div className="bg-gradient-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Nous Intervenons sur Tous Types de Logements
           </h2>
@@ -332,7 +332,7 @@ export default function Electricite() {
         </div>
 
         {/* Matériel professionnel */}
-        <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-lg p-8 mb-16">
+        <div className="bg-linear-to-r from-primary/5 to-secondary/5 rounded-lg p-8 mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Matériel Professionnel de Qualité
           </h2>
@@ -373,7 +373,7 @@ export default function Electricite() {
         <RelatedServices slugs={["plomberie", "renovation-interieure", "pompe-chaleur-climatisation"]} />
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
+        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Projet Électrique à Pamfou ?
           </h2>

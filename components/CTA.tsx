@@ -4,7 +4,7 @@ import Button from "./Button";
 
 export const CTA = ({ headerText, bodyText }: any) => {
   return (
-    <div className="relative bg-gradient-to-br from-building-800 via-building-700 to-building-900 w-full text-white min-h-96 h-full overflow-hidden pb-4 shadow-2xl">
+    <div className="relative bg-linear-to-br from-building-800 via-building-700 to-building-900 w-full text-white min-h-96 h-full overflow-hidden pb-4 shadow-2xl">
       {/* Effet de grille subtil */}
       <div
         className="absolute inset-0 opacity-10 bg-grid-white/10"
@@ -17,15 +17,15 @@ export const CTA = ({ headerText, bodyText }: any) => {
       ></div>
       
       {/* Gradient overlay pour plus de profondeur */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent"></div>
       
       {/* Effet lumineux orange */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/20 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-secondary/15 to-transparent rounded-full blur-2xl"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-linear-to-bl from-primary/20 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-linear-to-tr from-secondary/15 to-transparent rounded-full blur-2xl"></div>
 
       <div className="lg:grid lg:grid-cols-1 gap-10 px-4 py-16 md:px-8 md:py-20 max-w-6xl mx-auto relative z-20">
         <div className="text-center lg:text-left">
-          <h2 className="text-3xl md:text-5xl font-bold my-6 text-center bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-5xl font-bold my-6 text-center bg-linear-to-r from-white to-gray-200 bg-clip-text text-transparent">
             {headerText || `Prêt à démarrer votre projet ?`}
           </h2>
           <p className="my-6 text-lg md:text-xl tracking-wide font-light text-center max-w-2xl mx-auto text-gray-200 leading-relaxed">
