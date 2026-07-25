@@ -1,0 +1,30 @@
+name: IndexNow
+
+# Vercel crée un Deployment GitHub par mise en ligne et le passe à `success`
+# une fois le domaine de production basculé. C'est le seul signal fiable :
+# un `postbuild` s'exécuterait avant la publication et soumettrait l'ancienne
+# version du sitemap.
+on: deployment_status
+
+# Deux merges rapprochés produisent deux déploiements ; inutile de soumettre
+# deux fois la même liste, seule la dernière compte.
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+jobs:
+  submit:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment_status.environment == 'Production'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Aucun `npm ci` : le script n'utilise que le `fetch` natif de Node.
+      # La clé IndexNow est publique par conception, il n'y a pas de secret.
+      - run: npm run indexnow
