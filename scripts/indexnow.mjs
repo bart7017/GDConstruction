@@ -3,6 +3,10 @@
 // ligne annonce, donc pinguer avant que Vercel n'ait publié enverrait les
 // moteurs sur l'ancienne liste.
 //
+// `.github/workflows/indexnow.yml` s'en charge automatiquement à chaque mise en
+// production. Les invocations manuelles restent utiles pour resoumettre une
+// page précise :
+//
 //   npm run indexnow            toutes les URLs du sitemap
 //   npm run indexnow -- <url>…  seulement celles-ci
 //
@@ -15,8 +19,29 @@ const HOST = 'www.gdconstruction.net';
 const ORIGIN = `https://${HOST}`;
 const ENDPOINT = 'https://api.indexnow.org/indexnow';
 
+// Lancé depuis CI, on arrive juste après la bascule d'alias Vercel : une
+// première requête peut tomber sur un 502 ou un DNS pas encore chaud.
+async function fetchWithRetry(url, attempts = 5, delayMs = 5000) {
+  let lastError;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return res;
+      lastError = new Error(`${url} a répondu ${res.status}`);
+      // Un 4xx ne s'arrangera pas en réessayant.
+      if (res.status < 500) return res;
+    } catch (err) {
+      lastError = err;
+    }
+    if (i < attempts - 1) {
+      await new Promise((r) => setTimeout(r, delayMs));
+    }
+  }
+  throw lastError;
+}
+
 async function urlsFromSitemap() {
-  const res = await fetch(`${ORIGIN}/sitemap.xml`);
+  const res = await fetchWithRetry(`${ORIGIN}/sitemap.xml`);
   if (!res.ok) {
     throw new Error(`sitemap.xml a répondu ${res.status}`);
   }
@@ -38,7 +63,7 @@ async function main() {
   }
 
   // La clé doit être servie en ligne, sinon IndexNow rejette la soumission.
-  const keyRes = await fetch(`${ORIGIN}/${KEY}.txt`);
+  const keyRes = await fetchWithRetry(`${ORIGIN}/${KEY}.txt`);
   const keyBody = keyRes.ok ? (await keyRes.text()).trim() : null;
   if (keyBody !== KEY) {
     throw new Error(
