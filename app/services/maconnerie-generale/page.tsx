@@ -1,4 +1,6 @@
 import { Container } from "@components/Container";
+import { ServiceJsonLd } from "@components/JsonLd";
+import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -43,6 +45,11 @@ const serviceDetails = [
 export default function MaconnerieGenerale() {
   return (
     <Container>
+      <ServiceJsonLd
+        name="Maçonnerie générale"
+        description="Construction de murs, dalles béton, fondations, extensions et travaux de gros œuvre à Pamfou et en Seine-et-Marne."
+        slug="maconnerie-generale"
+      />
       <div className="max-w-6xl mx-auto px-4 py-16">
         {/* Header avec photo */}
         <div className="text-center mb-16">
@@ -205,6 +212,8 @@ export default function MaconnerieGenerale() {
             </div>
           </div>
         </div>
+
+        <RelatedServices slugs={["renovation-exterieure", "couverture", "renovation-interieure"]} />
 
         {/* CTA */}
         <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">

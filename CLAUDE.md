@@ -26,6 +26,7 @@ This is a **Next.js marketing website template** (originally called "Foxtrot") b
 
 **Path Aliases (tsconfig.json):**
 - `@components/*` → `components/*`
+- `@constants/*` → `constants/*`
 - `@pages/*` → `pages/*` 
 - `@utils/*` → `utils/*`
 - `@layouts/*` → `layouts/*`
@@ -34,6 +35,9 @@ This is a **Next.js marketing website template** (originally called "Foxtrot") b
 - `@server/*` → `server/*`
 - `@db/*` → `prisma/*` (configured but no Prisma files present)
 - `@images/*` → `images/*`
+
+There is no `baseUrl` (deprecated in TS 7), so `paths` entries are relative to the repo
+root and bare imports like `constants/features` no longer resolve — always use an alias.
 
 **Data Management:**
 - Static constants in `/constants/` (navigation, features, testimonials)

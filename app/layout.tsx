@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import { Metadata } from 'next'
+import { LocalBusinessJsonLd } from '@components/JsonLd'
 
 export const metadata: Metadata = {
   title: {
@@ -51,6 +52,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="antialiased">
+        <LocalBusinessJsonLd />
         {children}
       </body>
     </html>

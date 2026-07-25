@@ -1,14 +1,16 @@
 import { Container } from "@components/Container";
+import { ServiceJsonLd } from "@components/JsonLd";
+import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Rénovation Intérieure à Pamfou',
-  description: 'Spécialiste rénovation intérieure à Pamfou (77830). Cuisine, salle de bain, sols, cloisons, peinture. Tous corps d\'état. Devis gratuit GD Construction.',
-  keywords: ['rénovation intérieure Pamfou', 'rénovation cuisine Seine-et-Marne', 'rénovation salle de bain 77830', 'carrelage intérieur', 'peinture intérieure', 'cloisons'],
+  description: 'Rénovation intérieure clé en main à Pamfou (77830) : cuisine, salle de bain, cloisons, menuiseries, adaptation PMR. Un seul interlocuteur. Devis gratuit.',
+  keywords: ['rénovation intérieure Pamfou', 'rénovation cuisine Seine-et-Marne', 'rénovation salle de bain 77830', 'cloison placo', 'verrière atelier', 'adaptation PMR logement'],
   openGraph: {
     title: 'Rénovation Intérieure | GD Construction Pamfou',
-    description: 'Expert en rénovation intérieure à Pamfou. Cuisine, salle de bain, sols.',
+    description: 'Rénovation clé en main à Pamfou : cuisine, salle de bain, cloisons, menuiseries.',
     url: 'https://www.gdconstruction.net/services/renovation-interieure',
   },
   alternates: {
@@ -43,18 +45,6 @@ const services = [
     ]
   },
   {
-    title: "Sols et Revêtements",
-    icon: "🏛️",
-    description: "Pose de carrelage, parquet, sols PVC et résines",
-    details: [
-      "Carrelage toutes dimensions",
-      "Parquet massif et stratifié",
-      "Sols PVC et linoléum",
-      "Résines et béton ciré",
-      "Ragréage et préparation supports"
-    ]
-  },
-  {
     title: "Cloisons et Aménagements",
     icon: "🧱",
     description: "Création et modification de cloisons pour optimiser vos espaces",
@@ -67,27 +57,39 @@ const services = [
     ]
   },
   {
-    title: "Peinture et Décoration",
-    icon: "🎨",
-    description: "Travaux de peinture intérieure et décoration",
+    title: "Menuiseries et Rangements",
+    icon: "🚪",
+    description: "Menuiseries intérieures et rangements sur-mesure",
     details: [
-      "Peinture murs et plafonds",
-      "Enduits décoratifs et lissés",
-      "Papier peint et revêtements muraux",
-      "Lasures et vernis",
-      "Conseils couleurs et finitions"
+      "Portes intérieures et blocs-portes",
+      "Verrière d'atelier et cloison vitrée",
+      "Dressing et placards sur-mesure",
+      "Escaliers intérieurs et garde-corps",
+      "Plinthes, habillages et finitions bois"
     ]
   },
   {
-    title: "Électricité Intérieure",
-    icon: "⚡",
-    description: "Installation électrique complète et mise aux normes",
+    title: "Adaptation du Logement",
+    icon: "♿",
+    description: "Aménagements pour seniors et personnes à mobilité réduite",
     details: [
-      "Tableau électrique et protection",
-      "Prises et interrupteurs",
-      "Éclairage LED et domotique",
-      "Chauffage électrique",
-      "Mise aux normes NF C 15-100"
+      "Douche plain-pied et receveur extra-plat",
+      "Élargissement des portes",
+      "Barres d'appui et sièges de douche",
+      "Suppression des seuils et ressauts",
+      "Accompagnement dossiers d'aide"
+    ]
+  },
+  {
+    title: "Rénovation Clé en Main",
+    icon: "🔑",
+    description: "Coordination complète de votre chantier, un seul interlocuteur",
+    details: [
+      "Chiffrage global tous corps d'état",
+      "Planning et enchaînement des lots",
+      "Commande et réception des matériaux",
+      "Gestion des accès en copropriété",
+      "Réception de chantier et levée de réserves"
     ]
   }
 ];
@@ -95,6 +97,11 @@ const services = [
 export default function RenovationInterieure() {
   return (
     <Container>
+      <ServiceJsonLd
+        name="Rénovation intérieure"
+        description="Rénovation clé en main de cuisine, salle de bain, cloisons, menuiseries intérieures et adaptation du logement à Pamfou et en Seine-et-Marne."
+        slug="renovation-interieure"
+      />
       <div className="max-w-6xl mx-auto px-4 py-16">
         {/* Header */}
         <div className="text-center mb-16">
@@ -106,9 +113,9 @@ export default function RenovationInterieure() {
             Rénovation Intérieure Complète à Pamfou
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            GD Construction transforme vos intérieurs en Seine-et-Marne. Cuisine, salle de bain, 
-            sols, électricité... Nous maîtrisons tous les corps d'état pour une rénovation 
-            harmonieuse et coordonnée de A à Z.
+            GD Construction repense vos pièces de vie en Seine-et-Marne : cuisine, salle de bain,
+            cloisons, menuiseries et rangements. Nous pilotons l'ensemble des corps d'état pour
+            que votre chantier avance dans le bon ordre, sans coordination à votre charge.
           </p>
         </div>
 
@@ -135,6 +142,56 @@ export default function RenovationInterieure() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* Périmètre et prestations traitées ailleurs */}
+        <div className="bg-white border rounded-lg shadow-sm p-8 mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Les Lots Techniques de Votre Rénovation
+          </h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            Une rénovation intérieure enchaîne plusieurs métiers. Nous les réalisons tous en
+            interne, chacun détaillé sur sa propre page — vous n'avez qu'un devis, qu'un planning
+            et qu'un interlocuteur.
+          </p>
+          <ul className="space-y-3 text-gray-700">
+            <li className="flex items-start space-x-2">
+              <span className="text-primary font-bold">•</span>
+              <span>
+                Carrelage, parquet, sols souples et ragréage :{" "}
+                <Link href="/services/carrelage-sols" className="text-primary font-semibold hover:underline">
+                  voir notre pôle carrelage et sols
+                </Link>
+              </span>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="text-primary font-bold">•</span>
+              <span>
+                Peinture, enduits décoratifs et papier peint :{" "}
+                <Link href="/services/peinture-finitions" className="text-primary font-semibold hover:underline">
+                  voir notre pôle peinture et finitions
+                </Link>
+              </span>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="text-primary font-bold">•</span>
+              <span>
+                Tableau, prises, éclairage et mise aux normes NF C 15-100 :{" "}
+                <Link href="/services/electricite" className="text-primary font-semibold hover:underline">
+                  voir notre pôle électricité
+                </Link>
+              </span>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="text-primary font-bold">•</span>
+              <span>
+                Alimentation, évacuation et sanitaires :{" "}
+                <Link href="/services/plomberie" className="text-primary font-semibold hover:underline">
+                  voir notre pôle plomberie
+                </Link>
+              </span>
+            </li>
+          </ul>
         </div>
 
         {/* Process */}
@@ -224,6 +281,8 @@ export default function RenovationInterieure() {
             * Prix indicatifs, devis personnalisé selon vos besoins
           </p>
         </div>
+
+        <RelatedServices slugs={["peinture-finitions", "carrelage-sols", "plomberie"]} />
 
         {/* CTA */}
         <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">

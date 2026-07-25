@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { navItems } from "constants/navItems";
+import { navItems } from "@constants/navItems";
 import { CustomLink } from "./CustomLink";
 import {
   AiOutlinePhone,

@@ -1,4 +1,6 @@
 import { Container } from "@components/Container";
+import { ServiceJsonLd } from "@components/JsonLd";
+import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -80,7 +82,7 @@ const services = [
       "Recherche de défaut",
       "Remplacement appareillage",
       "Court-circuit et surtension",
-      "Maintenance préventive"
+      "Contrôle périodique de l'installation"
     ]
   },
   {
@@ -126,6 +128,11 @@ const normes = [
 export default function Electricite() {
   return (
     <Container>
+      <ServiceJsonLd
+        name="Électricité"
+        description="Installation électrique, tableau, mise aux normes et dépannage à Pamfou et en Seine-et-Marne."
+        slug="electricite"
+      />
       <div className="max-w-6xl mx-auto px-4 py-16">
         {/* Header avec photo */}
         <div className="text-center mb-16">
@@ -362,6 +369,8 @@ export default function Electricite() {
             </div>
           </div>
         </div>
+
+        <RelatedServices slugs={["plomberie", "renovation-interieure", "pompe-chaleur-climatisation"]} />
 
         {/* CTA */}
         <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">

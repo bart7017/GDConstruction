@@ -1,4 +1,6 @@
 import { Container } from "@components/Container";
+import { ServiceJsonLd } from "@components/JsonLd";
+import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -40,7 +42,7 @@ const services = [
       "Détartrage et débouchage",
       "Remplacement de joints",
       "Réparation robinetterie",
-      "Maintenance préventive",
+      "Entretien préventif du réseau",
       "Diagnostic et contrôle"
     ]
   },
@@ -108,6 +110,11 @@ const urgenceSteps = [
 export default function Plomberie() {
   return (
     <Container>
+      <ServiceJsonLd
+        name="Plomberie"
+        description="Installation, réparation et dépannage de plomberie sanitaire à Pamfou et en Seine-et-Marne."
+        slug="plomberie"
+      />
       <div className="max-w-6xl mx-auto px-4 py-16">
         {/* Header avec photo */}
         <div className="text-center mb-16">
@@ -293,6 +300,8 @@ export default function Plomberie() {
             </div>
           </div>
         </div>
+
+        <RelatedServices slugs={["renovation-interieure", "carrelage-sols", "electricite"]} />
 
         {/* CTA */}
         <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">

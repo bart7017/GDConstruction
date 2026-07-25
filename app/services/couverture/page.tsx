@@ -1,4 +1,6 @@
 import { Container } from "@components/Container";
+import { ServiceJsonLd } from "@components/JsonLd";
+import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -64,8 +66,8 @@ const services = [
     details: [
       "Laine de verre et roche",
       "Ouate de cellulose soufflée",
-      "Polyuréthane et polystyrène",
-      "Isolation par l'extérieur",
+      "Isolation des rampants sous toiture",
+      "Sarking par-dessus la charpente",
       "Pare-vapeur et freine-vapeur",
       "Crédit d'impôt et CEE"
     ]
@@ -101,6 +103,11 @@ const services = [
 export default function Couverture() {
   return (
     <Container>
+      <ServiceJsonLd
+        name="Couverture"
+        description="Réfection de toiture, charpente, gouttières et étanchéité à Pamfou et en Seine-et-Marne."
+        slug="couverture"
+      />
       <div className="max-w-6xl mx-auto px-4 py-16">
         {/* Header */}
         <div className="text-center mb-16">
@@ -226,6 +233,8 @@ export default function Couverture() {
             </div>
           </div>
         </div>
+
+        <RelatedServices slugs={["renovation-exterieure", "maconnerie-generale", "peinture-finitions"]} />
 
         {/* CTA */}
         <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
