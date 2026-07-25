@@ -2,7 +2,13 @@ import Link from "next/link";
 import React from "react";
 import Button from "./Button";
 
-export const CTA = ({ headerText, bodyText }: any) => {
+export const CTA = ({
+  headerText,
+  bodyText,
+}: {
+  headerText?: string;
+  bodyText?: string;
+}) => {
   return (
     <div className="relative bg-linear-to-br from-building-800 via-building-700 to-building-900 w-full text-white min-h-96 h-full overflow-hidden pb-4 shadow-2xl">
       {/* Effet de grille subtil */}

@@ -4,7 +4,6 @@ import { navItems } from "@constants/navItems";
 import { CustomLink } from "./CustomLink";
 import {
   AiOutlinePhone,
-  AiOutlineMail,
   AiOutlineEnvironment,
 } from "react-icons/ai";
 
@@ -54,7 +53,7 @@ export const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Navigation</h3>
             <div className="space-y-2">
-              {navItems.map((navItem: any, idx: number) => (
+              {navItems.map((navItem, idx) => (
                 <CustomLink
                   key={`footer-link-${idx}`}
                   href={navItem.link}
@@ -70,7 +69,7 @@ export const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <div className="space-y-3">
-              {contacts.map((contact: any, idx: number) => (
+              {contacts.map((contact, idx) => (
                 <a
                   key={`contact-${idx}`}
                   href={contact.link}

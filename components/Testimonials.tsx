@@ -6,7 +6,7 @@ type Testimonial = {
   name: string;
   content: string;
   designation?: string;
-  avatar?: string;
+  avatar: string;
 };
 export const Testimonials = () => {
   return (

@@ -1,35 +1,19 @@
 import React from "react";
 
-import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
-import Link from "next/link";
 
-export interface IButton {
-  variant?: "small" | "medium" | "large" | string;
-  className?: string;
-  icon?: "rightArrow" | "rightArrowBlue" | "downArrow" | string;
-  customIcon?: any;
-  onClick?: Function;
-  iconStyle?: React.CSSProperties;
-  as?: "a" | "button" | "Link" | string | any;
-  to?: string;
-  href?: string;
-  target?: string;
-  children?: React.JSX.Element | React.JSX.Element[] | string | string[];
-  [x: string]: any;
+export interface IButton extends React.ComponentPropsWithoutRef<"button"> {
+  variant?: "small" | "medium" | "large" | "outline";
+  as?: React.ElementType;
 }
 
-const Button = (props: IButton) => {
-  const {
-    variant,
-    className,
-    icon,
-    iconStyle,
-    as: Tag = "button",
-    children,
-    ...remainingProps
-  } = props;
-
+const Button = ({
+  variant,
+  className,
+  as: Tag = "button",
+  children,
+  ...remainingProps
+}: IButton) => {
   const getVariantStyles = () => {
     switch (variant) {
       case "small":
@@ -46,11 +30,7 @@ const Button = (props: IButton) => {
   };
 
   return (
-    <Tag
-      {...props}
-      className={twMerge(getVariantStyles(), className)}
-      {...remainingProps}
-    >
+    <Tag className={twMerge(getVariantStyles(), className)} {...remainingProps}>
       {children}
     </Tag>
   );
