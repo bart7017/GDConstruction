@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import { AiOutlinePhone, AiOutlineWhatsApp } from "react-icons/ai";
 
 export const DesktopNav = ({ navItems }: any) => {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   return (
     <div className="flex flex-row space-x-8 items-center antialiased border px-6 py-3 rounded-2xl bg-gray-100 w-fit max-w-5xl mx-auto">
       <Link href="/" className="flex items-center justify-center">

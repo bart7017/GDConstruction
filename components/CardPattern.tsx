@@ -5,8 +5,8 @@ import React from "react";
 import { GridPattern } from "./GridPattern";
 
 export function CardPattern({ mouseX, mouseY, ...gridProps }: any) {
-  let maskImage = useMotionTemplate`radial-gradient(300px at ${mouseX}px ${mouseY}px, white, transparent)`;
-  let style = { maskImage, WebkitMaskImage: maskImage };
+  const maskImage = useMotionTemplate`radial-gradient(300px at ${mouseX}px ${mouseY}px, white, transparent)`;
+  const style = { maskImage, WebkitMaskImage: maskImage };
 
   return (
     <div className="pointer-events-none">

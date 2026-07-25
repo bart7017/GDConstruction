@@ -15,7 +15,7 @@ export interface IButton {
   to?: string;
   href?: string;
   target?: string;
-  children?: JSX.Element | JSX.Element[] | string | string[];
+  children?: React.JSX.Element | React.JSX.Element[] | string | string[];
   [x: string]: any;
 }
 
