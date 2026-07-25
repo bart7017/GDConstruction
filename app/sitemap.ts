@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { realisationSlugs } from '@constants/realisations';
 
 const BASE_URL = 'https://www.gdconstruction.net';
 
@@ -42,6 +43,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    ...realisationSlugs.map((slug) => ({
+      url: `${BASE_URL}/realisations/${slug}`,
+      lastModified,
+      changeFrequency: 'yearly' as const,
+      priority: 0.6,
+    })),
     {
       url: `${BASE_URL}/contact`,
       lastModified,

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Nos Réalisations | Portfolio GD Construction Pamfou',
   description: 'Découvrez nos dernières réalisations de maçonnerie, rénovation, plomberie et électricité à Pamfou et Seine-et-Marne. Portfolio de travaux de qualité avec photos avant/après.',
   keywords: ['réalisations GD Construction', 'chantiers Pamfou', 'portfolio maçonnerie', 'travaux Seine-et-Marne', 'avant après rénovation', 'photos chantier'],
+  alternates: {
+    canonical: 'https://www.gdconstruction.net/realisations',
+  },
   openGraph: {
     title: 'Nos Réalisations | GD Construction Portfolio',
     description: 'Portfolio de nos réalisations en maçonnerie et rénovation à Pamfou.',

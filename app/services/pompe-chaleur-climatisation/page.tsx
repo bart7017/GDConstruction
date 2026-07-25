@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Pompe à Chaleur & Climatisation | GD Construction Pamfou',
   description: 'Installation de pompes à chaleur air-air, air-eau et systèmes de climatisation à Pamfou. Solutions énergétiques performantes et économiques. Devis gratuit.',
   keywords: ['pompe à chaleur Pamfou', 'climatisation Pamfou', 'chauffage économique', 'installation climatiseur', 'pompe chaleur air eau', 'Seine-et-Marne'],
+  alternates: {
+    canonical: 'https://www.gdconstruction.net/services/pompe-chaleur-climatisation',
+  },
 };
 
 export default function PompeAChaleurClimatisation() {

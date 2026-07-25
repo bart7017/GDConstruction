@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image, { ImageProps } from "next/image";
 import { useState } from "react";
 import { cn } from "../lib/utils";
+import { RealisationSlug } from "@constants/realisations";
 
 // Variante locale de @components/BlurImage : transition et alt par defaut
 // differents. Les deux meriteraient d'etre fusionnees en rendant ces deux
@@ -30,7 +31,7 @@ const BlurImage = ({ className, alt, ...rest }: BlurImageProps) => {
 interface Realisation {
   title: string;
   description: string;
-  slug: string;
+  slug: RealisationSlug;
   image: string;
   category: string;
   location: string;
