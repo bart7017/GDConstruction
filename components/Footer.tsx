@@ -116,7 +116,7 @@ export const Footer = () => {
           </div>
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
             <p className="text-gray-500 text-sm text-center">
-              SIRET : À venir • Assurance décennale
+              SIRET : 503 834 426 00028 • Assurance décennale
             </p>
           </div>
         </div>
