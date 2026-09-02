@@ -389,12 +389,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!realisation) {
     return {
-      title: 'Réalisation non trouvée | GD Construction',
+      title: 'Réalisation non trouvée',
     };
   }
 
   return {
-    title: `${realisation.title} | Réalisations GD Construction`,
+    // Le template du layout ajoute déjà « | GD Construction ».
+    title: realisation.title,
     description: realisation.description,
     keywords: [
       ...realisation.tags,
