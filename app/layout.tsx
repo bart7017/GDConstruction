@@ -1,6 +1,8 @@
 import '../styles/globals.css'
 import { Metadata } from 'next'
 import { LocalBusinessJsonLd } from '@components/JsonLd'
+// Mesure d'audience sans cookie ni identifiant : rien à demander au visiteur.
+import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
   title: {
@@ -54,6 +56,7 @@ export default function RootLayout({
       <body className="antialiased">
         <LocalBusinessJsonLd />
         {children}
+        <Analytics />
       </body>
     </html>
   )
