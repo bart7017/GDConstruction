@@ -154,8 +154,8 @@ export default function APropos() {
             </div>
             <div>
               <div className="text-3xl mb-3">🏛️</div>
-              <h3 className="font-semibold text-gray-800">SIRET en cours</h3>
-              <p className="text-sm text-gray-600">Entreprise légalement déclarée</p>
+              <h3 className="font-semibold text-gray-800">Entreprise Déclarée</h3>
+              <p className="text-sm text-gray-600">SIRET 503 834 426 00028</p>
             </div>
             <div>
               <div className="text-3xl mb-3">🛡️</div>

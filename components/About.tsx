@@ -137,7 +137,7 @@ export const About = () => {
             <div>
               <div className="text-3xl mb-3">🏛️</div>
               <h4 className="font-semibold text-gray-800">Entreprise Déclarée</h4>
-              <p className="text-sm text-gray-600">SIRET en cours d'obtention</p>
+              <p className="text-sm text-gray-600">SIRET 503 834 426 00028</p>
             </div>
             <div>
               <div className="text-3xl mb-3">🛡️</div>
