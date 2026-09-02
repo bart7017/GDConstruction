@@ -1,4 +1,5 @@
 import { Container } from "@components/Container";
+import { ContactForm } from "@components/ContactForm";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.gdconstruction.net/contact',
   },
 };
+
+const formulaireActif = Boolean(process.env.NEXT_PUBLIC_FORMSPREE_ID);
 
 export default function Contact() {
   return (
@@ -90,68 +93,49 @@ export default function Contact() {
               Demande de devis gratuit
             </h2>
             
-            {/* Message informatif */}
-            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-6">
-              <div className="flex items-center">
-                <div className="text-yellow-600 text-2xl mr-3">📞</div>
-                <div>
+            {formulaireActif ? (
+              <>
+                <ContactForm />
+                <div className="border-t mt-6 pt-6 text-center">
+                  <p className="text-sm text-gray-600 mb-3">
+                    Vous préférez expliquer de vive voix ?
+                  </p>
+                  <a
+                    href="tel:0695918103"
+                    className="inline-flex items-center justify-center border border-primary text-primary py-2.5 px-6 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors"
+                  >
+                    <span className="mr-2">📞</span>
+                    06 95 91 81 03
+                  </a>
+                </div>
+              </>
+            ) : (
+              <div className="space-y-6">
+                <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6">
                   <h3 className="text-lg font-semibold text-yellow-800 mb-2">
-                    Formulaire temporairement indisponible
+                    Formulaire momentanément indisponible
                   </h3>
-                  <p className="text-yellow-700 mb-3">
+                  <p className="text-yellow-700">
                     Pour une réponse immédiate, contactez-nous directement par téléphone.
                   </p>
                 </div>
-              </div>
-            </div>
-
-            {/* Contact rapide */}
-            <div className="space-y-6">
-              <div className="text-center">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  Appelez-nous maintenant
-                </h3>
-                <a 
-                  href="tel:0695918103"
-                  className="inline-flex items-center justify-center w-full bg-primary text-white py-4 px-6 rounded-lg hover:bg-primary/90 transition-colors font-semibold text-lg"
-                >
-                  <span className="mr-2">📞</span>
-                  06 95 91 81 03
-                </a>
-                <p className="text-sm text-gray-600 mt-2">
-                  Devis gratuit par téléphone
-                </p>
-              </div>
-
-              <div className="border-t pt-6">
-                <h3 className="font-semibold text-gray-800 mb-3">
-                  Informations à préparer pour votre appel :
-                </h3>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2">•</span>
-                    <span>Type de travaux souhaités</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2">•</span>
-                    <span>Localisation du chantier</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2">•</span>
-                    <span>Description du projet</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2">•</span>
-                    <span>Délai souhaité</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-green-50 p-4 rounded-lg">
-                <div className="flex items-center text-green-800">
-                  <span className="text-green-600 mr-2">✓</span>
-                  <span className="font-medium">Disponible 6j/7 • Devis gratuit • Déplacement gratuit dans un rayon de 50km</span>
+                <div className="text-center">
+                  <a
+                    href="tel:0695918103"
+                    className="inline-flex items-center justify-center w-full bg-primary text-white py-4 px-6 rounded-lg hover:bg-primary/90 transition-colors font-semibold text-lg"
+                  >
+                    <span className="mr-2">📞</span>
+                    06 95 91 81 03
+                  </a>
+                  <p className="text-sm text-gray-600 mt-2">Devis gratuit par téléphone</p>
                 </div>
+              </div>
+            )}
+
+            <div className="bg-green-50 p-4 rounded-lg mt-6">
+              <div className="flex items-center text-green-800">
+                <span className="text-green-600 mr-2">✓</span>
+                <span className="font-medium">Disponible 6j/7 • Devis gratuit • Déplacement gratuit dans un rayon de 50km</span>
               </div>
             </div>
           </div>

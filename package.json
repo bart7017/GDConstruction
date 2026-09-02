@@ -8,6 +8,7 @@
     "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.42.2",
     "mini-svg-data-uri": "^1.4.4",

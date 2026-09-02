@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   },
 };
 
+// Le texte suit l'état réel du site : tant que Formspree n'est pas configuré,
+// il n'y a pas de formulaire, donc pas de collecte à déclarer.
+const formulaireActif = Boolean(process.env.NEXT_PUBLIC_FORMSPREE_ID);
+
 export default function MentionsLegales() {
   return (
     <Container>
@@ -68,15 +72,42 @@ export default function MentionsLegales() {
           
           <h3 className="text-xl font-semibold text-gray-700 mb-3">Collecte des données</h3>
           <div className="bg-gray-50 p-6 rounded-lg mb-4">
-            <p className="mb-3">
-              Ce site ne comporte aucun formulaire et ne collecte <strong>aucune donnée
-              personnelle</strong> lors de votre navigation.
-            </p>
-            <p>
-              Les seules données que nous traitons sont celles que vous nous communiquez
-              spontanément lorsque vous nous appelez : nom, numéro de téléphone et
-              description de votre projet.
-            </p>
+            {formulaireActif ? (
+              <>
+                <p className="mb-3">
+                  Le formulaire de contact collecte les données suivantes :
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-gray-700 mb-3">
+                  <li>Nom (obligatoire)</li>
+                  <li>Adresse e-mail (obligatoire)</li>
+                  <li>Numéro de téléphone (facultatif)</li>
+                  <li>Ville du chantier (facultatif)</li>
+                  <li>Description du projet (obligatoire)</li>
+                </ul>
+                <p className="mb-3">
+                  S'y ajoutent les informations que vous nous communiquez spontanément
+                  lorsque vous nous appelez.
+                </p>
+                <p className="text-sm text-gray-600">
+                  L'acheminement du formulaire est assuré par notre sous-traitant
+                  Formspree Inc. (États-Unis), qui transmet le message par courriel sans
+                  le conserver durablement. Ce transfert hors Union européenne est encadré
+                  par les clauses contractuelles types de la Commission européenne.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="mb-3">
+                  Ce site ne comporte aucun formulaire et ne collecte <strong>aucune donnée
+                  personnelle</strong> lors de votre navigation.
+                </p>
+                <p>
+                  Les seules données que nous traitons sont celles que vous nous communiquez
+                  spontanément lorsque vous nous appelez : nom, numéro de téléphone et
+                  description de votre projet.
+                </p>
+              </>
+            )}
           </div>
 
           <h3 className="text-xl font-semibold text-gray-700 mb-3">Finalité du traitement</h3>
@@ -145,9 +176,15 @@ export default function MentionsLegales() {
               bandeau d'information (clé <code>cookie-consent</code>), afin de ne pas
               vous le réafficher à chaque visite.
             </p>
+            <p className="text-sm text-gray-600 mb-3">
+              Aucun traceur publicitaire ni bouton de réseau social n'est utilisé. Cette
+              préférence reste sur votre appareil et ne nous est jamais transmise.
+            </p>
             <p className="text-sm text-gray-600">
-              Aucun traceur de mesure d'audience, de publicité ou de réseau social n'est
-              utilisé. Cette donnée reste sur votre appareil et ne nous est jamais transmise.
+              La fréquentation du site est mesurée par Vercel Analytics, sans cookie et
+              sans identifiant permettant de vous reconnaître d'une visite à l'autre.
+              Aucune donnée personnelle n'est produite par cette mesure, qui ne requiert
+              donc pas votre consentement.
             </p>
           </div>
 
