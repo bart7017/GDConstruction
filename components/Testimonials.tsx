@@ -9,6 +9,10 @@ type Testimonial = {
   avatar: string;
 };
 export const Testimonials = () => {
+  // Aucun avis authentique disponible pour l'instant : on ne rend rien plutôt
+  // qu'une section vide.
+  if (testimonials.length === 0) return null;
+
   return (
     <div
       id="testimonials"
