@@ -25,6 +25,7 @@ export function GET() {
 
 ## Prestations
 
+- [Toutes nos prestations](${BASE_URL}/services) : vue d'ensemble des neuf corps d'état
 ${services}
 
 ## Réalisations
@@ -34,6 +35,7 @@ ${realisations}
 
 ## L'entreprise
 
+- [Accueil](${BASE_URL}) : présentation générale de l'entreprise et de ses activités
 - [À propos](${BASE_URL}/a-propos) : présentation de GD Construction et de son équipe
 - [Contact](${BASE_URL}/contact) : coordonnées, horaires et zone d'intervention
 - [Mentions légales](${BASE_URL}/mentions-legales) : éditeur, hébergeur et traitement des données
