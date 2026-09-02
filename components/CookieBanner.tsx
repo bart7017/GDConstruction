@@ -35,8 +35,8 @@ export const CookieBanner = () => {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex-1">
             <p className="text-sm text-gray-700 leading-relaxed">
-              🍪 Ce site utilise des cookies essentiels pour son bon fonctionnement. 
-              Nous ne collectons aucune donnée personnelle à des fins commerciales. 
+              🍪 Ce site ne dépose aucun cookie et ne collecte aucune donnée personnelle.
+              Seule votre réponse à ce bandeau est mémorisée par votre navigateur.
               <Link href="/mentions-legales" className="text-primary hover:text-secondary underline ml-1">
                 En savoir plus
               </Link>
