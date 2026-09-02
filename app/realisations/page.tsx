@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Nos Réalisations | Portfolio GD Construction Pamfou',
+  title: 'Nos Réalisations en Seine-et-Marne',
   description: 'Découvrez nos dernières réalisations de maçonnerie, rénovation, plomberie et électricité à Pamfou et Seine-et-Marne. Portfolio de travaux de qualité avec photos avant/après.',
   keywords: ['réalisations GD Construction', 'chantiers Pamfou', 'portfolio maçonnerie', 'travaux Seine-et-Marne', 'avant après rénovation', 'photos chantier'],
   alternates: {

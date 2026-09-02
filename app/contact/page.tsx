@@ -2,7 +2,7 @@ import { Container } from "@components/Container";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: 'Contact et Devis Gratuit à Pamfou (77830)',
   description: 'Contactez GD Construction à Pamfou (77830) pour tous vos travaux de maçonnerie et rénovation. Devis gratuit au 06 95 91 81 03.',
   keywords: ['contact GD Construction', 'devis maçonnerie Pamfou', 'téléphone maçon 77830', 'rendez-vous rénovation'],
   openGraph: {

@@ -2,7 +2,7 @@ import { Container } from "@components/Container";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'À Propos | GD Construction - Grégory DA COSTA, 23 ans d\'expérience',
+  title: 'Grégory DA COSTA, Artisan Maçon à Pamfou',
   description: 'Découvrez l\'histoire de GD Construction et son fondateur Grégory DA COSTA. 23 ans d\'expérience en maçonnerie, formé chez les Compagnons de France. Entreprise familiale à Pamfou.',
   keywords: ['Grégory DA COSTA', 'maçon Pamfou', 'Compagnons de France', 'entreprise familiale', 'expérience maçonnerie', 'artisan Seine-et-Marne'],
   alternates: {

@@ -2,7 +2,7 @@ import { Container } from "@components/Container";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Mentions Légales | GD Construction Pamfou',
+  title: 'Mentions Légales',
   description: 'Mentions légales, politique de confidentialité et conditions d\'utilisation du site GD Construction.',
   robots: { index: false, follow: true },
   alternates: {

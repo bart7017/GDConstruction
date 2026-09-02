@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Nos Services',
+  title: 'Nos Services Tous Corps d\'État à Pamfou',
   description: 'Découvrez tous les services de GD Construction à Pamfou : maçonnerie, rénovation intérieure et extérieure, plomberie, électricité, couverture. Tous corps d\'état.',
   keywords: ['services maçonnerie', 'rénovation tous corps état', 'plomberie Pamfou', 'électricité Seine-et-Marne', 'couverture 77830'],
   openGraph: {

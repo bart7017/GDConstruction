@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Ravalement de Façade et ITE à Pamfou | Rénovation Extérieure 77830',
+  title: 'Ravalement de Façade et ITE à Pamfou',
   description: 'Ravalement de façade, isolation thermique extérieure, bardage, menuiseries et terrasses bois à Pamfou (77830). Devis gratuit GD Construction.',
   keywords: ['ravalement façade Pamfou', 'isolation thermique extérieure Seine-et-Marne', 'bardage façade 77830', 'menuiseries extérieures', 'terrasse bois composite', 'clôture portail'],
   openGraph: {
