@@ -9,6 +9,13 @@ const localBusiness = {
   name: "GD Construction",
   url: BASE_URL,
   telephone: "+33695918103",
+  // Google recoupe le SIRET entre le site et la fiche Business Profile : il doit
+  // rester identique à celui des mentions légales.
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "SIRET",
+    value: "50383442600028",
+  },
   description:
     "Entreprise de maçonnerie générale et rénovation tous corps d'état à Pamfou (77830), Seine-et-Marne.",
   address: {
