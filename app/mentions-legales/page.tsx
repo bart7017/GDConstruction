@@ -30,16 +30,20 @@ export default function MentionsLegales() {
         </section>
 
         {/* Assurance professionnelle */}
-        {/* Assureur à mettre à jour : un changement de compagnie est prévu. */}
+        {/* Le nom de l'assureur et la zone couverte sont volontairement absents :
+            ils n'ont pas encore été relevés sur l'attestation, et un changement de
+            compagnie est prévu. Les ajouter est une mention obligatoire au sens de
+            l'article L241-1 du code des assurances (assureur + zone géographique). */}
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Assurance Professionnelle</h2>
           <div className="bg-gray-50 p-6 rounded-lg">
-            <p><strong>Assurance responsabilité civile décennale</strong></p>
-            <p className="mt-2"><strong>Assureur :</strong> APRIL</p>
-            <p><strong>Couverture géographique :</strong> France entière</p>
+            <p>
+              GD Construction est titulaire d'une <strong>assurance responsabilité
+              civile décennale</strong> couvrant l'ensemble de ses interventions.
+            </p>
             <p className="mt-3 text-sm text-gray-600">
-              Une attestation d'assurance décennale est jointe à chaque devis et peut
-              vous être transmise sur simple demande au 06 95 91 81 03.
+              L'attestation d'assurance est jointe à chaque devis et peut vous être
+              transmise sur simple demande au 06 95 91 81 03.
             </p>
           </div>
         </section>
