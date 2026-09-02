@@ -42,8 +42,8 @@ export default function MentionsLegales() {
               civile décennale</strong> couvrant l'ensemble de ses interventions.
             </p>
             <p className="mt-3 text-sm text-gray-600">
-              L'attestation d'assurance est jointe à chaque devis et peut vous être
-              transmise sur simple demande au 06 95 91 81 03.
+              L'attestation d'assurance peut vous être transmise sur simple demande au
+              06 95 91 81 03.
             </p>
           </div>
         </section>
