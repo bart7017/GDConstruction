@@ -12,10 +12,8 @@ interface Realisation {
   category: string;
   date: string;
   location: string;
-  client: string;
   surface: string;
   duration: string;
-  budget: string;
   tags: string[];
   images: { url: string; alt: string; caption?: string }[];
   challenges: string[];
@@ -23,11 +21,6 @@ interface Realisation {
   materials: string[];
   techniques: string[];
   results: string[];
-  testimonial?: {
-    text: string;
-    author: string;
-    rating: number;
-  };
 }
 
 // Base de données des réalisations (en production, cela viendrait d'un CMS)
@@ -39,16 +32,10 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
     category: 'Rénovation intérieure',
     date: '2024-12-01',
     location: 'Pamfou (77830)',
-    client: 'Famille Martin',
     surface: '20m²',
     duration: '3 semaines',
-    budget: '15 000 - 20 000€',
     tags: ['rénovation', 'cuisine', 'carrelage', 'plomberie', 'électricité'],
-    images: [
-      { url: '/images/cuisine-pamfou-avant.webp', alt: 'Cuisine avant rénovation', caption: 'État initial de la cuisine' },
-      { url: '/images/cuisine-pamfou-travaux.webp', alt: 'Travaux en cours', caption: 'Démolition et préparation' },
-      { url: '/images/cuisine-pamfou-apres.webp', alt: 'Cuisine rénovée', caption: 'Résultat final avec îlot central' }
-    ],
+    images: [],
     challenges: [
       'Ancien carrelage au plomb nécessitant un désamiantage',
       'Réseaux électriques vétustes à refaire entièrement',
@@ -80,12 +67,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
       'Consommation électrique réduite de 30%',
       'Éclairage LED optimisé',
       'Finitions haut de gamme durables'
-    ],
-    testimonial: {
-      text: 'Grégory et son équipe ont transformé notre ancienne cuisine en un véritable bijou. Le travail est impeccable, les délais respectés et l\'accompagnement parfait du début à la fin.',
-      author: 'M. et Mme Martin',
-      rating: 5
-    }
+    ]
   },
   
   'extension-maison-melun-2024': {
@@ -95,18 +77,10 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
     category: 'Maçonnerie générale',
     date: '2024-11-15',
     location: 'Melun (77000)',
-    client: 'M. et Mme Dubois',
     surface: '40m²',
     duration: '6 semaines',
-    budget: '35 000 - 45 000€',
     tags: ['extension', 'maçonnerie', 'fondations', 'charpente', 'couverture'],
-    images: [
-      { url: '/images/extension-melun-terrain.webp', alt: 'Terrain avant travaux', caption: 'Préparation du terrain' },
-      { url: '/images/extension-melun-fondations.webp', alt: 'Coulage fondations', caption: 'Fondations béton armé' },
-      { url: '/images/extension-melun-murs.webp', alt: 'Élévation murs', caption: 'Montage murs parpaing' },
-      { url: '/images/extension-melun-charpente.webp', alt: 'Pose charpente', caption: 'Charpente traditionnelle' },
-      { url: '/images/extension-melun-finale.webp', alt: 'Extension terminée', caption: 'Extension achevée et raccordée' }
-    ],
+    images: [],
     challenges: [
       'Terrain en pente nécessitant un terrassement spécifique',
       'Raccordement étanche avec l\'existant',
@@ -138,12 +112,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
       'Extension parfaitement intégrée',
       'Isolation thermique optimale',
       'Garantie décennale sur la structure'
-    ],
-    testimonial: {
-      text: 'Notre extension a été réalisée dans les règles de l\'art. L\'équipe GD Construction a su gérer toutes les contraintes techniques avec professionnalisme.',
-      author: 'M. Dubois',
-      rating: 5
-    }
+    ]
   },
 
   'salle-bain-fontainebleau-2024': {
@@ -153,17 +122,10 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
     category: 'Plomberie & Carrelage',
     date: '2024-10-20',
     location: 'Fontainebleau (77300)',
-    client: 'Mme Legrand',
     surface: '8m²',
     duration: '2 semaines',
-    budget: '8 000 - 12 000€',
     tags: ['rénovation', 'salle de bain', 'douche italienne', 'carrelage', 'plomberie'],
-    images: [
-      { url: '/images/sdb-fontainebleau-avant.webp', alt: 'Salle de bain avant', caption: 'État initial de la salle de bain' },
-      { url: '/images/sdb-fontainebleau-demo.webp', alt: 'Démolition', caption: 'Démolition et préparation' },
-      { url: '/images/sdb-fontainebleau-carrelage.webp', alt: 'Pose carrelage', caption: 'Carrelage mural et sol' },
-      { url: '/images/sdb-fontainebleau-finale.webp', alt: 'Salle de bain terminée', caption: 'Résultat final avec douche italienne' }
-    ],
+    images: [],
     challenges: [
       'Évacuation existante mal positionnée',
       'Étanchéité renforcée pour douche à l\'italienne',
@@ -195,12 +157,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
       'Douche italienne de plain-pied',
       'Éclairage LED basse consommation',
       'Finitions haut de gamme durables'
-    ],
-    testimonial: {
-      text: 'Ma salle de bain a été totalement transformée. L\'équipe a su créer un espace moderne dans un volume restreint. Le résultat dépasse mes attentes.',
-      author: 'Mme Legrand',
-      rating: 5
-    }
+    ]
   },
 
   'toiture-nemours-2024': {
@@ -210,18 +167,10 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
     category: 'Couverture',
     date: '2024-09-10',
     location: 'Nemours (77140)',
-    client: 'M. et Mme Rousseau',
     surface: '150m²',
     duration: '4 semaines',
-    budget: '25 000 - 35 000€',
     tags: ['toiture', 'couverture', 'isolation', 'zinguerie', 'charpente'],
-    images: [
-      { url: '/images/toiture-nemours-avant.webp', alt: 'Toiture avant travaux', caption: 'État initial de la toiture' },
-      { url: '/images/toiture-nemours-demo.webp', alt: 'Dépose couverture', caption: 'Dépose de l\'ancienne couverture' },
-      { url: '/images/toiture-nemours-isolation.webp', alt: 'Isolation combles', caption: 'Isolation renforcée 300mm' },
-      { url: '/images/toiture-nemours-tuiles.webp', alt: 'Pose tuiles', caption: 'Pose nouvelle couverture' },
-      { url: '/images/toiture-nemours-finale.webp', alt: 'Toiture terminée', caption: 'Toiture achevée avec zinguerie' }
-    ],
+    images: [],
     challenges: [
       'Charpente ancienne nécessitant des renforts',
       'Isolation thermique aux normes RT2012',
@@ -253,12 +202,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
       'Étanchéité parfaite garantie 10 ans',
       'Évacuation eaux pluviales optimisée',
       'Aspect esthétique valorisant le bien'
-    ],
-    testimonial: {
-      text: 'Excellente prestation de A à Z. Notre toiture était en mauvais état, maintenant elle est comme neuve et bien isolée. Equipe très professionnelle.',
-      author: 'M. Rousseau',
-      rating: 5
-    }
+    ]
   },
 
   'escalier-beton-provins-2024': {
@@ -268,18 +212,10 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
     category: 'Maçonnerie générale',
     date: '2024-08-25',
     location: 'Provins (77160)',
-    client: 'M. Lambert',
     surface: '15m²',
     duration: '10 jours',
-    budget: '6 000 - 8 000€',
     tags: ['escalier', 'béton', 'garde-corps', 'éclairage', 'extérieur'],
-    images: [
-      { url: '/images/escalier-provins-terrain.webp', alt: 'Terrain avant', caption: 'Préparation du terrain' },
-      { url: '/images/escalier-provins-coffrage.webp', alt: 'Coffrage escalier', caption: 'Coffrage béton sur mesure' },
-      { url: '/images/escalier-provins-coulage.webp', alt: 'Coulage béton', caption: 'Coulage béton structurel' },
-      { url: '/images/escalier-provins-gardecorps.webp', alt: 'Garde-corps', caption: 'Installation garde-corps' },
-      { url: '/images/escalier-provins-finale.webp', alt: 'Escalier terminé', caption: 'Escalier achevé avec éclairage' }
-    ],
+    images: [],
     challenges: [
       'Terrain en dénivelé important',
       'Escalier suspendu sans point d\'appui central',
@@ -311,12 +247,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
       'Structure durable garantie 10 ans',
       'Éclairage automatique crépusculaire',
       'Sécurité optimale avec garde-corps'
-    ],
-    testimonial: {
-      text: 'Cet escalier a complètement transformé l\'accès à ma terrasse. Le design est moderne et la réalisation parfaite. Très satisfait du résultat.',
-      author: 'M. Lambert',
-      rating: 5
-    }
+    ]
   },
 
   'pompe-chaleur-dammarie-2024': {
@@ -326,18 +257,10 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
     category: 'Pompe à chaleur',
     date: '2024-07-30',
     location: 'Dammarie-lès-Lys (77190)',
-    client: 'Famille Moreau',
     surface: '120m²',
     duration: '1 semaine',
-    budget: '18 000 - 25 000€',
     tags: ['pompe à chaleur', 'chauffage', 'plancher chauffant', 'économie énergie', 'écologie'],
-    images: [
-      { url: '/images/pac-dammarie-avant.webp', alt: 'Installation avant', caption: 'Ancienne installation fioul' },
-      { url: '/images/pac-dammarie-unite-ext.webp', alt: 'Unité extérieure', caption: 'Installation unité extérieure' },
-      { url: '/images/pac-dammarie-technique.webp', alt: 'Local technique', caption: 'Module hydraulique intérieur' },
-      { url: '/images/pac-dammarie-plancher.webp', alt: 'Plancher chauffant', caption: 'Réseau plancher chauffant' },
-      { url: '/images/pac-dammarie-regulation.webp', alt: 'Régulation', caption: 'Système de régulation connecté' }
-    ],
+    images: [],
     challenges: [
       'Remplacement installation fioul existante',
       'Adaptation réseau hydraulique plancher chauffant',
@@ -369,12 +292,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
       'Confort thermique optimal toute l\'année',
       'Production ECS économique intégrée',
       'Installation éligible MaPrimeRénov\''
-    ],
-    testimonial: {
-      text: 'Notre nouvelle pompe à chaleur nous fait économiser considérablement sur nos factures. L\'installation s\'est parfaitement déroulée et le confort est au rendez-vous.',
-      author: 'M. et Mme Moreau',
-      rating: 5
-    }
+    ]
   }
 };
 
@@ -442,14 +360,6 @@ export default async function RealisationDetail({ params }: { params: Promise<{ 
     });
   };
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <span key={i} className={i < rating ? 'text-yellow-400' : 'text-gray-300'}>
-        ⭐
-      </span>
-    ));
-  };
-
   return (
     <Container>
       <div className="px-4 py-16">
@@ -487,7 +397,7 @@ export default async function RealisationDetail({ params }: { params: Promise<{ 
             </p>
 
             {/* Métadonnées */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 bg-gray-50 p-6 rounded-2xl">
+            <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6 rounded-2xl">
               <div>
                 <div className="text-sm text-gray-500 mb-1">Date de réalisation</div>
                 <div className="font-semibold">{formatDate(realisation.date)}</div>
@@ -500,14 +410,12 @@ export default async function RealisationDetail({ params }: { params: Promise<{ 
                 <div className="text-sm text-gray-500 mb-1">Surface / Durée</div>
                 <div className="font-semibold">{realisation.surface} • {realisation.duration}</div>
               </div>
-              <div>
-                <div className="text-sm text-gray-500 mb-1">Budget</div>
-                <div className="font-semibold">{realisation.budget}</div>
-              </div>
             </div>
           </div>
 
-          {/* Galerie d'images */}
+          {/* Galerie d'images — masquée tant qu'aucune photo n'a été fournie.
+              Un cadre vide est un signal de qualité pire que pas de section. */}
+          {realisation.images.length > 0 && (
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6">Galerie Photos</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -521,6 +429,8 @@ export default async function RealisationDetail({ params }: { params: Promise<{ 
               ))}
             </div>
           </div>
+
+          )}
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Défis et Solutions */}
@@ -590,24 +500,6 @@ export default async function RealisationDetail({ params }: { params: Promise<{ 
               ))}
             </div>
           </div>
-
-          {/* Témoignage client */}
-          {realisation.testimonial && (
-            <div className="mt-12 bg-white border border-primary/20 p-8 rounded-2xl shadow-lg">
-              <h2 className="text-2xl font-bold mb-6 text-center">💬 Témoignage Client</h2>
-              <blockquote className="text-gray-700 text-lg italic mb-4 text-center">
-                "{realisation.testimonial.text}"
-              </blockquote>
-              <div className="text-center">
-                <div className="flex justify-center mb-2">
-                  {renderStars(realisation.testimonial.rating)}
-                </div>
-                <cite className="text-gray-600 font-medium">
-                  — {realisation.testimonial.author}
-                </cite>
-              </div>
-            </div>
-          )}
 
           {/* Navigation et CTA */}
           <div className="mt-16 flex flex-col md:flex-row justify-between items-center gap-6">
