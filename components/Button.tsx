@@ -1,39 +1,30 @@
+import Link from "next/link";
 import React from "react";
 
 import { twMerge } from "tailwind-merge";
 
-export interface IButton extends React.ComponentPropsWithoutRef<"button"> {
-  variant?: "small" | "medium" | "large" | "outline";
-  as?: React.ElementType;
-}
 
-const Button = ({
-  variant,
-  className,
-  as: Tag = "button",
-  children,
-  ...remainingProps
-}: IButton) => {
-  const getVariantStyles = () => {
-    switch (variant) {
-      case "small":
-        return "text-white inline-flex items-center justify-center rounded-[10px] bg-linear-to-b from-[#464d55] to-[#25292e] text-sm px-4 py-2 transition duration-150 shadow-[0_10px_20px_rgba(0,0,0,.1),0_3px_6px_rgba(0,0,0,.05)] hover:shadow-[shadow:rgba(0,1,0,.2)_0_2px_8px] active:outline-none hover:opacity-80 ";
-      case "medium":
-        return "text-white inline-flex items-center justify-center rounded-[10px] bg-linear-to-b from-[#464d55] to-[#25292e] text-sm px-4 py-2 transition duration-150 shadow-[0_10px_20px_rgba(0,0,0,.1),0_3px_6px_rgba(0,0,0,.05)] hover:shadow-[shadow:rgba(0,1,0,.2)_0_2px_8px] active:outline-none hover:opacity-80 ";
-      case "large":
-        return "text-white inline-flex items-center justify-center rounded-[10px] bg-linear-to-b from-[#464d55] to-[#25292e] text-base px-6 py-2 transition duration-150 shadow-[0_10px_20px_rgba(0,0,0,.1),0_3px_6px_rgba(0,0,0,.05)] hover:shadow-[shadow:rgba(0,1,0,.2)_0_2px_8px] active:outline-none hover:opacity-80 ";
-      case "outline":
-        return "text-zinc-700 inline-flex items-center justify-center rounded-[10px] bg-white  text-base px-6 py-2 transition duration-150 shadow-[0_10px_20px_rgba(0,0,0,.1),0_3px_6px_rgba(0,0,0,.05)] hover:shadow-[shadow:rgba(0,1,0,.2)_0_2px_8px] active:outline-none hover:opacity-80 ";
-      default:
-        return "rounded-xl bg-zinc-700 text-white font-bold px-6 py-2 hover:bg-zinc-800 transition duration-200 hover:shadow-xl";
-    }
-  };
+/* Boutons de la refonte (voir design/direction.md). Ils naviguent tous : ce sont des liens. */
+const variants = {
+  signal: "bg-signal text-ardoise hover:brightness-105",
+  line: "text-ardoise shadow-[inset_0_0_0_1px_rgb(34_48_58/0.3)] hover:bg-ardoise/5",
+  "line-light": "text-chaux shadow-[inset_0_0_0_1px_rgb(238_240_236/0.45)] hover:bg-chaux/10",
+};
+const sizes = { sm: "px-5 py-2.5 text-sm", md: "px-7 py-4" };
 
-  return (
-    <Tag className={twMerge(getVariantStyles(), className)} {...remainingProps}>
-      {children}
-    </Tag>
-  );
+type ButtonLinkProps = React.ComponentPropsWithoutRef<"a"> & {
+  href: string;
+  variant?: keyof typeof variants;
+  size?: keyof typeof sizes;
 };
 
-export default Button;
+export const ButtonLink = ({ href, variant = "signal", size = "md", className, ...props }: ButtonLinkProps) => {
+  const classes = twMerge(
+    "inline-flex items-center justify-center rounded-full text-center font-semibold transition-[transform,background-color] duration-150 active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none",
+    variant === "line-light" ? "focus-visible:outline-chaux" : "focus-visible:outline-ardoise",
+    variants[variant],
+    sizes[size],
+    className,
+  );
+  return href.startsWith("/") ? <Link href={href} className={classes} {...props} /> : <a href={href} className={classes} {...props} />;
+};

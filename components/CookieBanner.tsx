@@ -29,33 +29,26 @@ export const CookieBanner = () => {
 
   if (!showBanner) return null;
 
+  const button =
+    'rounded-full px-5 py-2.5 text-sm font-semibold transition-transform active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ardoise';
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 p-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="flex-1">
-            <p className="text-sm text-gray-700 leading-relaxed">
-              🍪 Ce site ne dépose aucun cookie et ne collecte aucune donnée personnelle.
-              Seule votre réponse à ce bandeau est mémorisée par votre navigateur.
-              <Link href="/mentions-legales" className="text-primary hover:text-secondary underline ml-1">
-                En savoir plus
-              </Link>
-            </p>
-          </div>
-          <div className="flex gap-3">
-            <button
-              onClick={declineCookies}
-              className="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              Refuser
-            </button>
-            <button
-              onClick={acceptCookies}
-              className="px-4 py-2 text-sm bg-primary text-white rounded-lg hover:bg-secondary transition-colors"
-            >
-              Accepter
-            </button>
-          </div>
+    <div className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-3xl rounded-2xl bg-chaux p-4 text-ardoise shadow-[0_20px_50px_-20px_rgb(34_48_58/0.5)] ring-1 ring-ardoise/10 sm:p-5">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <p className="text-sm leading-relaxed text-ardoise/85">
+          Ce site ne dépose aucun cookie et ne collecte aucune donnée personnelle.
+          Seule votre réponse à ce bandeau est mémorisée par votre navigateur.{' '}
+          <Link href="/mentions-legales" className="font-semibold text-ardoise underline underline-offset-2">
+            En savoir plus
+          </Link>
+        </p>
+        <div className="flex shrink-0 gap-3">
+          <button onClick={declineCookies} className={`${button} ring-1 ring-ardoise/30`}>
+            Refuser
+          </button>
+          <button onClick={acceptCookies} className={`${button} bg-ardoise text-chaux`}>
+            Accepter
+          </button>
         </div>
       </div>
     </div>

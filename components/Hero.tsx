@@ -1,119 +1,41 @@
-'use client';
+import Image from "next/image";
+import { ButtonLink } from "./Button";
+import { Cote } from "./Cote";
 
-import { motion, useScroll } from "framer-motion";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { BlurImage } from "./BlurImage";
-import Button from "./Button";
-import { GridPattern } from "./GridPattern";
-
-export const Hero = () => {
-  const pattern: { y: number; squares: [number, number][] } = {
-    y: -6,
-    squares: [
-      [-1, 2],
-      [1, 3],
-      // Fixed values for consistent SSR/client rendering
-      [-8, 5],
-      [4, -7],
-      [-3, 9],
-      [7, -2],
-      [-6, -8],
-      [2, 6],
-      [9, -4],
-      [-5, 3],
-      [8, 8],
-      [-9, -6]
-    ],
-  };
-
-  const [isHalf, setIsHalf] = useState(false);
-  const { scrollY } = useScroll();
-  useEffect(() => {
-    const handleScroll = () => {
-      if (scrollY.get() > (window.innerHeight * 2) / 10) {
-        setIsHalf(true);
-      } else {
-        setIsHalf(false);
-      }
-    };
-    const unsubscribe = scrollY.on("change", handleScroll);
-    return () => {
-      unsubscribe();
-    };
-  }, [scrollY]);
-
-  return (
-    <div className=" px-4">
-      <div className="absolute inset-0 rounded-2xl transition duration-300 [mask-image:linear-gradient(white,transparent)] group-hover:opacity-50">
-        <GridPattern
-          width={120}
-          height={120}
-          x="50%"
-          className="absolute inset-x-0 inset-y-[-30%] h-[160%]  w-full skew-y-[-5deg] fill-tertiary/[0.05] stroke-gray-100  dark:fill-primary dark:stroke-gray-100"
-          {...pattern}
-        />
-      </div>
-      <div className="relative z-10 max-w-7xl mx-auto mt-16">
-        <h1 className="font-semibold text-4xl sm:text-7xl text-center max-w-5xl mx-auto text-zinc-800 leading-tight tracking-tight">
-          Votre expert en{" "}
-          <span className="text-primary">maçonnerie générale</span> et rénovation
-        </h1>
-        <p className="mx-auto mt-6 max-w-3xl text-xl tracking-tight text-zinc-600 text-center leading-normal">
-          GD Construction vous accompagne dans tous vos projets de maçonnerie, rénovation intérieure et extérieure à Pamfou et en Seine-et-Marne. 
-          Spécialistes tous corps d'état pour un service complet.
+// Photo d'ambiance Unsplash (Solømen), jamais présentée comme une réalisation : voir design/direction.md.
+export const Hero = () => (
+  <section className="relative flex min-h-[calc(100svh-4.5rem)] items-end overflow-hidden bg-ardoise px-4 pb-10 pt-24">
+    <Image
+      src="/images/hero-maconnerie-parpaings.webp"
+      alt="Maçon posant du mortier sur un mur de parpaings"
+      fill
+      preload
+      fetchPriority="high"
+      sizes="100vw"
+      className="object-cover object-[70%_50%]"
+    />
+    <div className="absolute inset-0 bg-gradient-to-tr from-ardoise via-ardoise/75 to-ardoise/5" />
+    <div className="relative mx-auto w-full max-w-7xl text-chaux">
+      <p className="text-chaux/80">Maçon à Pamfou, Seine-et-Marne</p>
+      <h1 className="display-title hero-in relative mt-6 max-w-5xl text-[2.6rem] sm:text-7xl lg:text-8xl">
+        Maçonnerie et rénovation, du gros œuvre aux finitions.
+        <span aria-hidden className="laser absolute -left-4 right-[-100vw] top-[calc(100%+0.12em)] h-0.5 bg-signal" />
+      </h1>
+      <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <p className="max-w-xl text-lg leading-relaxed text-chaux/85">
+          GD Construction construit, répare et rénove les maisons autour de Pamfou. Un seul interlocuteur pour les neuf corps
+          de métier, du mur porteur à la dernière couche de peinture.
         </p>
-
-        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center items-center mt-12">
-          <Button
-            as="button"
-            variant="outline"
-            className="rounded-2xl py-2 border border-zinc-200"
-          >
-            <Link href="/services">Nos Services</Link>
-          </Button>
-          <Button as="button" variant="large" className="rounded-2xl py-2 bg-primary hover:bg-secondary">
-            <Link href="/contact" className="flex items-center space-x-2">
-              <span>Devis Gratuit</span>
-              <span>📞</span>
-            </Link>
-          </Button>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <ButtonLink href="/contact" variant="signal">Demander un devis gratuit</ButtonLink>
+          <ButtonLink href="tel:+33695918103" variant="line-light">06 95 91 81 03</ButtonLink>
         </div>
-
-        {/* Badge zone d'intervention */}
-        <div className="flex justify-center mt-8">
-          <div className="bg-quaternary px-6 py-3 rounded-full border">
-            <p className="text-sm font-medium text-tertiary">
-              📍 Pamfou et 50km (77, 91, 94 et limitrophes) - ☎️ 06 95 91 81 03
-            </p>
-          </div>
-        </div>
-
-        <div
-          style={{ perspective: "1000px" }}
-          className="overflow-hidden pt-20 px-4 w-full relative"
-        >
-          <motion.div
-            animate={{
-              rotateX: isHalf ? 0 : 45,
-              scale: isHalf ? [0.8, 1.05, 1] : 0.8,
-              transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-                mass: 0.5,
-              },
-            }}
-            className="relative w-[100%] overflow-x-hidden md:w-3/4 mx-auto aspect-16/9 mb-8 md:mb-8 max-w-5xl"
-          >
-            <BlurImage
-              src={"/images/GDConstructionLogo.png"}
-              fill
-              className=" rounded-xl md:rounded-3xl border mx-auto object-contain shadow-2xl"
-            />
-          </motion.div>
-        </div>
+      </div>
+      <div className="mt-14 grid gap-5 text-chaux/70 sm:grid-cols-3">
+        <Cote>50 km autour de Pamfou</Cote>
+        <Cote>9 corps de métier</Cote>
+        <Cote>Devis sous 48 h</Cote>
       </div>
     </div>
-  );
-};
+  </section>
+);

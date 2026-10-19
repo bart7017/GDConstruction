@@ -1,38 +1,18 @@
 "use client";
 import Link from "next/link";
-import Image, { ImageProps } from "next/image";
+import Image from "next/image";
 import { useState } from "react";
-import { cn } from "../lib/utils";
+import { servicesBySlug } from "@constants/services";
 import { RealisationSlug } from "@constants/realisations";
-
-// Variante locale de @components/BlurImage : transition et alt par defaut
-// differents. Les deux meriteraient d'etre fusionnees en rendant ces deux
-// points parametrables.
-type BlurImageProps = Omit<ImageProps, "alt"> & { alt?: string };
-
-const BlurImage = ({ className, alt, ...rest }: BlurImageProps) => {
-  const [isLoading, setLoading] = useState(true);
-  return (
-    <Image
-      className={cn(
-        "transition duration-300 transform",
-        isLoading ? "blur-sm scale-105" : "blur-0 scale-100",
-        className
-      )}
-      onLoad={() => setLoading(false)}
-      loading="lazy"
-      decoding="async"
-      alt={alt ? alt : "Réalisation GD Construction"}
-      {...rest}
-    />
-  );
-};
 
 interface Realisation {
   title: string;
   description: string;
   slug: RealisationSlug;
+  /** Ancienne image de métier, non affichée : la couverture vient de `service`. */
   image: string;
+  /** Métier dont l'image d'illustration sert de couverture. */
+  service: string;
   category: string;
   location: string;
   date: string;
@@ -45,6 +25,7 @@ const realisations: Realisation[] = [
     title: "Rénovation cuisine moderne - Pamfou",
     description: "Transformation complète d'une cuisine des années 80 en espace moderne avec îlot central et électroménager intégré.",
     slug: "renovation-cuisine-pamfou-2024",
+    service: "renovation-interieure",
     image: "/images/maconnerie-enduit.webp",
     category: "Rénovation intérieure",
     location: "Pamfou (77830)",
@@ -56,6 +37,7 @@ const realisations: Realisation[] = [
     title: "Extension maison 40m² - Melun",
     description: "Création d'une extension avec fondations béton, murs parpaing et charpente traditionnelle pour agrandir l'espace de vie.",
     slug: "extension-maison-melun-2024",
+    service: "maconnerie-generale",
     image: "/images/maconnerie-brique.webp",
     category: "Maçonnerie générale",
     location: "Melun (77000)",
@@ -67,6 +49,7 @@ const realisations: Realisation[] = [
     title: "Salle de bain avec douche italienne - Fontainebleau",
     description: "Rénovation complète avec douche italienne, carrelage haut de gamme et éclairage LED intégré.",
     slug: "salle-bain-fontainebleau-2024",
+    service: "carrelage-sols",
     image: "/images/carrelage-sol.webp",
     category: "Plomberie & Carrelage",
     location: "Fontainebleau (77300)",
@@ -78,6 +61,7 @@ const realisations: Realisation[] = [
     title: "Réfection toiture complète - Nemours",
     description: "Remplacement total de la couverture avec isolation renforcée, zinguerie et gouttières neuves.",
     slug: "toiture-nemours-2024",
+    service: "couverture",
     image: "/images/charpente-toiture.webp",
     category: "Couverture",
     location: "Nemours (77140)",
@@ -89,6 +73,7 @@ const realisations: Realisation[] = [
     title: "Escalier béton design - Provins",
     description: "Création d'un escalier béton extérieur avec garde-corps métallique et éclairage LED intégré.",
     slug: "escalier-beton-provins-2024",
+    service: "maconnerie-generale",
     image: "/images/maconnerie-decoupe-mur.webp",
     category: "Maçonnerie générale",
     location: "Provins (77160)",
@@ -100,6 +85,7 @@ const realisations: Realisation[] = [
     title: "Installation pompe à chaleur 16kW - Dammarie",
     description: "Installation PAC air-eau avec plancher chauffant et production eau chaude sanitaire pour économies d'énergie.",
     slug: "pompe-chaleur-dammarie-2024",
+    service: "pompe-chaleur-climatisation",
     image: "/images/chauffage-tuyaux.webp",
     category: "Pompe à chaleur",
     location: "Dammarie-lès-Lys (77190)",
@@ -120,174 +106,70 @@ const categories = [
 
 export function RealisationsGrid() {
   const [selectedCategory, setSelectedCategory] = useState("Toutes");
-  
-  const filteredRealisations = selectedCategory === "Toutes" 
-    ? realisations 
+
+  const filteredRealisations = selectedCategory === "Toutes"
+    ? realisations
     : realisations.filter(r => r.category === selectedCategory);
 
   return (
-    <div className="relative overflow-hidden py-20">
-      <div className="py-4 md:py-10 overflow-hidden relative px-4 md:px-8">
-        <GridPatternContainer className="opacity-50" />
-        <div className="relative z-20 py-10 max-w-7xl mx-auto">
-          <h1 className="scroll-m-20 text-4xl md:text-6xl font-bold text-center tracking-tight text-gray-800 mb-6">
-            Nos <span className="text-primary">Réalisations</span>
-          </h1>
-
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 text-center leading-relaxed">
-            Découvrez notre savoir-faire à travers nos derniers chantiers en Seine-et-Marne. 
-            Des projets qui témoignent de notre expertise dans tous les corps d'état.
-          </p>
-
-          {/* Filtres */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  selectedCategory === category
-                    ? 'bg-primary text-white shadow-lg scale-105' 
-                    : 'bg-gray-100 text-gray-600 hover:bg-primary hover:text-white hover:scale-105'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
+    <div className="mx-auto max-w-7xl px-4 pb-16 sm:pb-24">
+      <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrer par catégorie">
+        {categories.map((category) => (
+          <button
+            key={category}
+            type="button"
+            onClick={() => setSelectedCategory(category)}
+            aria-pressed={selectedCategory === category}
+            className="rounded-full px-5 py-2 text-sm font-semibold text-ardoise ring-1 ring-ardoise/20 transition-[transform,background-color] active:scale-[0.97] aria-pressed:bg-ardoise aria-pressed:text-chaux aria-pressed:ring-ardoise hover:bg-ardoise/5 aria-pressed:hover:bg-ardoise focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ardoise motion-reduce:transition-none"
+          >
+            {category}
+          </button>
+        ))}
       </div>
 
-      <div className="flex flex-col items-center justify-between pb-20 max-w-7xl mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full relative z-20">
-          {filteredRealisations.map((realisation, index) => (
-            <RealisationCard realisation={realisation} key={realisation.title + index} />
-          ))}
-        </div>
-        
-        {filteredRealisations.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">Aucune réalisation trouvée pour cette catégorie.</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-export const RealisationCard = ({ realisation }: { realisation: Realisation }) => {
-  const truncate = (text: string, length: number) => {
-    return text.length > length ? text.slice(0, length) + "..." : text;
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      month: 'long',
-      year: 'numeric'
-    });
-  };
-
-  return (
-    <Link
-      className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden hover:scale-[1.02] hover:shadow-xl transition-all duration-300 group"
-      href={`/realisations/${realisation.slug}`}
-    >
-      {/* Image réelle */}
-      <div className="relative h-64 overflow-hidden">
-        <BlurImage
-          src={realisation.image}
-          alt={realisation.title}
-          width={400}
-          height={300}
-          className="w-full h-full object-cover"
-        />
-        
-        {/* Badges */}
-        <div className="absolute top-4 left-4">
-          <span className="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">
-            {realisation.category}
-          </span>
-        </div>
-        <div className="absolute top-4 right-4">
-          <span className="bg-white/90 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">
-            {formatDate(realisation.date)}
-          </span>
-        </div>
-
-        {/* Overlay au hover */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-          <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
-            <div className="text-2xl mb-2">👁️</div>
-            <div className="text-sm font-medium">Voir les détails</div>
-          </div>
-        </div>
+      <div className="mt-10 grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        {filteredRealisations.map((realisation) => (
+          <RealisationCard realisation={realisation} key={realisation.slug} />
+        ))}
       </div>
 
-      <div className="p-6 bg-white">
-        {/* Métadonnées rapides */}
-        <div className="flex items-center space-x-4 mb-3 text-xs text-gray-500">
-          <span className="flex items-center">
-            <span className="mr-1">📍</span>
-            {realisation.location}
-          </span>
-          <span className="flex items-center">
-            <span className="mr-1">📏</span>
-            {realisation.surface}
-          </span>
-          <span className="flex items-center">
-            <span className="mr-1">⏱️</span>
-            {realisation.duration}
-          </span>
-        </div>
-
-        <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-primary transition-colors">
-          {realisation.title}
-        </h3>
-        
-        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
-          {truncate(realisation.description, 120)}
-        </p>
-
-        {/* CTA subtil */}
-        <div className="mt-4 flex items-center text-primary text-sm font-medium group-hover:translate-x-1 transition-transform">
-          <span>Découvrir le projet</span>
-          <span className="ml-2">→</span>
-        </div>
-      </div>
-    </Link>
-  );
-};
-
-export function GridPatternContainer({ className }: { className?: string }) {
-  return (
-    <div
-      className={`absolute inset-0 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,white,transparent)] ${className}`}
-    >
-      <GridPattern />
-    </div>
-  );
-}
-
-export function GridPattern() {
-  const columns = 30;
-  const rows = 11;
-  return (
-    <div className="flex bg-gray-50 shrink-0 flex-wrap justify-center items-center gap-x-px gap-y-px scale-105">
-      {Array.from({ length: rows }).map((_, row) =>
-        Array.from({ length: columns }).map((_, col) => {
-          const index = row * columns + col;
-          return (
-            <div
-              key={`${col}-${row}`}
-              className={`w-10 h-10 flex shrink-0 rounded-[1px] ${
-                index % 2 === 0
-                  ? "bg-gray-100"
-                  : "bg-gray-100 shadow-[0px_0px_0px_3px_rgba(255,255,255,1)_inset]"
-              }`}
-            />
-          );
-        })
+      {filteredRealisations.length === 0 && (
+        <p className="py-12 text-lg text-ardoise/70">Aucune réalisation trouvée pour cette catégorie.</p>
       )}
     </div>
   );
 }
+
+const formatDate = (dateString: string) =>
+  new Date(dateString).toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+
+export const RealisationCard = ({ realisation }: { realisation: Realisation }) => (
+  <Link
+    href={`/realisations/${realisation.slug}`}
+    className="group block rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ardoise"
+  >
+    {/* Pas encore de photo du chantier : image du métier, signalée comme illustration. */}
+    <div className="relative aspect-[4/3] overflow-hidden [&_img]:reveal-zoom rounded-2xl bg-ardoise/5">
+      <Image
+        src={servicesBySlug[realisation.service].image}
+        alt=""
+        fill
+        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+        className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"
+      />
+      <span className="absolute bottom-3 left-3 rounded-full bg-ardoise/80 px-3 py-1 text-xs text-chaux">Photo d&apos;illustration</span>
+    </div>
+    <p className="mt-4 text-sm text-ardoise/70">
+      {realisation.category}, {formatDate(realisation.date)}
+    </p>
+    <p className="text-sm text-ardoise/70">
+      {realisation.location}, {realisation.surface}, {realisation.duration}
+    </p>
+    <h2 className="mt-2 font-display text-xl font-bold [font-stretch:115%] text-ardoise">
+      <span className="bg-[length:0_2px] bg-left-bottom bg-no-repeat bg-gradient-to-r from-signal to-signal transition-[background-size] duration-300 group-hover:bg-[length:100%_2px] motion-reduce:transition-none">
+        {realisation.title}
+      </span>
+    </h2>
+    <p className="mt-2 line-clamp-3 leading-relaxed text-ardoise/75">{realisation.description}</p>
+  </Link>
+);

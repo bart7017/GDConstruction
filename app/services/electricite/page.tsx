@@ -2,8 +2,9 @@ import { Container } from "@components/Container";
 import { ServiceJsonLd } from "@components/JsonLd";
 import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
-import Link from 'next/link';
 import Image from 'next/image';
+import { ButtonLink } from "@components/Button";
+import { Blocks, PageHeader, Points, Section } from "@components/Page";
 
 export const metadata: Metadata = {
   title: 'Électricien à Pamfou | Électricité Seine-et-Marne',
@@ -94,8 +95,8 @@ const services = [
       "Mise en sécurité installation",
       "Liaison équipotentielle",
       "Protection différentielle",
-      "Attestation Consuel",
-      "Contrôle avant mise en service"
+      "Contrôle avant mise en service",
+      "Attestation Consuel"
     ]
   }
 ];
@@ -125,6 +126,17 @@ const normes = [
   }
 ];
 
+const PriceList = ({ rows }: { rows: [string, string][] }) => (
+  <dl className="grid">
+    {rows.map(([label, price]) => (
+      <div key={label} className="flex justify-between gap-4 border-b border-ardoise/10 py-2.5">
+        <dt>{label}</dt>
+        <dd className="font-semibold tabular-nums">{price}</dd>
+      </div>
+    ))}
+  </dl>
+);
+
 export default function Electricite() {
   return (
     <Container>
@@ -133,269 +145,129 @@ export default function Electricite() {
         description="Installation électrique, tableau, mise aux normes et dépannage à Pamfou et en Seine-et-Marne."
         slug="electricite"
       />
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Header avec photo */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
-            <span className="text-4xl">⚡</span>
-            <span className="text-primary font-semibold">Électricité</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Électricien Professionnel à Pamfou
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            GD Construction maîtrise tous les aspects de l'électricité en Seine-et-Marne. 
-            Installation complète, mise aux normes, domotique : nos électriciens qualifiés 
-            garantissent votre sécurité et votre confort électrique.
-          </p>
-          
-          {/* Photo d'illustration */}
-          <div className="relative aspect-16/9 rounded-2xl overflow-hidden shadow-xl mb-8">
-            <Image
-              src="/images/electricite-tableau.webp"
-              alt="Installation de tableau électrique professionnel"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20"></div>
-            <div className="absolute bottom-6 left-6 text-white">
-              <p className="text-sm font-medium">Installation tableau électrique - Réalisation GD Construction</p>
-            </div>
-          </div>
-        </div>
+      <PageHeader
+        kicker="Électricité"
+        title="Électricien professionnel à Pamfou"
+        intro="GD Construction maîtrise tous les aspects de l'électricité en Seine-et-Marne. Installation complète, mise aux normes, domotique : nos électriciens qualifiés garantissent votre sécurité et votre confort électrique."
+        image="/images/electricite-tableau.webp"
+        imageAlt="Tableau électrique"
+      >
+        <ButtonLink href="/contact" variant="signal">Demander un devis</ButtonLink>
+        <ButtonLink href="tel:+33695918103" variant="line">06 95 91 81 03</ButtonLink>
+      </PageHeader>
 
-        {/* Galerie de nos réalisations électriques */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Nos Réalisations en Électricité
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/electricite-ampoule.webp"
-                alt="Installation d'éclairage moderne"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
-                <p className="text-sm font-medium">Éclairage LED moderne</p>
+      <Section title="L'électricité en images" intro="Photos d'illustration des travaux que nous réalisons.">
+        <div className="grid gap-4 md:grid-cols-2">
+          {[
+            { src: "/images/electricite-prise.webp", alt: "Électricien posant une prise murale", caption: "Pose de prises et d'appareillage" },
+            { src: "/images/electricite-prise-brique.webp", alt: "Raccordement d'une prise", caption: "Raccordement et mise en sécurité" },
+          ].map((photo) => (
+            <figure key={photo.caption}>
+              <div className="relative aspect-[4/3] overflow-hidden [&_img]:reveal-zoom rounded-2xl">
+                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
               </div>
-            </div>
-            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/electricite-tableau.webp"
-                alt="Tableau électrique aux normes"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
-                <p className="text-sm font-medium">Tableau électrique NF C 15-100</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-6 border hover:shadow-xl transition-shadow">
-              <div className="text-center mb-4">
-                <span className="text-5xl">{service.icon}</span>
-                <h3 className="text-xl font-semibold text-gray-900 mt-3">
-                  {service.title}
-                </h3>
-              </div>
-              <p className="text-gray-600 mb-4 text-center text-sm leading-relaxed">
-                {service.description}
-              </p>
-              <ul className="space-y-2">
-                {service.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-start space-x-2">
-                    <span className="text-primary font-bold text-sm">•</span>
-                    <span className="text-gray-700 text-sm">{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <figcaption className="mt-3 text-sm text-ardoise/70">{photo.caption}</figcaption>
+            </figure>
           ))}
         </div>
+      </Section>
 
-        {/* Normes et réglementations */}
-        <div className="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-8 mb-16">
-          <div className="flex items-center mb-6">
-            <span className="text-4xl mr-3">📋</span>
-            <div>
-              <h2 className="text-3xl font-bold text-yellow-800">Conformité et Réglementations</h2>
-              <p className="text-yellow-600 text-lg">Respect scrupuleux des normes en vigueur</p>
-            </div>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {normes.map((item, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 shadow-md">
-                <h3 className="text-xl font-semibold text-yellow-800 mb-3">{item.norme}</h3>
-                <p className="text-gray-600 mb-4 text-sm">{item.description}</p>
-                <ul className="space-y-2">
-                  {item.points.map((point, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <span className="text-yellow-600 font-bold text-sm">•</span>
-                      <span className="text-gray-700 text-sm">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
+      <Section title="Nos prestations en électricité">
+        <Blocks
+          cols={3}
+          items={services.map((service) => ({
+            title: service.title,
+            text: service.description,
+            children: <Points items={service.details} />,
+          }))}
+        />
+      </Section>
 
-        {/* Types de logements */}
-        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Nous Intervenons sur Tous Types de Logements
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { type: "Maisons individuelles", icon: "🏠", desc: "Neuf et rénovation complète" },
-              { type: "Appartements", icon: "🏢", desc: "Studio, F2 à F6" },
-              { type: "Locaux commerciaux", icon: "🏪", desc: "Bureaux, magasins, ateliers" },
-              { type: "Locaux industriels", icon: "🏭", desc: "Hangars, entrepôts, usines" }
-            ].map((item, index) => (
-              <div key={index} className="text-center bg-white rounded-lg p-6 shadow-md">
-                <span className="text-4xl block mb-3">{item.icon}</span>
-                <h3 className="font-semibold text-lg mb-2 text-primary">{item.type}</h3>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      <Section tone="dark" title="Conformité et réglementations" intro="Respect scrupuleux des normes en vigueur.">
+        <Blocks
+          tone="dark"
+          items={normes.map((item) => ({
+            title: item.norme,
+            text: item.description,
+            children: <Points items={item.points} />,
+          }))}
+        />
+      </Section>
 
-        {/* Tarifs électricité */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Tarifs Électricité Indicatifs
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold text-primary mb-4">Installations Courantes :</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between border-b pb-2">
-                  <span>Prise de courant 16A</span>
-                  <span className="font-semibold">25-40€</span>
-                </div>
-                <div className="flex justify-between border-b pb-2">
-                  <span>Interrupteur simple</span>
-                  <span className="font-semibold">20-35€</span>
-                </div>
-                <div className="flex justify-between border-b pb-2">
-                  <span>Point lumineux</span>
-                  <span className="font-semibold">35-60€</span>
-                </div>
-                <div className="flex justify-between border-b pb-2">
-                  <span>Circuit spécialisé 32A</span>
-                  <span className="font-semibold">80-150€</span>
-                </div>
-                <div className="flex justify-between border-b pb-2">
-                  <span>Tableau électrique complet</span>
-                  <span className="font-semibold">800-1500€</span>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold text-primary mb-4">Services Spéciaux :</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between border-b pb-2">
-                  <span>Diagnostic électrique</span>
-                  <span className="font-semibold">120-180€</span>
-                </div>
-                <div className="flex justify-between border-b pb-2">
-                  <span>Mise aux normes partielle</span>
-                  <span className="font-semibold">500-1200€</span>
-                </div>
-                <div className="flex justify-between border-b pb-2">
-                  <span>Dépannage urgence</span>
-                  <span className="font-semibold">120-250€</span>
-                </div>
-                <div className="flex justify-between border-b pb-2">
-                  <span>Installation domotique</span>
-                  <span className="font-semibold">300-800€</span>
-                </div>
-                <div className="flex justify-between border-b pb-2">
-                  <span>Chauffage électrique</span>
-                  <span className="font-semibold">150-400€</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p className="text-center text-sm text-gray-600 mt-6">
-            * Prix TTC installation comprise, déplacement gratuit dans un rayon de 50km
-          </p>
-        </div>
+      <Section title="Nous intervenons sur tous types de logements">
+        <Blocks
+          cols={4}
+          items={[
+            { type: "Maisons individuelles", desc: "Neuf et rénovation complète" },
+            { type: "Appartements", desc: "Studio, F2 à F6" },
+            { type: "Locaux commerciaux", desc: "Bureaux, magasins, ateliers" },
+            { type: "Locaux industriels", desc: "Hangars, entrepôts, usines" },
+          ].map((item) => ({ title: item.type, text: item.desc }))}
+        />
+      </Section>
 
-        {/* Matériel professionnel */}
-        <div className="bg-linear-to-r from-primary/5 to-secondary/5 rounded-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Matériel Professionnel de Qualité
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold text-primary mb-4">Nos Marques :</h3>
-              <div className="space-y-3">
-                <p className="text-gray-700"><strong>Appareillage :</strong> Legrand, Schneider Electric, Hager</p>
-                <p className="text-gray-700"><strong>Éclairage :</strong> Philips, Osram, Ledvance</p>
-                <p className="text-gray-700"><strong>Câblage :</strong> Nexans, Prysmian</p>
-                <p className="text-gray-700"><strong>Protection :</strong> ABB, Merlin Gerin</p>
-              </div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold text-primary mb-4">Nos Garanties :</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Matériel certifié CE et NF</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Installation garantie 2 ans</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Assurance décennale</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>SAV et maintenance</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <Section tone="white" title="Tarifs électricité indicatifs" intro="Prix TTC installation comprise, déplacement gratuit dans un rayon de 50km.">
+        <Blocks
+          items={[
+            {
+              title: "Installations courantes",
+              children: (
+                <PriceList
+                  rows={[
+                    ["Prise de courant 16A", "25-40€"],
+                    ["Interrupteur simple", "20-35€"],
+                    ["Point lumineux", "35-60€"],
+                    ["Circuit spécialisé 32A", "80-150€"],
+                    ["Tableau électrique complet", "800-1500€"],
+                  ]}
+                />
+              ),
+            },
+            {
+              title: "Services spéciaux",
+              children: (
+                <PriceList
+                  rows={[
+                    ["Diagnostic électrique", "120-180€"],
+                    ["Mise aux normes partielle", "500-1200€"],
+                    ["Dépannage urgence", "120-250€"],
+                    ["Installation domotique", "300-800€"],
+                    ["Chauffage électrique", "150-400€"],
+                  ]}
+                />
+              ),
+            },
+          ]}
+        />
+      </Section>
 
-        <RelatedServices slugs={["plomberie", "renovation-interieure", "pompe-chaleur-climatisation"]} />
+      <Section title="Matériel professionnel de qualité">
+        <Blocks
+          items={[
+            {
+              title: "Nos marques",
+              children: (
+                <Points
+                  items={[
+                    <><strong>Appareillage :</strong> Legrand, Schneider Electric, Hager</>,
+                    <><strong>Éclairage :</strong> Philips, Osram, Ledvance</>,
+                    <><strong>Câblage :</strong> Nexans, Prysmian</>,
+                    <><strong>Protection :</strong> ABB, Merlin Gerin</>,
+                  ]}
+                />
+              ),
+            },
+            {
+              title: "Nos garanties",
+              children: (
+                <Points items={["Matériel certifié CE et NF", "Installation garantie 2 ans", "Assurance décennale", "SAV et maintenance"]} />
+              ),
+            },
+          ]}
+        />
+      </Section>
 
-        {/* CTA */}
-        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Projet Électrique à Pamfou ?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Devis gratuit • Aux normes • Intervention rapide
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/contact"
-              className="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Demander un devis
-            </Link>
-            <a 
-              href="tel:0695918103"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
-            >
-              06 95 91 81 03
-            </a>
-          </div>
-        </div>
-      </div>
+      <RelatedServices slugs={["plomberie", "renovation-interieure", "pompe-chaleur-climatisation"]} />
     </Container>
   );
 }

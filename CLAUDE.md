@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ### Development
-- `npm run dev` - Start the development server
+- `npx next dev -p 3005` - Start the development server (port 3000 is used by another project)
 - `npm run build` - Build the application for production
 - `npm start` - Start the production server
 - `npm run lint` - Run ESLint (`next lint` no longer exists in Next 16)
@@ -25,8 +25,12 @@ It started from a template called "Foxtrot"; some component names still come fro
 **Component Structure:**
 - All React components are in `/components/` directory
 - Components use TypeScript with `.tsx` extensions
-- Styled with Tailwind CSS using custom design system
-- Framer Motion used for animations
+- Styled with Tailwind CSS using custom design system; design decisions live in
+  `design/direction.md` (read it before touching the UI)
+- No animation library: motion is CSS (scroll-driven `reveal` / `reveal-zoom`, the
+  hero `laser`, transitions). The mobile menu drawer is plain CSS + pointer events
+- Page building blocks in `components/Page.tsx`: `PageHeader`, `Section`, `Blocks`,
+  `Points`, `Gallery`; buttons are `ButtonLink` (`components/Button.tsx`)
 
 **Routing:** App Router (`/app`). Routes are `/`, `/services`, `/services/<slug>`
 (nine trade pages), `/realisations` + `/realisations/[slug]`, `/a-propos`,
@@ -47,29 +51,30 @@ adding a page.
 - `@images/*` → `images/*`
 
 There is no `baseUrl` (deprecated in TS 7), so `paths` entries are relative to the repo
-root and bare imports like `constants/features` no longer resolve — always use an alias.
+root and bare imports like `constants/services` no longer resolve — always use an alias.
 
 **Data Management:**
-- Static constants in `/constants/`: `navItems`, `features` (homepage cards),
-  `testimonials`, and `services` (the registry backing `RelatedServices`)
+- Static constants in `/constants/`: `navItems`, `testimonials` (empty until real
+  reviews exist), `realisations`, and `services` (the registry backing
+  `ServicesMosaic` / `RelatedServices`, including each trade's illustration image)
 - No CMS and no MDX: every page's copy lives inline in its `page.tsx`
 
 **Styling System (Tailwind 4):**
 - Configured entirely in `styles/globals.css` — there is no `tailwind.config.js`
-- Brand colors and the `construction-*` / `building-*` scales are declared as
-  `--color-*` custom properties inside `@theme` (primary: #2563eb, secondary: #1e40af)
+- The redesign palette is `ardoise`, `chaux`, `gres`, `signal` (`--color-*` in `@theme`);
+  the older `primary` / `construction-*` / `building-*` tokens are still declared but
+  no longer used by the redesigned pages. Fonts come from `next/font` (Archivo with
+  the `wdth` axis for titles via the `display-title` utility, Inter for text)
 - `postcss.config.js` uses `@tailwindcss/postcss`; autoprefixer is gone, v4
   handles vendor prefixing itself
-- The `bg-grid-*` background patterns are plain `@utility` rules with the colour
-  baked into the SVG data URI. They used to be a `matchUtilities` plugin driven by
-  `flattenColorPalette`, which v4 removed — and since v4 colours are CSS variables,
-  a JS plugin can no longer read the literal value an SVG data URI needs. Adding a
-  new colour variant means adding another `@utility` by hand.
 - A base rule restores Tailwind 3's default `border-color: gray-200`; without it
   the many cards using a bare `border` class would inherit `currentColor`
 
 ### Page Structure
-- **Home page**: Hero, SubHero, About, Testimonials, CTA
+- **Home page**: Hero (Unsplash photo + laser + cotes), « Nos métiers » mosaic, About,
+  Testimonials (renders nothing while empty). The footer carries the page-level CTA
+- **Photos**: stock photos are illustrations only, never presented as GD Construction
+  jobs, and show no identifiable person; credits in `design/direction.md`
 - **Service pages**: each owns a distinct scope and links to sibling trades rather
   than repeating their content — keep it that way, the overlap previously kept two
   pages out of Google's index
@@ -79,3 +84,16 @@ root and bare imports like `constants/features` no longer resolve — always use
 `app/layout.tsx` holds the site-wide metadata and the `GeneralContractor` JSON-LD;
 each page sets its own title, description and canonical. Service pages add a
 `Service` JSON-LD via `components/JsonLd.tsx`.
+
+## Outils IA
+Règle : voir ~/.claude/CLAUDE.md (« Outils IA génératifs ») et ~/Documents/outils-ia.md. Un outil par action ; « à choisir » = me demander (ou tester sur chacun) au premier besoin, puis noter ici.
+
+| Action | Outil | Offre | Usage commercial OK ? |
+|---|---|---|---|
+| Voix off | à choisir | — | — |
+| Musique | à choisir | — | — |
+| Effets sonores | à choisir | — | — |
+| Clips vidéo IA | à choisir | — | — |
+| Avatar IA | à choisir | — | — |
+| Images / visuels | à choisir | — | — |
+| Montage | à choisir | — | — |

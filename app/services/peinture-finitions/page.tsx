@@ -2,8 +2,8 @@ import { Container } from "@components/Container";
 import { ServiceJsonLd } from "@components/JsonLd";
 import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
+import { ButtonLink } from "@components/Button";
+import { Blocks, Gallery, PageHeader, Points, Section } from "@components/Page";
 
 export const metadata: Metadata = {
   title: 'Peinture et Finitions à Pamfou | Peintre Seine-et-Marne',
@@ -64,12 +64,12 @@ const services = [
     icon: "📜",
     description: "Pose de papier peint et revêtements muraux",
     details: [
+      "Dépose ancien papier",
       "Papier peint traditionnel",
       "Intissé et vinyle",
       "Toile de verre",
       "Fibres naturelles",
-      "Raccords et angles parfaits",
-      "Dépose ancien papier"
+      "Raccords et angles parfaits"
     ]
   },
   {
@@ -77,12 +77,12 @@ const services = [
     icon: "🔨",
     description: "Préparation soignée avant finitions", 
     details: [
+      "Bâchage et protection des sols",
+      "Lessivage des supports",
       "Rebouchage fissures et trous",
       "Ratissage et enduit de lissage",
-      "Ponçage et égrenage",
-      "Lessivage et dépoussiérage",
-      "Sous-couche adaptée au support",
-      "Bâchage et protection des sols"
+      "Ponçage, égrenage et dépoussiérage",
+      "Sous-couche adaptée au support"
     ]
   },
   {
@@ -108,175 +108,100 @@ export default function PeintureFinition() {
         description="Peinture intérieure et extérieure, enduits décoratifs et finitions à Pamfou et en Seine-et-Marne."
         slug="peinture-finitions"
       />
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Header avec photo */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
-            <span className="text-4xl">🎨</span>
-            <span className="text-primary font-semibold">Peinture & Finitions</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Peintre Professionnel à Pamfou
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            GD Construction transforme vos espaces avec des finitions peinture de qualité en Seine-et-Marne. 
-            Intérieur, extérieur, décoration : notre expertise artisanale sublime vos projets 
-            avec soin et précision.
-          </p>
-          
-          {/* Photo d'illustration */}
-          <div className="relative aspect-16/9 rounded-2xl overflow-hidden shadow-xl mb-8">
-            <Image
-              src="/images/peinture-preparation.webp"
-              alt="Préparation pour travaux de peinture"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20"></div>
-            <div className="absolute bottom-6 left-6 text-white">
-              <p className="text-sm font-medium">Préparation peinture - Réalisation GD Construction</p>
-            </div>
-          </div>
-        </div>
+      <PageHeader
+        kicker="Peinture et finitions"
+        title="Peintre professionnel à Pamfou"
+        intro="GD Construction transforme vos espaces avec des finitions peinture de qualité en Seine-et-Marne. Intérieur, extérieur, décoration : notre expertise artisanale sublime vos projets avec soin et précision."
+        image="/images/peinture-rouleau.webp"
+        imageAlt="Préparation pour travaux de peinture"
+      >
+        <ButtonLink href="/contact" variant="signal">Demander un devis gratuit</ButtonLink>
+        <ButtonLink href="tel:+33695918103" variant="line">06 95 91 81 03</ButtonLink>
+      </PageHeader>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-6 border hover:shadow-xl transition-shadow">
-              <div className="text-center mb-4">
-                <span className="text-5xl">{service.icon}</span>
-                <h3 className="text-xl font-semibold text-gray-900 mt-3">
-                  {service.title}
-                </h3>
-              </div>
-              <p className="text-gray-600 mb-4 text-center text-sm leading-relaxed">
-                {service.description}
-              </p>
-              <ul className="space-y-2">
-                {service.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-start space-x-2">
-                    <span className="text-primary font-bold text-sm">•</span>
-                    <span className="text-gray-700 text-sm">{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <Section title="Nos prestations de peinture et finitions">
+        <Blocks
+          cols={3}
+          items={services.map((service) => ({
+            title: service.title,
+            text: service.description,
+            children: <Points items={service.details} />,
+          }))}
+        />
+      </Section>
+
+      <Section tone="white" title="Peintures et finitions disponibles">
+        <Blocks
+          cols={4}
+          items={[
+            { type: "Acrylique", desc: "Lessivable, écologique", prix: "8-15€/m²" },
+            { type: "Glycéro", desc: "Résistante, haute qualité", prix: "12-20€/m²" },
+            { type: "Facade", desc: "Pliolite, anti-mousse", prix: "15-25€/m²" },
+            { type: "Décorative", desc: "Enduits, effets spéciaux", prix: "20-40€/m²" },
+          ].map((item) => ({
+            title: item.type,
+            text: item.desc,
+            children: <p className="display-title text-3xl">{item.prix}</p>,
+          }))}
+        />
+        <p className="mt-10 text-sm text-ardoise/70">* Prix TTC main d&apos;œuvre comprise, hors préparation support</p>
+      </Section>
+
+      <Section title="Notre méthode de travail professionnelle">
+        <ol className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
+          {[
+            { title: "Diagnostic", desc: "État des supports" },
+            { title: "Protection", desc: "Bâchage des sols et meubles, adhésif de masquage" },
+            { title: "Préparation", desc: "Lessivage, rebouchage, ponçage, dépoussiérage" },
+            { title: "Application", desc: "Sous-couche puis deux couches de finition" },
+            { title: "Finitions", desc: "Retrait des protections, retouches, nettoyage" },
+          ].map((item, index) => (
+            <li key={item.title} className="border-t border-ardoise/15 pt-5">
+              <span className="display-title text-4xl text-ardoise/30">{index + 1}</span>
+              <h3 className="mt-3 font-display text-xl font-bold [font-stretch:115%]">{item.title}</h3>
+              <p className="mt-2 text-ardoise/75">{item.desc}</p>
+            </li>
           ))}
-        </div>
+        </ol>
+      </Section>
 
-        {/* Types de peintures */}
-        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Peintures et Finitions Disponibles
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { type: "Acrylique", desc: "Lessivable, écologique", prix: "8-15€/m²" },
-              { type: "Glycéro", desc: "Résistante, haute qualité", prix: "12-20€/m²" },
-              { type: "Facade", desc: "Pliolite, anti-mousse", prix: "15-25€/m²" },
-              { type: "Décorative", desc: "Enduits, effets spéciaux", prix: "20-40€/m²" }
-            ].map((item, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 text-center shadow-md">
-                <h3 className="font-semibold text-lg text-primary mb-2">{item.type}</h3>
-                <p className="text-gray-600 text-sm mb-3">{item.desc}</p>
-                <div className="text-lg font-bold text-secondary">{item.prix}</div>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-sm text-gray-600 mt-6">
-            * Prix TTC main d'œuvre comprise, hors préparation support
-          </p>
-        </div>
+      <Section tone="dark" title="Peintures de marques reconnues">
+        <Blocks
+          tone="dark"
+          items={[
+            {
+              title: "Nos marques",
+              children: (
+                <Points
+                  items={[
+                    <><strong className="text-chaux">Haut de gamme :</strong> Tollens, Sikkens, Zolpan</>,
+                    <><strong className="text-chaux">Qualité pro :</strong> Dulux Valentine, Ripolin</>,
+                    <><strong className="text-chaux">Écologique :</strong> Natura, Algo</>,
+                    <><strong className="text-chaux">Spécialisée :</strong> Toupret, Weber, Knauf</>,
+                  ]}
+                />
+              ),
+            },
+            {
+              title: "Nos garanties",
+              children: (
+                <Points items={["Finition garantie 2 ans", "Assurance décennale", "Conseils décoration"]} />
+              ),
+            },
+          ]}
+        />
+      </Section>
 
-        {/* Étapes de travail */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Notre Méthode de Travail Professionnelle
-          </h2>
-          <div className="grid md:grid-cols-5 gap-4">
-            {[
-              { step: "1", title: "Diagnostic", desc: "État des supports" },
-              { step: "2", title: "Préparation", desc: "Rebouchage, ponçage" },
-              { step: "3", title: "Protection", desc: "Bâchage, adhésif" },
-              { step: "4", title: "Application", desc: "Sous-couche et finition" },
-              { step: "5", title: "Finitions", desc: "Retouches, nettoyage" }
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 font-bold">
-                  {item.step}
-                </div>
-                <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
-                <p className="text-gray-600 text-xs">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      <Section title="La peinture en images" intro="Photos d'illustration des travaux que nous réalisons.">
+        <Gallery
+          photos={[
+            { src: "/images/peinture-mur-blanc.webp", alt: "Peinture d'un mur blanc au rouleau", caption: "Mise en peinture au rouleau" },
+            { src: "/images/peinture-peintre.webp", alt: "Peintre appliquant une couleur au rouleau", caption: "Peinture de couleur sur mur intérieur" },
+          ]}
+        />
+      </Section>
 
-        {/* Marques de peinture */}
-        <div className="bg-linear-to-r from-primary/5 to-secondary/5 rounded-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Peintures de Marques Reconnues
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold text-primary mb-4">Nos Marques :</h3>
-              <div className="space-y-3">
-                <p className="text-gray-700"><strong>Haut de gamme :</strong> Tollens, Sikkens, Zolpan</p>
-                <p className="text-gray-700"><strong>Qualité pro :</strong> Dulux Valentine, Ripolin</p>
-                <p className="text-gray-700"><strong>Écologique :</strong> Natura, Algo</p>
-                <p className="text-gray-700"><strong>Spécialisée :</strong> Toupret, Weber, Knauf</p>
-              </div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold text-primary mb-4">Nos Garanties :</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Peinture certifiée NF</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Finition garantie 2 ans</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Assurance décennale</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Conseils décoration</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <RelatedServices slugs={["renovation-interieure", "renovation-exterieure", "carrelage-sols"]} />
-
-        {/* CTA */}
-        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Projet Peinture à Pamfou ?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Devis gratuit • Conseils couleurs • Finition soignée
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/contact"
-              className="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Demander un devis
-            </Link>
-            <a 
-              href="tel:0695918103"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
-            >
-              06 95 91 81 03
-            </a>
-          </div>
-        </div>
-      </div>
+      <RelatedServices slugs={["renovation-interieure", "renovation-exterieure", "carrelage-sols"]} />
     </Container>
   );
 }

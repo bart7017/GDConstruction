@@ -1,6 +1,9 @@
 import { Container } from "@components/Container";
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { Blocks, PageHeader, Points, Section } from "@components/Page";
+import Image from 'next/image';
+import { servicesBySlug } from '@constants/services';
 import { notFound } from 'next/navigation';
 import { realisationSlugs, RealisationSlug } from '@constants/realisations';
 
@@ -16,6 +19,8 @@ interface Realisation {
   duration: string;
   tags: string[];
   images: { url: string; alt: string; caption?: string }[];
+  /** Métier dont l'image d'illustration sert de couverture. */
+  service: string;
   challenges: string[];
   solutions: string[];
   materials: string[];
@@ -27,6 +32,7 @@ interface Realisation {
 const realisationsData: Record<RealisationSlug, Realisation> = {
   'renovation-cuisine-pamfou-2024': {
     id: 'renovation-cuisine-pamfou-2024',
+    service: 'renovation-interieure',
     title: 'Rénovation complète cuisine - Pamfou',
     description: 'Transformation totale d\'une cuisine des années 80 en espace moderne et fonctionnel avec îlot central et électroménager intégré.',
     category: 'Rénovation intérieure',
@@ -56,10 +62,10 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
       'Électroménager Bosch encastrable'
     ],
     techniques: [
-      'Ragréage autolissant du sol',
-      'Pose carrelage en chevrons',
       'Raccordements plomberie cuivre et PER',
       'Installation électrique aux normes NF C 15-100',
+      'Ragréage autolissant du sol',
+      'Pose carrelage en chevrons',
       'Menuiserie sur mesure'
     ],
     results: [
@@ -72,6 +78,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
   
   'extension-maison-melun-2024': {
     id: 'extension-maison-melun-2024',
+    service: 'maconnerie-generale',
     title: 'Extension maison individuelle - Melun',
     description: 'Création d\'une extension de 40m² avec fondations béton, murs en parpaing et charpente traditionnelle pour agrandir l\'espace de vie.',
     category: 'Maçonnerie générale',
@@ -117,6 +124,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
 
   'salle-bain-fontainebleau-2024': {
     id: 'salle-bain-fontainebleau-2024',
+    service: 'carrelage-sols',
     title: 'Salle de bain avec douche italienne - Fontainebleau',
     description: 'Rénovation complète avec douche italienne, carrelage haut de gamme et éclairage LED intégré.',
     category: 'Plomberie & Carrelage',
@@ -146,10 +154,10 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
       'Meuble vasque suspendu avec tiroirs'
     ],
     techniques: [
+      'Raccordements PER et multicouche',
       'Chape sèche pour mise à niveau',
       'Étanchéité liquide sous carrelage',
       'Pose carrelage au mortier-colle',
-      'Raccordements PER et multicouche',
       'Installation VMC hygroréglable'
     ],
     results: [
@@ -162,6 +170,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
 
   'toiture-nemours-2024': {
     id: 'toiture-nemours-2024',
+    service: 'couverture',
     title: 'Réfection toiture complète - Nemours',
     description: 'Remplacement total de la couverture avec isolation renforcée, zinguerie et gouttières neuves.',
     category: 'Couverture',
@@ -207,6 +216,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
 
   'escalier-beton-provins-2024': {
     id: 'escalier-beton-provins-2024',
+    service: 'maconnerie-generale',
     title: 'Escalier béton design - Provins',
     description: 'Création d\'un escalier béton extérieur avec garde-corps métallique et éclairage LED intégré.',
     category: 'Maçonnerie générale',
@@ -252,6 +262,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
 
   'pompe-chaleur-dammarie-2024': {
     id: 'pompe-chaleur-dammarie-2024',
+    service: 'pompe-chaleur-climatisation',
     title: 'Installation pompe à chaleur 16kW - Dammarie',
     description: 'Installation PAC air-eau avec plancher chauffant et production eau chaude sanitaire pour économies d\'énergie.',
     category: 'Pompe à chaleur',
@@ -290,8 +301,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
     results: [
       'Économies énergétiques de 60% vs fioul',
       'Confort thermique optimal toute l\'année',
-      'Production ECS économique intégrée',
-      'Installation éligible MaPrimeRénov\''
+      'Production ECS économique intégrée'
     ]
   }
 };
@@ -362,170 +372,79 @@ export default async function RealisationDetail({ params }: { params: Promise<{ 
 
   return (
     <Container>
-      <div className="px-4 py-16">
-        {/* Breadcrumb */}
-        <div className="max-w-6xl mx-auto mb-8">
-          <nav className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-primary">Accueil</Link>
-            <span>•</span>
-            <Link href="/realisations" className="hover:text-primary">Réalisations</Link>
-            <span>•</span>
-            <span className="text-gray-400">{realisation.title}</span>
-          </nav>
-        </div>
+      <nav aria-label="Fil d'Ariane" className="mx-auto max-w-7xl px-4 pt-8 text-sm text-ardoise/70">
+        <ol className="flex flex-wrap items-center gap-2">
+          <li><Link href="/" className="hover:text-ardoise">Accueil</Link></li>
+          <li aria-hidden>/</li>
+          <li><Link href="/realisations" className="hover:text-ardoise">Réalisations</Link></li>
+          <li aria-hidden>/</li>
+          <li aria-current="page" className="text-ardoise">{realisation.title}</li>
+        </ol>
+      </nav>
 
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="mb-12">
-            <div className="flex flex-wrap gap-3 mb-4">
-              <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                {realisation.category}
-              </span>
-              {realisation.tags.map(tag => (
-                <span key={tag} className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-              {realisation.title}
-            </h1>
-            
-            <p className="text-xl text-gray-600 mb-6 max-w-4xl">
-              {realisation.description}
-            </p>
+      <PageHeader kicker={realisation.category} title={realisation.title} intro={realisation.description} />
 
-            {/* Métadonnées */}
-            <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6 rounded-2xl">
-              <div>
-                <div className="text-sm text-gray-500 mb-1">Date de réalisation</div>
-                <div className="font-semibold">{formatDate(realisation.date)}</div>
-              </div>
-              <div>
-                <div className="text-sm text-gray-500 mb-1">Localisation</div>
-                <div className="font-semibold">{realisation.location}</div>
-              </div>
-              <div>
-                <div className="text-sm text-gray-500 mb-1">Surface / Durée</div>
-                <div className="font-semibold">{realisation.surface} • {realisation.duration}</div>
-              </div>
+      <div className="mx-auto max-w-7xl px-4">
+        <ul className="flex flex-wrap gap-2" aria-label="Mots-clés">
+          {realisation.tags.map(tag => (
+            <li key={tag} className="rounded-full px-3 py-1 text-sm text-ardoise/75 ring-1 ring-ardoise/15">{tag}</li>
+          ))}
+        </ul>
+        {/* Pas encore de photo du chantier : image du métier, signalée comme illustration. */}
+        <figure className="relative mt-10 aspect-[4/3] overflow-hidden [&_img]:reveal-zoom rounded-3xl sm:aspect-[21/9]">
+          <Image src={servicesBySlug[realisation.service].image} alt="" fill priority sizes="(min-width: 1280px) 1248px, 100vw" className="object-cover" />
+          <figcaption className="absolute bottom-4 left-4 rounded-full bg-ardoise/80 px-3 py-1 text-xs text-chaux">Photo d&apos;illustration</figcaption>
+        </figure>
+        <dl className="mt-10 grid gap-8 md:grid-cols-3">
+          {[
+            { label: "Date de réalisation", value: formatDate(realisation.date) },
+            { label: "Localisation", value: realisation.location },
+            { label: "Surface / Durée", value: `${realisation.surface}, ${realisation.duration}` },
+          ].map((item) => (
+            <div key={item.label} className="border-t border-ardoise/15 pt-4">
+              <dt className="text-sm text-ardoise/70">{item.label}</dt>
+              <dd className="mt-1 font-display text-xl font-bold [font-stretch:115%]">{item.value}</dd>
             </div>
+          ))}
+        </dl>
+      </div>
+
+      {/* Galerie masquée tant qu'aucune photo du chantier n'a été fournie :
+          un cadre vide est un signal de qualité pire que pas de section. */}
+      {realisation.images.length > 0 && (
+        <Section title="Galerie photos">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {realisation.images.map((image, index) => (
+              <div key={index} className="flex aspect-[4/3] items-end rounded-2xl bg-ardoise/5 p-5 text-sm text-ardoise/70">
+                {image.caption || image.alt}
+              </div>
+            ))}
           </div>
+        </Section>
+      )}
 
-          {/* Galerie d'images — masquée tant qu'aucune photo n'a été fournie.
-              Un cadre vide est un signal de qualité pire que pas de section. */}
-          {realisation.images.length > 0 && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6">Galerie Photos</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {realisation.images.map((image, index) => (
-                <div key={index} className="bg-linear-to-br from-building-100 to-building-200 rounded-xl overflow-hidden h-64 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <div className="text-3xl mb-2">📷</div>
-                    <div className="text-sm">{image.caption || image.alt}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+      <Section>
+        <Blocks
+          items={[
+            { title: "Défis rencontrés", children: <Points items={realisation.challenges} /> },
+            { title: "Solutions apportées", children: <Points items={realisation.solutions} /> },
+            { title: "Matériaux utilisés", children: <Points items={realisation.materials} /> },
+            { title: "Techniques employées", children: <Points items={realisation.techniques} /> },
+          ]}
+        />
+      </Section>
 
-          )}
+      <Section tone="dark" title="Résultats obtenus">
+        <Points items={realisation.results} className="gap-4 text-lg text-chaux/85 md:grid-cols-2" />
+      </Section>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Défis et Solutions */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-bold mb-4">🎯 Défis Rencontrés</h2>
-                <ul className="space-y-3">
-                  {realisation.challenges.map((challenge, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <span className="text-red-500 mt-1">•</span>
-                      <span className="text-gray-700">{challenge}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h2 className="text-2xl font-bold mb-4">✅ Solutions Apportées</h2>
-                <ul className="space-y-3">
-                  {realisation.solutions.map((solution, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <span className="text-green-500 mt-1">•</span>
-                      <span className="text-gray-700">{solution}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Matériaux et Techniques */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-bold mb-4">🧱 Matériaux Utilisés</h2>
-                <ul className="space-y-2">
-                  {realisation.materials.map((material, index) => (
-                    <li key={index} className="text-gray-700">
-                      <span className="text-primary mr-2">▸</span>
-                      {material}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h2 className="text-2xl font-bold mb-4">⚙️ Techniques Employées</h2>
-                <ul className="space-y-2">
-                  {realisation.techniques.map((technique, index) => (
-                    <li key={index} className="text-gray-700">
-                      <span className="text-primary mr-2">▸</span>
-                      {technique}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Résultats */}
-          <div className="mt-12 bg-building-50 p-8 rounded-2xl">
-            <h2 className="text-2xl font-bold mb-6 text-center">🏆 Résultats Obtenus</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {realisation.results.map((result, index) => (
-                <div key={index} className="flex items-center space-x-3">
-                  <span className="text-green-500 text-xl">✓</span>
-                  <span className="text-gray-700 font-medium">{result}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Navigation et CTA */}
-          <div className="mt-16 flex flex-col md:flex-row justify-between items-center gap-6">
-            <Link 
-              href="/realisations"
-              className="text-primary hover:text-secondary font-medium"
-            >
-              ← Retour aux réalisations
-            </Link>
-            
-            <div className="flex gap-4">
-              <a
-                href="tel:0695918103"
-                className="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-secondary transition-colors"
-              >
-                📞 06 95 91 81 03
-              </a>
-              <Link
-                href="/contact"
-                className="border border-primary text-primary px-6 py-3 rounded-xl font-semibold hover:bg-primary hover:text-white transition-colors"
-              >
-                Votre Projet
-              </Link>
-            </div>
-          </div>
-        </div>
+      <div className="mx-auto max-w-7xl px-4 py-12">
+        <Link
+          href="/realisations"
+          className="font-semibold text-ardoise underline decoration-signal decoration-2 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ardoise"
+        >
+          Retour aux réalisations
+        </Link>
       </div>
     </Container>
   );

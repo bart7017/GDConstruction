@@ -1,6 +1,8 @@
 import { Container } from "@components/Container";
 import { Metadata } from 'next';
-import Link from 'next/link';
+import { ButtonLink } from "@components/Button";
+import { Blocks, PageHeader, Section } from "@components/Page";
+import { ServicesMosaic } from "@components/ServicesMosaic";
 
 export const metadata: Metadata = {
   title: 'Nos Services Tous Corps d\'État à Pamfou',
@@ -16,158 +18,34 @@ export const metadata: Metadata = {
   },
 };
 
-const services = [
-  {
-    title: "Maçonnerie Générale",
-    slug: "maconnerie-generale",
-    description: "Construction de murs, dalles béton, fondations, extensions",
-    icon: "🏗️",
-    keywords: "maçon Pamfou, construction mur, dalle béton, fondations"
-  },
-  {
-    title: "Rénovation Intérieure", 
-    slug: "renovation-interieure",
-    description: "Cuisine, salle de bain, cloisons, menuiseries intérieures",
-    icon: "🏠",
-    keywords: "rénovation intérieure Pamfou, cuisine, salle de bain"
-  },
-  {
-    title: "Rénovation Extérieure",
-    slug: "renovation-exterieure",
-    description: "Ravalement de façade, ITE, bardage, terrasses bois",
-    icon: "🏡",
-    keywords: "ravalement façade, isolation thermique extérieure, bardage"
-  },
-  {
-    title: "Plomberie",
-    slug: "plomberie",
-    description: "Installation, réparation, dépannage sanitaire",
-    icon: "🔧",
-    keywords: "plombier Pamfou, installation sanitaire, dépannage"
-  },
-  {
-    title: "Électricité",
-    slug: "electricite",
-    description: "Installation électrique, tableau, dépannage",
-    icon: "⚡",
-    keywords: "électricien Seine-et-Marne, installation électrique, tableau"
-  },
-  {
-    title: "Couverture",
-    slug: "couverture",
-    description: "Toiture, charpente, gouttières, étanchéité",
-    icon: "🏘️", 
-    keywords: "couvreur 77830, toiture, charpente, gouttières"
-  },
-  {
-    title: "Carrelage & Sols",
-    slug: "carrelage-sols",
-    description: "Pose de carrelage, parquet, sols PVC",
-    icon: "🏛️",
-    keywords: "carreleur Pamfou, pose carrelage, parquet"
-  },
-  {
-    title: "Peinture & Finitions",
-    slug: "peinture-finitions", 
-    description: "Peinture intérieure/extérieure, enduits, finitions",
-    icon: "🎨",
-    keywords: "peintre Seine-et-Marne, peinture intérieure, enduits"
-  },
-  {
-    title: "Pompe à Chaleur & Climatisation",
-    slug: "pompe-chaleur-climatisation",
-    description: "Installation pompe à chaleur air-air, air-eau, climatisation",
-    icon: "❄️",
-    keywords: "pompe à chaleur Pamfou, climatisation Seine-et-Marne, PAC air-eau"
-  }
-];
-
 export default function Services() {
   return (
     <Container>
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Nos Services de Maçonnerie et Rénovation
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            GD Construction intervient pour tous vos travaux de maçonnerie générale et rénovation 
-            à Pamfou et dans toute la Seine-et-Marne. Spécialistes tous corps d'état.
-          </p>
-        </div>
+      <PageHeader
+        kicker="Tous corps d'état"
+        title="Nos services de maçonnerie et rénovation"
+        intro="GD Construction intervient pour tous vos travaux de maçonnerie générale et rénovation à Pamfou et dans toute la Seine-et-Marne. Spécialistes tous corps d'état."
+      >
+        <ButtonLink href="/contact" variant="signal">Demander un devis</ButtonLink>
+        <ButtonLink href="tel:+33695918103" variant="line">06 95 91 81 03</ButtonLink>
+      </PageHeader>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service) => (
-            <div key={service.slug} className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow">
-              <div className="text-4xl mb-4">{service.icon}</div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                {service.title}
-              </h2>
-              <p className="text-gray-600 mb-6">
-                {service.description}
-              </p>
-              <Link 
-                href={`/services/${service.slug}`}
-                className="inline-flex items-center text-primary font-semibold hover:text-primary/80 transition-colors"
-              >
-                En savoir plus →
-              </Link>
-            </div>
-          ))}
-        </div>
+      <Section className="pt-0 sm:pt-4">
+        <ServicesMosaic />
+      </Section>
 
-        {/* Zone d'intervention */}
-        <div className="bg-linear-to-r from-primary to-primary/80 text-white rounded-lg p-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Zone d'Intervention</h2>
-          <p className="text-xl mb-6">
-            Nous intervenons à Pamfou et dans un rayon de 50 km
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
-            <div className="bg-white/10 rounded-lg p-4">
-              <h3 className="font-semibold mb-2">Seine-et-Marne (77)</h3>
-              <p className="text-sm">Pamfou, Melun, Fontainebleau, Montereau-Fault-Yonne, Nemours</p>
-            </div>
-            <div className="bg-white/10 rounded-lg p-4">
-              <h3 className="font-semibold mb-2">Essonne (91)</h3>
-              <p className="text-sm">Milly-la-Forêt, La Ferté-Alais, Boutigny-sur-Essonne</p>
-            </div>
-            <div className="bg-white/10 rounded-lg p-4">
-              <h3 className="font-semibold mb-2">Yonne (89)</h3>
-              <p className="text-sm">Sens, Villeneuve-sur-Yonne, Pont-sur-Yonne</p>
-            </div>
-            <div className="bg-white/10 rounded-lg p-4">
-              <h3 className="font-semibold mb-2">Val-de-Marne (94)</h3>
-              <p className="text-sm">Communes limitrophes</p>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Besoin d'un devis gratuit ?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Contactez-nous pour une étude personnalisée de votre projet
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/contact"
-              className="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-            >
-              Demander un devis
-            </Link>
-            <a 
-              href="tel:0695918103"
-              className="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors"
-            >
-              06 95 91 81 03
-            </a>
-          </div>
-        </div>
-      </div>
+      <Section tone="dark" title="Zone d'intervention" intro="Nous intervenons à Pamfou et dans un rayon de 50 km.">
+        <Blocks
+          tone="dark"
+          cols={4}
+          items={[
+            { title: "Seine-et-Marne (77)", text: "Pamfou, Melun, Fontainebleau, Montereau-Fault-Yonne, Nemours" },
+            { title: "Essonne (91)", text: "Milly-la-Forêt, La Ferté-Alais, Boutigny-sur-Essonne" },
+            { title: "Yonne (89)", text: "Sens, Villeneuve-sur-Yonne, Pont-sur-Yonne" },
+            { title: "Val-de-Marne (94)", text: "Communes limitrophes" },
+          ]}
+        />
+      </Section>
     </Container>
   );
 }

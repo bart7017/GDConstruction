@@ -2,8 +2,8 @@ import { Container } from "@components/Container";
 import { ServiceJsonLd } from "@components/JsonLd";
 import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
+import { ButtonLink } from "@components/Button";
+import { Blocks, Gallery, PageHeader, Points, Section } from "@components/Page";
 
 export const metadata: Metadata = {
   title: 'Couverture Toiture à Pamfou | Couvreur Seine-et-Marne',
@@ -68,8 +68,7 @@ const services = [
       "Ouate de cellulose soufflée",
       "Isolation des rampants sous toiture",
       "Sarking par-dessus la charpente",
-      "Pare-vapeur et freine-vapeur",
-      "Crédit d'impôt et CEE"
+      "Pare-vapeur et freine-vapeur"
     ]
   },
   {
@@ -90,12 +89,12 @@ const services = [
     icon: "🧽",
     description: "Nettoyage et maintenance de toitures",
     details: [
+      "Contrôle et diagnostic",
       "Démoussage haute pression",
       "Traitement anti-mousse",
+      "Hydrofuge et imperméabilisant",
       "Nettoyage de gouttières",
-      "Contrôle et diagnostic",
-      "Contrat d'entretien annuel",
-      "Hydrofuge et imperméabilisant"
+      "Contrat d'entretien annuel"
     ]
   }
 ];
@@ -108,158 +107,86 @@ export default function Couverture() {
         description="Réfection de toiture, charpente, gouttières et étanchéité à Pamfou et en Seine-et-Marne."
         slug="couverture"
       />
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
-            <span className="text-4xl">🏘️</span>
-            <span className="text-primary font-semibold">Couverture</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Couvreur Professionnel à Pamfou
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            GD Construction assure tous vos travaux de couverture en Seine-et-Marne. 
-            Toiture neuve, réparation, charpente, gouttières : notre savoir-faire artisanal 
-            protège votre habitat durablement.
-          </p>
-          
-          {/* Photo d'illustration */}
-          <div className="relative aspect-16/9 rounded-2xl overflow-hidden shadow-xl mb-8">
-            <Image
-              src="/images/charpente-toiture.webp"
-              alt="Charpente et toiture en construction"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20"></div>
-            <div className="absolute bottom-6 left-6 text-white">
-              <p className="text-sm font-medium">Charpente et couverture - Réalisation GD Construction</p>
-            </div>
-          </div>
-        </div>
+      <PageHeader
+        kicker="Couverture"
+        title="Couvreur professionnel à Pamfou"
+        intro="GD Construction assure tous vos travaux de couverture en Seine-et-Marne. Toiture neuve, réparation, charpente, gouttières : notre savoir-faire artisanal protège votre habitat durablement."
+        image="/images/couverture-maisons.webp"
+        imageAlt="Charpente et toiture en construction"
+      >
+        <ButtonLink href="/contact" variant="signal">Demander un devis gratuit</ButtonLink>
+        <ButtonLink href="tel:+33695918103" variant="line">06 95 91 81 03</ButtonLink>
+      </PageHeader>
 
+      <Section title="Nos prestations de couverture">
+        <Blocks
+          cols={3}
+          items={services.map((service) => ({
+            title: service.title,
+            text: service.description,
+            children: <Points items={service.details} />,
+          }))}
+        />
+      </Section>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-6 border hover:shadow-xl transition-shadow">
-              <div className="text-center mb-4">
-                <span className="text-5xl">{service.icon}</span>
-                <h3 className="text-xl font-semibold text-gray-900 mt-3">
-                  {service.title}
-                </h3>
-              </div>
-              <p className="text-gray-600 mb-4 text-center text-sm leading-relaxed">
-                {service.description}
-              </p>
-              <ul className="space-y-2">
-                {service.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-start space-x-2">
-                    <span className="text-primary font-bold text-sm">•</span>
-                    <span className="text-gray-700 text-sm">{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+      <Section tone="white" title="Types de couvertures réalisées">
+        <Blocks
+          cols={4}
+          items={[
+            { type: "Tuiles", desc: "Terre cuite, béton, canal", prix: "45-80€/m²" },
+            { type: "Ardoises", desc: "Naturelles, fibrociment", prix: "60-120€/m²" },
+            { type: "Zinc", desc: "Joint debout, tasseaux", prix: "70-100€/m²" },
+            { type: "Bac Acier", desc: "Sandwich, simple peau", prix: "25-45€/m²" },
+          ].map((item) => ({
+            title: item.type,
+            text: item.desc,
+            children: <p className="display-title text-3xl">{item.prix}</p>,
+          }))}
+        />
+        <p className="mt-10 text-sm text-ardoise/70">* Prix TTC pose comprise, hors charpente et isolation</p>
+      </Section>
 
-        {/* Matériaux de couverture */}
-        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Types de Couvertures Réalisées
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { type: "Tuiles", desc: "Terre cuite, béton, canal", prix: "45-80€/m²" },
-              { type: "Ardoises", desc: "Naturelles, fibrociment", prix: "60-120€/m²" },
-              { type: "Zinc", desc: "Joint debout, tasseaux", prix: "70-100€/m²" },
-              { type: "Bac Acier", desc: "Sandwich, simple peau", prix: "25-45€/m²" }
-            ].map((item, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 text-center shadow-md">
-                <h3 className="font-semibold text-lg text-primary mb-2">{item.type}</h3>
-                <p className="text-gray-600 text-sm mb-3">{item.desc}</p>
-                <div className="text-lg font-bold text-secondary">{item.prix}</div>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-sm text-gray-600 mt-6">
-            * Prix TTC pose comprise, hors charpente et isolation
-          </p>
-        </div>
+      <Section
+        tone="dark"
+        title="Urgences toiture 7j/7"
+        intro="Intervention rapide sur fuites et sinistres"
+      >
+        <Blocks
+          tone="dark"
+          items={[
+            {
+              title: "Situations d'urgence",
+              children: (
+                <Points
+                  items={[
+                    "Fuite importante après tempête",
+                    "Tuiles arrachées ou cassées",
+                    "Gouttière arrachée",
+                    "Chute d'arbre sur toiture",
+                  ]}
+                />
+              ),
+            },
+            {
+              title: "Appelez-nous",
+              text: "Bâchage provisoire si nécessaire",
+              children: <ButtonLink href="tel:+33695918103" variant="signal">Urgence : 06 95 91 81 03</ButtonLink>,
+            },
+          ]}
+        />
+      </Section>
 
-        {/* Urgences */}
-        <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-8 mb-16">
-          <div className="flex items-center mb-6">
-            <span className="text-4xl mr-3">🚨</span>
-            <div>
-              <h2 className="text-3xl font-bold text-red-800">Urgences Toiture 7j/7</h2>
-              <p className="text-red-600 text-lg">Intervention rapide sur fuites et sinistres</p>
-            </div>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold text-red-800 mb-4">Situations d'Urgence :</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center space-x-2">
-                  <span className="text-red-600">•</span>
-                  <span>Fuite importante après tempête</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-red-600">•</span>
-                  <span>Tuiles arrachées ou cassées</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-red-600">•</span>
-                  <span>Gouttière arrachée</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-red-600">•</span>
-                  <span>Chute d'arbre sur toiture</span>
-                </li>
-              </ul>
-            </div>
-            <div className="text-center">
-              <a 
-                href="tel:0695918103"
-                className="bg-red-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-600 transition-colors inline-flex items-center space-x-2 text-lg"
-              >
-                <span>🚨</span>
-                <span>Urgence : 06 95 91 81 03</span>
-              </a>
-              <p className="text-red-600 text-sm mt-3">Bâchage provisoire si nécessaire</p>
-            </div>
-          </div>
-        </div>
+      <Section title="La couverture en images" intro="Photos d'illustration des travaux que nous réalisons.">
+        <Gallery
+          photos={[
+            { src: "/images/couverture-tuiles.webp", alt: "Toiture en tuiles terre cuite", caption: "Tuiles terre cuite" },
+            { src: "/images/couverture-velux.webp", alt: "Toit avec fenêtre de toit", caption: "Fenêtre de toit et ventilation" },
+            { src: "/images/charpente-toiture.webp", alt: "Chevrons d'une charpente bois", caption: "Charpente bois avant couverture" },
+          ]}
+        />
+      </Section>
 
-        <RelatedServices slugs={["renovation-exterieure", "maconnerie-generale", "peinture-finitions"]} />
-
-        {/* CTA */}
-        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Projet de Couverture à Pamfou ?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Devis gratuit • Matériaux de qualité • Garantie décennale
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/contact"
-              className="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Demander un devis
-            </Link>
-            <a 
-              href="tel:0695918103"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
-            >
-              06 95 91 81 03
-            </a>
-          </div>
-        </div>
-      </div>
+      <RelatedServices slugs={["renovation-exterieure", "maconnerie-generale", "peinture-finitions"]} />
     </Container>
   );
 }

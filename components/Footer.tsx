@@ -1,126 +1,74 @@
-import React from "react";
-import Image from "next/image";
+import Link from "next/link";
 import { navItems } from "@constants/navItems";
-import { CustomLink } from "./CustomLink";
-import {
-  AiOutlinePhone,
-  AiOutlineEnvironment,
-} from "react-icons/ai";
+import { servicesBySlug } from "@constants/services";
+import { ButtonLink } from "./Button";
+import { Cote } from "./Cote";
 
-export const Footer = () => {
-  const contacts = [
-    {
-      name: "Téléphone",
-      icon: (
-        <AiOutlinePhone className="h-5 w-5 hover:text-primary transition duration-150" />
-      ),
-      link: "tel:0695918103",
-      text: "06 95 91 81 03",
-    },
-    {
-      name: "Adresse",
-      icon: (
-        <AiOutlineEnvironment className="h-5 w-5 hover:text-primary transition duration-150" />
-      ),
-      link: "https://maps.google.com/?q=Pamfou+77830",
-      text: "77830 Pamfou",
-    },
-  ];
-  
-  return (
-    <div className="bg-white text-gray-800 py-16 border-t border-gray-200">
-      <div className="max-w-6xl mx-auto px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-block mb-8">
-            <Image
-              src="/images/GDConstructionLogo.png"
-              alt="GD Construction Logo"
-              width={320}
-              height={320}
-              className="object-contain"
-            />
-          </div>
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
-            Votre expert en maçonnerie générale et rénovation à Pamfou. 
-            Spécialistes tous corps d'état pour un service complet.
+const linkClass =
+  "text-chaux/75 transition-colors hover:text-chaux focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chaux";
+
+export const Footer = () => (
+  <footer className="bg-ardoise text-chaux">
+    <div className="mx-auto max-w-7xl px-4 pb-10 pt-20">
+      <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+        <p className="display-title max-w-3xl text-4xl sm:text-6xl">Un projet de maçonnerie ou de rénovation ?</p>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <ButtonLink href="/contact" variant="signal">Demander un devis gratuit</ButtonLink>
+          <ButtonLink href="tel:+33695918103" variant="line-light">06 95 91 81 03</ButtonLink>
+        </div>
+      </div>
+
+      <div className="mt-14 grid gap-6 text-chaux/60 sm:grid-cols-3">
+        <Cote>50 km autour de Pamfou</Cote>
+        <Cote>9 corps de métier</Cote>
+        <Cote>Devis sous 48 h</Cote>
+      </div>
+
+      <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_2fr_1.2fr]">
+        <div>
+          <p className="display-title text-2xl">GD Construction</p>
+          <p className="mt-3 max-w-xs text-chaux/75">
+            Maçonnerie générale et rénovation tous corps d&apos;état, à Pamfou et dans un rayon de 50 km.
           </p>
         </div>
 
-        {/* Content Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12 text-center">
-          {/* Navigation */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Navigation</h3>
-            <div className="space-y-2">
-              {navItems.map((navItem, idx) => (
-                <CustomLink
-                  key={`footer-link-${idx}`}
-                  href={navItem.link}
-                  className="text-gray-600 hover:text-primary transition-colors block"
-                >
-                  {navItem.name}
-                </CustomLink>
+        <nav aria-label="Nos métiers">
+          <h2 className="font-semibold">Nos métiers</h2>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            {Object.values(servicesBySlug).map((s) => (
+              <li key={s.slug}>
+                <Link href={`/services/${s.slug}`} className={linkClass}>{s.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-1">
+          <nav aria-label="Pied de page">
+            <h2 className="font-semibold">Navigation</h2>
+            <ul className="mt-4 grid gap-2">
+              {navItems.map((item) => (
+                <li key={item.link}>
+                  <Link href={item.link} className={linkClass}>{item.name}</Link>
+                </li>
               ))}
-            </div>
-          </div>
-
-          {/* Contact */}
+            </ul>
+          </nav>
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <div className="space-y-3">
-              {contacts.map((contact, idx) => (
-                <a
-                  key={`contact-${idx}`}
-                  href={contact.link}
-                  className="text-gray-600 hover:text-primary transition-colors flex items-center justify-center space-x-3"
-                  target={contact.link.startsWith('http') ? '_blank' : undefined}
-                  rel={contact.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                >
-                  {contact.icon}
-                  <span>{contact.text}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Nos Services</h3>
-            <div className="space-y-2 text-gray-600">
-              <p>• Maçonnerie générale</p>
-              <p>• Rénovation intérieure</p>
-              <p>• Rénovation extérieure</p>
-              <p>• Plomberie</p>
-              <p>• Électricité</p>
-              <p>• Couverture</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom */}
-        <div className="border-t border-gray-300 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-center md:text-left">
-            <p className="text-gray-500 text-sm mb-2">
-              © {new Date().getFullYear()} GD Construction. Tous droits réservés.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2 text-gray-400 text-xs">
-              <a href="/mentions-legales" className="hover:text-primary transition-colors">
-                Mentions légales
-              </a>
-              <span className="hidden sm:inline">•</span>
-              <span>Politique de confidentialité</span>
-              <span className="hidden sm:inline">•</span>
-              <span>RGPD</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-6 mt-4 md:mt-0">
-            <p className="text-gray-500 text-sm text-center">
-              SIRET : 503 834 426 00028 • Assurance décennale
-            </p>
+            <h2 className="font-semibold">Contact</h2>
+            <ul className="mt-4 grid gap-2">
+              <li><a href="tel:+33695918103" className={linkClass}>06 95 91 81 03</a></li>
+              <li><a href="https://wa.me/33695918103" target="_blank" rel="noopener noreferrer" className={linkClass}>WhatsApp</a></li>
+              <li><a href="https://maps.google.com/?q=Pamfou+77830" target="_blank" rel="noopener noreferrer" className={linkClass}>77830 Pamfou</a></li>
+            </ul>
           </div>
         </div>
       </div>
+
+      <div className="mt-16 flex flex-col gap-3 border-t border-chaux/15 pt-6 text-sm text-chaux/60 md:flex-row md:justify-between">
+        <p>© {new Date().getFullYear()} GD Construction · <Link href="/mentions-legales" className={`${linkClass} underline underline-offset-2`}>Mentions légales</Link></p>
+        <p>SIRET 503 834 426 00028 · Assurance décennale</p>
+      </div>
     </div>
-  );
-};
+  </footer>
+);

@@ -1,7 +1,7 @@
 import { Container } from "@components/Container";
 import { RealisationsGrid } from "@components/RealisationsGrid";
 import { Metadata } from 'next';
-import Link from 'next/link';
+import { PageHeader, Section } from "@components/Page";
 
 export const metadata: Metadata = {
   title: 'Nos Réalisations en Seine-et-Marne',
@@ -21,53 +21,27 @@ export const metadata: Metadata = {
 export default function Realisations() {
   return (
     <Container>
+      <PageHeader
+        kicker="Réalisations"
+        title="Nos réalisations"
+        intro="Découvrez notre savoir-faire à travers nos derniers chantiers en Seine-et-Marne. Des projets qui témoignent de notre expertise dans tous les corps d'état."
+      />
       <RealisationsGrid />
-      
-      {/* Stats section */}
-      <div className="max-w-4xl mx-auto py-16 border-t border-gray-200">
-        <div className="grid md:grid-cols-3 gap-8 text-center">
-          <div>
-            <div className="text-3xl font-bold text-primary mb-2">150+</div>
-            <div className="text-gray-600">Chantiers réalisés</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-primary mb-2">10</div>
-            <div className="text-gray-600">Années d'entreprise</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-primary mb-2">50km</div>
-            <div className="text-gray-600">Zone d'intervention</div>
-          </div>
-        </div>
-      </div>
 
-      {/* CTA */}
-      <div className="bg-building-800 text-white py-16 rounded-2xl mx-4 mb-16">
-        <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Votre Projet Mérite la Même Attention
-          </h2>
-          <p className="text-building-200 mb-8 text-lg">
-            Chaque chantier est unique. Confiez-nous votre projet et rejoignez 
-            nos clients satisfaits en Seine-et-Marne, Essonne et Val-de-Marne.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:0695918103"
-              className="bg-primary text-white px-8 py-3 rounded-xl font-semibold hover:bg-secondary transition-colors"
-            >
-              📞 06 95 91 81 03
-            </a>
-            <Link
-              href="/contact"
-              className="border border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-building-800 transition-colors"
-            >
-              Demander un Devis
-            </Link>
-          </div>
-        </div>
-      </div>
+      <Section tone="white">
+        <dl className="grid gap-10 md:grid-cols-3">
+          {[
+            { value: "150+", label: "Chantiers réalisés" },
+            { value: "2014", label: "Création de l'entreprise" },
+            { value: "50km", label: "Zone d'intervention" },
+          ].map((stat) => (
+            <div key={stat.label} className="flex flex-col-reverse border-t border-ardoise/15 pt-6">
+              <dt className="mt-2 text-ardoise/75">{stat.label}</dt>
+              <dd className="display-title text-5xl">{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
     </Container>
   );
 }
-

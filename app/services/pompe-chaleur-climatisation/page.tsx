@@ -2,6 +2,8 @@ import { Container } from "@components/Container";
 import { ServiceJsonLd } from "@components/JsonLd";
 import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
+import { ButtonLink } from "@components/Button";
+import { Blocks, Gallery, PageHeader, Points, Section } from "@components/Page";
 
 export const metadata: Metadata = {
   title: 'Pompe à Chaleur et Climatisation à Pamfou',
@@ -12,6 +14,58 @@ export const metadata: Metadata = {
   },
 };
 
+const solutions = [
+  {
+    title: "Pompes à Chaleur Air-Air",
+    details: [
+      "Installation de splits et multi-splits",
+      "Chauffage et rafraîchissement réversible",
+      "Économies d'énergie jusqu'à 70%",
+      "Contrôle intelligent et programmation",
+      "Maintenance et entretien annuel",
+      "Marques premium (Daikin, Mitsubishi, Panasonic)",
+    ],
+  },
+  {
+    title: "Pompes à Chaleur Air-Eau",
+    details: [
+      "Remplacement de chaudière fioul/gaz",
+      "Production d'eau chaude sanitaire",
+      "Compatible plancher chauffant et radiateurs",
+      "Garantie constructeur étendue",
+    ],
+  },
+  {
+    title: "Climatisation Résidentielle",
+    details: [
+      "Climatiseurs mono et multi-zones",
+      "Unités murales design et silencieuses",
+      "Climatisation gainable (discret)",
+      "Filtration et purification de l'air",
+      "Télécommande et contrôle Wi-Fi",
+      "Consommation énergétique optimisée (A+++)",
+    ],
+  },
+  {
+    title: "Services Associés",
+    details: [
+      "Étude thermique personnalisée",
+      "Raccordement électrique aux normes",
+      "Évacuation des condensats",
+      "Mise en service et réglages",
+      "Formation à l'utilisation",
+      "Contrat de maintenance préventive",
+    ],
+  },
+];
+
+const steps = [
+  { title: "Étude et Devis Gratuit", desc: "Visite technique, calcul des besoins, étude thermique et proposition personnalisée" },
+  { title: "Planification des Travaux", desc: "Organisation du chantier, commande du matériel, coordination des équipes" },
+  { title: "Installation Professionnelle", desc: "Pose des unités intérieure et extérieure, raccordements hydrauliques et électriques" },
+  { title: "Mise en Service et Formation", desc: "Tests de fonctionnement, réglages optimaux, formation à l'utilisation" },
+];
+
 export default function PompeAChaleurClimatisation() {
   return (
     <Container>
@@ -20,168 +74,55 @@ export default function PompeAChaleurClimatisation() {
         description="Installation de pompes à chaleur air-air, air-eau et systèmes de climatisation à Pamfou et en Seine-et-Marne."
         slug="pompe-chaleur-climatisation"
       />
-      <div className="px-4 py-16">
-        {/* Hero Section */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
-            Pompe à Chaleur & <span className="text-primary">Climatisation</span>
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Solutions énergétiques modernes et économiques pour votre confort thermique toute l'année. 
-            Installation professionnelle de pompes à chaleur et systèmes de climatisation à Pamfou et Seine-et-Marne.
-          </p>
-        </div>
+      <PageHeader
+        kicker="Pompe à chaleur et climatisation"
+        title="Pompe à chaleur et climatisation"
+        intro="Solutions énergétiques modernes et économiques pour votre confort thermique toute l'année. Installation professionnelle de pompes à chaleur et systèmes de climatisation à Pamfou et Seine-et-Marne."
+        image="/images/pac-jardin.webp"
+        imageAlt="Tuyaux de chauffage"
+      >
+        <ButtonLink href="/contact" variant="signal">Demander un devis gratuit</ButtonLink>
+        <ButtonLink href="tel:+33695918103" variant="line">06 95 91 81 03</ButtonLink>
+      </PageHeader>
 
-        {/* Services Section */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
-            Nos Solutions de Chauffage et Climatisation
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-lg border">
-              <h3 className="text-2xl font-semibold mb-4 text-primary">Pompes à Chaleur Air-Air</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li>• Installation de splits et multi-splits</li>
-                <li>• Chauffage et rafraîchissement réversible</li>
-                <li>• Économies d'énergie jusqu'à 70%</li>
-                <li>• Contrôle intelligent et programmation</li>
-                <li>• Maintenance et entretien annuel</li>
-                <li>• Marques premium (Daikin, Mitsubishi, Panasonic)</li>
-              </ul>
-            </div>
+      <Section title="Nos solutions de chauffage et climatisation">
+        <Blocks items={solutions.map((s) => ({ title: s.title, children: <Points items={s.details} /> }))} />
+      </Section>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border">
-              <h3 className="text-2xl font-semibold mb-4 text-primary">Pompes à Chaleur Air-Eau</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li>• Remplacement de chaudière fioul/gaz</li>
-                <li>• Production d'eau chaude sanitaire</li>
-                <li>• Compatible plancher chauffant et radiateurs</li>
-                <li>• Éligible aux aides d'État (MaPrimeRénov')</li>
-                <li>• Installation certifiée RGE</li>
-                <li>• Garantie constructeur étendue</li>
-              </ul>
-            </div>
+      <Section tone="dark" title="Pourquoi choisir nos solutions énergétiques ?">
+        <Blocks
+          tone="dark"
+          cols={3}
+          items={[
+            { title: "Économies Garanties", text: "Réduction de 40 à 70% sur vos factures de chauffage et climatisation" },
+            { title: "Écologique", text: "Solutions respectueuses de l'environnement, énergie renouvelable" },
+            { title: "Confort Optimal", text: "Température idéale toute l'année, diffusion homogène" },
+          ]}
+        />
+      </Section>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border">
-              <h3 className="text-2xl font-semibold mb-4 text-primary">Climatisation Résidentielle</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li>• Climatiseurs mono et multi-zones</li>
-                <li>• Unités murales design et silencieuses</li>
-                <li>• Climatisation gainable (discret)</li>
-                <li>• Filtration et purification de l'air</li>
-                <li>• Télécommande et contrôle Wi-Fi</li>
-                <li>• Consommation énergétique optimisée (A+++)</li>
-              </ul>
-            </div>
+      <Section title="Notre processus d'installation">
+        <ol className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((item, index) => (
+            <li key={item.title} className="border-t border-ardoise/15 pt-5">
+              <span className="display-title text-4xl text-ardoise/30">{index + 1}</span>
+              <h3 className="mt-3 font-display text-xl font-bold [font-stretch:115%]">{item.title}</h3>
+              <p className="mt-2 text-ardoise/75">{item.desc}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border">
-              <h3 className="text-2xl font-semibold mb-4 text-primary">Services Associés</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li>• Étude thermique personnalisée</li>
-                <li>• Raccordement électrique aux normes</li>
-                <li>• Évacuation des condensats</li>
-                <li>• Mise en service et réglages</li>
-                <li>• Formation à l'utilisation</li>
-                <li>• Contrat de maintenance préventive</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <Section title="La pompe à chaleur en images" intro="Photos d'illustration des travaux que nous réalisons.">
+        <Gallery
+          photos={[
+            { src: "/images/pac-facade.webp", alt: "Unités extérieures de pompe à chaleur fixées en façade", caption: "Unités murales en façade" },
+            { src: "/images/pac-unite.webp", alt: "Unité extérieure de pompe à chaleur", caption: "Unité extérieure air-eau" },
+          ]}
+        />
+      </Section>
 
-        {/* Avantages Section */}
-        <div className="bg-building-800 text-white py-16 rounded-2xl mb-16">
-          <div className="max-w-4xl mx-auto px-8">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              Pourquoi Choisir nos Solutions Énergétiques ?
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-4xl mb-4">💰</div>
-                <h3 className="text-xl font-semibold mb-2">Économies Garanties</h3>
-                <p className="text-building-200">Réduction de 40 à 70% sur vos factures de chauffage et climatisation</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl mb-4">🌱</div>
-                <h3 className="text-xl font-semibold mb-2">Écologique</h3>
-                <p className="text-building-200">Solutions respectueuses de l'environnement, énergie renouvelable</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl mb-4">🏠</div>
-                <h3 className="text-xl font-semibold mb-2">Confort Optimal</h3>
-                <p className="text-building-200">Température idéale toute l'année, diffusion homogène</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Process Section */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
-            Notre Processus d'Installation
-          </h2>
-          <div className="space-y-8">
-            <div className="flex items-start space-x-6">
-              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shrink-0">1</div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Étude et Devis Gratuit</h3>
-                <p className="text-gray-600">Visite technique, calcul des besoins, étude thermique et proposition personnalisée</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-6">
-              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shrink-0">2</div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Planification des Travaux</h3>
-                <p className="text-gray-600">Organisation du chantier, commande du matériel, coordination des équipes</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-6">
-              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shrink-0">3</div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Installation Professionnelle</h3>
-                <p className="text-gray-600">Pose des unités, raccordements, mise en service par techniciens certifiés</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-6">
-              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shrink-0">4</div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Mise en Service et Formation</h3>
-                <p className="text-gray-600">Tests de fonctionnement, réglages optimaux, formation à l'utilisation</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <RelatedServices slugs={["electricite", "plomberie", "renovation-interieure"]} />
-
-        {/* CTA Section */}
-        <div className="bg-quaternary border border-primary/20 rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4 text-gray-800">
-            Besoin d'une Installation de Pompe à Chaleur ou Climatisation ?
-          </h2>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Nos experts vous conseillent gratuitement pour choisir la solution la plus adaptée à votre logement et votre budget. 
-            Éligibilité aux aides d'État vérifiée.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:0695918103"
-              className="bg-primary text-white px-8 py-3 rounded-xl font-semibold hover:bg-secondary transition-colors"
-            >
-              📞 06 95 91 81 03
-            </a>
-            <a
-              href="/contact"
-              className="border border-primary text-primary px-8 py-3 rounded-xl font-semibold hover:bg-primary hover:text-white transition-colors"
-            >
-              Devis Gratuit
-            </a>
-          </div>
-          <p className="text-sm text-gray-500 mt-4">
-            📍 Zone d'intervention : Pamfou et 50km • Installation certifiée RGE • Aides d'État possibles
-          </p>
-        </div>
-      </div>
+      <RelatedServices slugs={["electricite", "plomberie", "renovation-interieure"]} />
     </Container>
   );
 }

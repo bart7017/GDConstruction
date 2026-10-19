@@ -14,6 +14,12 @@
   --color-quaternary: #f1f5f9; /* Gris très clair */
   --color-accent: #f59e0b; /* Orange pour les CTA */
 
+  /* Palette minérale de la refonte (voir design/direction.md). */
+  --color-ardoise: #22303a;
+  --color-chaux: #eef0ec;
+  --color-gres: #b89b72; /* décoratif uniquement : contraste insuffisant pour du texte sur chaux */
+  --color-signal: #f2a900; /* jaune chantier, boutons d'action */
+
   --color-construction-50: #fef7ed;
   --color-construction-100: #fef0d9;
   --color-construction-200: #fed7aa;
@@ -61,20 +67,107 @@
   }
 
   html {
-    font-family: "Inter", sans-serif;
     scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-chaux);
+    color: var(--color-ardoise);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
-/* Motifs de fond, anciennement un plugin matchUtilities appuye sur
-   flattenColorPalette. Ce helper interne n'existe plus en v4, et les couleurs y
-   sont desormais des variables CSS : un plugin JS ne peut plus recuperer la
-   valeur litterale exigee par l'URI de donnees SVG. Les deux variantes
-   reellement utilisees sont donc declarees en dur, a l'identique de v3. */
-@utility bg-grid-white\/10 {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+/* Polices chargées par next/font dans app/layout.tsx. */
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
 }
 
-@utility bg-grid-extrasmall-zinc-200 {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='8' height='8' fill='none' stroke='%23e4e4e7'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+/* Titres de la refonte : Archivo élargie, très grasse, serrée. */
+@utility display-title {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+/* Trait de niveau laser : balaie une seule fois sous le titre du hero au chargement. */
+@utility laser {
+  box-shadow: 0 0 12px 1px var(--color-signal);
+  transform-origin: left;
+  animation: laser-sweep 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+@keyframes laser-sweep {
+  from {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 0.6;
+  }
+}
+
+/* Apparition au défilement, en CSS natif (scroll-driven animations).
+   Navigateurs sans support : le contenu est simplement visible. Les éléments déjà à
+   l'écran au chargement sont au-delà de la plage « entry » : ils s'affichent pleins. */
+@utility reveal {
+  @supports (animation-timeline: view()) {
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+    /* Mouvement réduit : on garde le fondu, on retire le déplacement. */
+    @media (prefers-reduced-motion: reduce) {
+      animation-name: reveal-fade;
+    }
+  }
+}
+
+/* Photo qui se recadre doucement en entrant à l'écran. */
+@utility reveal-zoom {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: reveal-zoom linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes reveal-zoom {
+  from {
+    transform: scale(1.12);
+  }
+}
+
+/* Entrée du titre du hero, juste avant le passage du laser. */
+@utility hero-in {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
 }
