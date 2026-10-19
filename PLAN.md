@@ -4,7 +4,7 @@
 Refondre tout le design du site en ultra premium, en gardant le contenu, le SEO et les pages actuelles.
 
 ## EN COURS
-Phases 1 à 4 terminées : refonte mergée sur main (PR #15, 19/10) et en ligne. Prochaine étape : phase 5 (Cloudflare), en attente d'accord.
+Phases 1 à 4 terminées : refonte mergée sur main (PR #15, 19/10) et en ligne. Phase 5 faite le 19/10 : site servi via Cloudflare (proxy devant Vercel). Reste à jeter un œil à Search Console et à l'onglet Domains de Vercel dans les prochains jours.
 
 ## Phase 1 — Direction design
 - [x] Propositions frontend-design / Magic / apple-emil présentées
@@ -41,14 +41,14 @@ Phases 1 à 4 terminées : refonte mergée sur main (PR #15, 19/10) et en ligne.
 - [x] review-animations (2 corrections : zoom mosaïque 300 ms, fondu conservé en mouvement réduit) ; animation-performance : transform/opacity uniquement
 - [x] Lighthouse mobile (local, mêmes conditions) : accessibilité 100 (avant 94-96), SEO 100, bonnes pratiques 96 (seule erreur : script Vercel Analytics absent en local), perf 88-96 contre 97 avant. Écart dû au hero photo (LCP image au lieu de texte) ; LCP réel mesuré 0,1 s. Gains faits : preload + fetchPriority, framer-motion retiré (tiroir en CSS).
 - [x] Suppression de `app/maquettes` + composants morts (SubHero, CTA, CardPattern, GridPattern, CustomLink, DesktopNav, MobileNav, features, ancien Button, motifs bg-grid, dépendance mini-svg-data-uri)
-- [ ] Supprimer les Artifacts du projet (liste dans À NE PAS OUBLIER), après accord de Sébastien
+- [x] Supprimer les Artifacts du projet (4 supprimés le 19/10, avec l'accord de Sébastien)
 - [x] PR #15 mergée sur main, déployée (prod : accessibilité, bonnes pratiques et SEO 100, perf 91-96)
 **Critère de fin** : build et lint OK, scores vérifiés, PR prête. ✔
 
 ## Phase 5 — Hébergement : modèle ABC Guêpes
-- [ ] DNS de gdconstruction.net déplacé chez Cloudflare (actuellement Dyna-NS) avec proxy devant Vercel
-- [ ] Désactiver l'obfuscation d'e-mail Cloudflare (404 `/cdn-cgi/l/email-protection`)
-- [ ] robots.txt ouvert aux crawlers IA
+- [x] DNS de gdconstruction.net déplacé chez Cloudflare (actuellement Dyna-NS) avec proxy devant Vercel, SSL Full (strict). Enregistrements à garder : A @ 216.198.79.1, CNAME www → 3f944b9153989905.vercel-dns-017.com, TXT google-site-verification. Ni MX ni DNSSEC.
+- [x] Désactiver l'obfuscation d'e-mail Cloudflare (404 `/cdn-cgi/l/email-protection`) ; Bot Preference Sync coupé (sinon Content-Signal ajouté au robots.txt) ; aucun robot IA bloqué (testé : GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot → 200)
+- [x] robots.txt ouvert aux crawlers IA (déjà `User-agent: *` / `Allow: /` ; couper « Block AI bots » et « Manage robots.txt » côté Cloudflare)
 **Critère de fin** : site servi via Cloudflare, aucun 404 nouveau, Search Console OK.
 
 ## INTERCALÉ
@@ -60,14 +60,13 @@ Phases 1 à 4 terminées : refonte mergée sur main (PR #15, 19/10) et en ligne.
 ## À NE PAS OUBLIER
 - Fichiers d'origine non utilisés, laissés en place : public/banner.png, public/images/landing.png, public/images/testimonials/*.png (avatars des faux avis). À supprimer après vérification qu'aucun lien externe ne les vise.
 - Serveur de dev : port 3005 uniquement. Le port 3000 = autre projet (SBinnovate), ne jamais y toucher.
-- Artifacts créés pour le projet (à supprimer en fin de projet) : https://claude.ai/artifact/WfPRA694VTAqfpKiWXGV4T, https://claude.ai/artifact/SZCPiwmLM6Cty6vbwRBHWH, https://claude.ai/artifact/YPQxsT22axhui7jBpAyr51
 - Réalisations = vrais chantiers (confirmé 19/10), photos toujours attendues de Grégory.
 - Photo du hero = Unsplash (ambiance) ; la remplacer par une vraie photo de chantier dès que possible.
 - Demander à Grégory des photos de chantiers, dont des paires avant/après : c'est le facteur n°1 du rendu premium (et ça débloque la fiche Google Business).
 - La branche actuelle `feat/formulaire-contact` a un commit non mergé ; faire la refonte sur une nouvelle branche.
-- CLAUDE.md : section « Outils IA » ajoutée, pas encore commitée.
 
 ## Journal
+- 2026-10-19 : phase 5, Cloudflare actif (serveurs coen/kristina.ns.cloudflare.com, SSL Full strict). 20 pages du sitemap en 200 via Cloudflare. Certificat Cloudflare absent quelques minutes juste après l'activation (erreur TLS), réglé tout seul.
 - 2026-10-19 : lancement de la refonte, maquettes A/B/C.
 - 2026-10-19 : photos Unsplash sans personne identifiable ; méthodes remises dans l'ordre (peinture : protéger puis préparer, etc.) ; phase 4 (animations, nettoyage, Lighthouse).
 - 2026-10-19 : direction A + C + photo Unsplash en hero ; phase 2 faite. Lien « À propos » corrigé (/#about → /a-propos). « Devis sous 48 h » retiré des cotes (promesse absente du site).
