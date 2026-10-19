@@ -4,7 +4,7 @@
 Refondre tout le design du site en ultra premium, en gardant le contenu, le SEO et les pages actuelles.
 
 ## EN COURS
-Phase 4 terminée sauf la PR (commit + push à valider par Sébastien). Phase 3 close : toutes les pages, photos, méthodes revérifiées. Questions ouvertes : attestations désamiantage et fluides frigorigènes (artifact validations, point 6) Unsplash par métier (quota API 50/h atteint, reprendre après réinitialisation).
+Phases 1 à 4 terminées : refonte mergée sur main (PR #15, 19/10) et en ligne. Prochaine étape : phase 5 (Cloudflare), en attente d'accord.
 
 ## Phase 1 — Direction design
 - [x] Propositions frontend-design / Magic / apple-emil présentées
@@ -42,7 +42,8 @@ Phase 4 terminée sauf la PR (commit + push à valider par Sébastien). Phase 3 
 - [x] Lighthouse mobile (local, mêmes conditions) : accessibilité 100 (avant 94-96), SEO 100, bonnes pratiques 96 (seule erreur : script Vercel Analytics absent en local), perf 88-96 contre 97 avant. Écart dû au hero photo (LCP image au lieu de texte) ; LCP réel mesuré 0,1 s. Gains faits : preload + fetchPriority, framer-motion retiré (tiroir en CSS).
 - [x] Suppression de `app/maquettes` + composants morts (SubHero, CTA, CardPattern, GridPattern, CustomLink, DesktopNav, MobileNav, features, ancien Button, motifs bg-grid, dépendance mini-svg-data-uri)
 - [ ] Supprimer les Artifacts du projet (liste dans À NE PAS OUBLIER), après accord de Sébastien
-**Critère de fin** : build et lint OK, scores vérifiés, PR prête.
+- [x] PR #15 mergée sur main, déployée (prod : accessibilité, bonnes pratiques et SEO 100, perf 91-96)
+**Critère de fin** : build et lint OK, scores vérifiés, PR prête. ✔
 
 ## Phase 5 — Hébergement : modèle ABC Guêpes
 - [ ] DNS de gdconstruction.net déplacé chez Cloudflare (actuellement Dyna-NS) avec proxy devant Vercel
@@ -51,6 +52,7 @@ Phase 4 terminée sauf la PR (commit + push à valider par Sébastien). Phase 3 
 **Critère de fin** : site servi via Cloudflare, aucun 404 nouveau, Search Console OK.
 
 ## INTERCALÉ
+- [x] Point 6 des validations : désamiantage et liaisons frigorifiques « réalisés par une entreprise / un professionnel certifié » (Grégory sous-traite sans accréditation)
 - [x] Serveur de dev sur le port 3005 (3000 pris par un autre projet)
 - [x] Règle globale étendue : toutes les questions et validations en Artifact (exemples du 19/10)
 - [x] Règle globale : présenter les choix en Artifact (format des modèles) et supprimer les Artifacts en fin de projet
