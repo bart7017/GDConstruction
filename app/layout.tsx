@@ -1,8 +1,13 @@
 import '../styles/globals.css'
 import { Metadata } from 'next'
+import { Archivo, Inter } from 'next/font/google'
 import { LocalBusinessJsonLd } from '@components/JsonLd'
 // Mesure d'audience sans cookie ni identifiant : rien à demander au visiteur.
 import { Analytics } from '@vercel/analytics/next'
+
+// Archivo élargie (axe wdth) pour les titres, Inter pour le texte : voir design/direction.md.
+const archivo = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--font-archivo', display: 'swap' })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
 
 export const metadata: Metadata = {
   title: {
@@ -52,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${archivo.variable} ${inter.variable}`}>
       <body className="antialiased">
         <LocalBusinessJsonLd />
         {children}

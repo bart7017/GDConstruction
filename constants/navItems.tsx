@@ -6,7 +6,7 @@ export const navItems: NavItem[] = [
     link: "/",
   },
   {
-    name: "Nos Services",
+    name: "Services",
     link: "/services",
   },
   {
@@ -14,8 +14,8 @@ export const navItems: NavItem[] = [
     link: "/realisations",
   },
   {
-    name: "À Propos",
-    link: "/#about",
+    name: "À propos",
+    link: "/a-propos",
   },
   {
     name: "Contact",

@@ -2,8 +2,9 @@ import { Container } from "@components/Container";
 import { ServiceJsonLd } from "@components/JsonLd";
 import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
-import Link from 'next/link';
 import Image from 'next/image';
+import { ButtonLink } from "@components/Button";
+import { Blocks, PageHeader, Points, Section } from "@components/Page";
 
 export const metadata: Metadata = {
   title: 'Carrelage et Sols à Pamfou | Carreleur Seine-et-Marne',
@@ -90,11 +91,11 @@ const services = [
     icon: "🔨",
     description: "Mise à niveau et préparation parfaite",
     details: [
-      "Ragréage autolissant",
-      "Chape sèche et liquide",
       "Dépose ancien revêtement",
       "Traitement humidité",
+      "Chape sèche et liquide",
       "Primaire d'accrochage",
+      "Ragréage autolissant",
       "Planéité et nivellement"
     ]
   }
@@ -108,212 +109,105 @@ export default function CarrelageSols() {
         description="Pose de carrelage, parquet et sols PVC à Pamfou et en Seine-et-Marne."
         slug="carrelage-sols"
       />
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Header avec photo */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
-            <span className="text-4xl">🏛️</span>
-            <span className="text-primary font-semibold">Carrelage & Sols</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Carreleur Professionnel à Pamfou
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            GD Construction maîtrise la pose de tous revêtements de sols et murs en Seine-et-Marne. 
-            Carrelage, parquet, PVC : notre expertise technique garantit un résultat parfait 
-            et durable dans tous vos espaces.
-          </p>
-          
-          {/* Photo d'illustration */}
-          <div className="relative aspect-16/9 rounded-2xl overflow-hidden shadow-xl mb-8">
-            <Image
-              src="/images/carrelage-sol.webp"
-              alt="Pose de carrelage au sol - Travaux de carrelage professionnel"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20"></div>
-            <div className="absolute bottom-6 left-6 text-white">
-              <p className="text-sm font-medium">Pose de carrelage - Réalisation GD Construction</p>
-            </div>
-          </div>
-        </div>
+      <PageHeader
+        kicker="Carrelage et sols"
+        title="Carreleur professionnel à Pamfou"
+        intro="GD Construction maîtrise la pose de tous revêtements de sols et murs en Seine-et-Marne. Carrelage, parquet, PVC : notre expertise technique garantit un résultat parfait et durable dans tous vos espaces."
+        image="/images/carrelage-sol.webp"
+        imageAlt="Pose de carrelage au sol"
+      >
+        <ButtonLink href="/contact" variant="signal">Demander un devis gratuit</ButtonLink>
+        <ButtonLink href="tel:+33695918103" variant="line">06 95 91 81 03</ButtonLink>
+      </PageHeader>
 
-        {/* Galerie de nos réalisations en carrelage */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Nos Réalisations en Carrelage
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/carrelage-laser.webp"
-                alt="Pose de carrelage avec laser d'alignement"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
-                <p className="text-sm font-medium">Pose avec laser d'alignement pour précision parfaite</p>
+      <Section title="Le carrelage en images" intro="Photos d'illustration des travaux que nous réalisons.">
+        <div className="grid gap-4 md:grid-cols-2">
+          {[
+            { src: "/images/carrelage-laser.webp", alt: "Pose de carrelage avec laser d'alignement", caption: "Pose avec laser d'alignement pour précision parfaite" },
+            { src: "/images/sol-parquet.webp", alt: "Pose de parquet", caption: "Parquet massif posé en chevron" },
+            { src: "/images/carrelage-joints.webp", alt: "Outils de jointoiement sur un carrelage terre cuite", caption: "Joints et finitions" },
+            { src: "/images/carrelage-mortier.webp", alt: "Étalement de la colle à carrelage", caption: "Encollage avant pose" },
+          ].map((photo) => (
+            <figure key={photo.src}>
+              <div className="relative aspect-[4/3] overflow-hidden [&_img]:reveal-zoom rounded-2xl">
+                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
               </div>
-            </div>
-            <div className="relative aspect-4/3 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/sol-parquet.webp"
-                alt="Pose de parquet professionnel"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
-                <p className="text-sm font-medium">Parquet massif posé en chevron</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-6 border hover:shadow-xl transition-shadow">
-              <div className="text-center mb-4">
-                <span className="text-5xl">{service.icon}</span>
-                <h3 className="text-xl font-semibold text-gray-900 mt-3">
-                  {service.title}
-                </h3>
-              </div>
-              <p className="text-gray-600 mb-4 text-center text-sm leading-relaxed">
-                {service.description}
-              </p>
-              <ul className="space-y-2">
-                {service.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-start space-x-2">
-                    <span className="text-primary font-bold text-sm">•</span>
-                    <span className="text-gray-700 text-sm">{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <figcaption className="mt-3 text-sm text-ardoise/70">{photo.caption}</figcaption>
+            </figure>
           ))}
         </div>
+      </Section>
 
-        {/* Types de carrelage */}
-        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Carrelages et Matériaux Disponibles
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { type: "Grès Cérame", desc: "Intérieur/extérieur, tous formats", prix: "20-60€/m²" },
-              { type: "Faïence", desc: "Mur cuisine, salle de bain", prix: "15-45€/m²" },
-              { type: "Pierre Naturelle", desc: "Travertin, marbre, granit", prix: "40-120€/m²" },
-              { type: "Parquet Massif", desc: "Chêne, hêtre, châtaignier", prix: "50-150€/m²" }
-            ].map((item, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 text-center shadow-md">
-                <h3 className="font-semibold text-lg text-primary mb-2">{item.type}</h3>
-                <p className="text-gray-600 text-sm mb-3">{item.desc}</p>
-                <div className="text-lg font-bold text-secondary">{item.prix}</div>
+      <Section title="Nos prestations carrelage et sols">
+        <Blocks
+          cols={3}
+          items={services.map((service) => ({
+            title: service.title,
+            text: service.description,
+            children: <Points items={service.details} />,
+          }))}
+        />
+      </Section>
+
+      <Section tone="white" title="Carrelages et matériaux disponibles">
+        <Blocks
+          cols={4}
+          items={[
+            { type: "Grès Cérame", desc: "Intérieur/extérieur, tous formats", prix: "20-60€/m²" },
+            { type: "Faïence", desc: "Mur cuisine, salle de bain", prix: "15-45€/m²" },
+            { type: "Pierre Naturelle", desc: "Travertin, marbre, granit", prix: "40-120€/m²" },
+            { type: "Parquet Massif", desc: "Chêne, hêtre, châtaignier", prix: "50-150€/m²" },
+          ].map((item) => ({
+            title: item.type,
+            text: item.desc,
+            children: <p className="display-title text-3xl">{item.prix}</p>,
+          }))}
+        />
+        <p className="mt-10 text-sm text-ardoise/70">* Prix TTC pose comprise, hors préparation support</p>
+      </Section>
+
+      <Section title="Notre méthode de pose professionnelle">
+        <ol className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
+          {[
+            { title: "Diagnostic", desc: "Mesures et état du support" },
+            { title: "Préparation", desc: "Primaire d'accrochage, ragréage et mise à niveau" },
+            { title: "Calepinage", desc: "Plan de pose optimal" },
+            { title: "Pose", desc: "Collage et alignement" },
+            { title: "Finitions", desc: "Joints après séchage, puis nettoyage" },
+          ].map((item, index) => (
+            <li key={item.title} className="border-t border-ardoise/15 pt-5">
+              <span className="display-title text-4xl text-ardoise/30">{index + 1}</span>
+              <h3 className="mt-3 font-display text-xl font-bold [font-stretch:115%]">{item.title}</h3>
+              <p className="mt-2 text-ardoise/75">{item.desc}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section tone="dark" title="Exemples de chantiers types">
+        <Blocks
+          tone="dark"
+          cols={3}
+          items={[
+            { type: "Salle de Bain Complète", details: "Sol 60x60 + mur faïence + mosaïque", surface: "6m²", duree: "2 jours", prix: "À partir de 950€" },
+            { type: "Cuisine Moderne", details: "Crédence + sol grand format", surface: "15m²", duree: "3 jours", prix: "À partir de 1350€" },
+            { type: "Terrasse Extérieure", details: "Carrelage antidérapant sur plot", surface: "25m²", duree: "4 jours", prix: "À partir de 1800€" },
+          ].map((example) => ({
+            title: example.type,
+            text: example.details,
+            children: (
+              <div className="grid gap-1">
+                <p><strong className="text-chaux">Surface :</strong> {example.surface}</p>
+                <p><strong className="text-chaux">Durée :</strong> {example.duree}</p>
+                <p className="display-title mt-3 text-2xl text-signal">{example.prix}</p>
               </div>
-            ))}
-          </div>
-          <p className="text-center text-sm text-gray-600 mt-6">
-            * Prix TTC pose comprise, hors préparation support
-          </p>
-        </div>
+            ),
+          }))}
+        />
+        <p className="mt-10 text-sm text-chaux/70">* Prix indicatifs fourniture et pose, devis personnalisé selon matériaux choisis</p>
+      </Section>
 
-        {/* Processus de pose */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Notre Méthode de Pose Professionnelle
-          </h2>
-          <div className="grid md:grid-cols-5 gap-4">
-            {[
-              { step: "1", title: "Diagnostic", desc: "Mesures et état du support" },
-              { step: "2", title: "Préparation", desc: "Ragréage et mise à niveau" },
-              { step: "3", title: "Calepinage", desc: "Plan de pose optimal" },
-              { step: "4", title: "Pose", desc: "Collage et alignement" },
-              { step: "5", title: "Finitions", desc: "Joints et nettoyage" }
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 font-bold">
-                  {item.step}
-                </div>
-                <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
-                <p className="text-gray-600 text-xs">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Réalisations types */}
-        <div className="bg-linear-to-r from-primary/5 to-secondary/5 rounded-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Exemples de Réalisations
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { 
-                type: "Salle de Bain Complète", 
-                details: "Sol 60x60 + mur faïence + mosaïque",
-                surface: "6m²",
-                duree: "2 jours",
-                prix: "À partir de 950€"
-              },
-              { 
-                type: "Cuisine Moderne", 
-                details: "Crédence + sol grand format",
-                surface: "15m²", 
-                duree: "3 jours",
-                prix: "À partir de 1350€"
-              },
-              { 
-                type: "Terrasse Extérieure",
-                details: "Carrelage antidérapant sur plot",
-                surface: "25m²",
-                duree: "4 jours", 
-                prix: "À partir de 1800€"
-              }
-            ].map((example, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 shadow-md">
-                <h3 className="font-semibold text-lg text-primary mb-3">{example.type}</h3>
-                <p className="text-gray-600 text-sm mb-4">{example.details}</p>
-                <div className="space-y-1 text-sm text-gray-600 border-t pt-3">
-                  <p><strong>Surface :</strong> {example.surface}</p>
-                  <p><strong>Durée :</strong> {example.duree}</p>
-                  <p className="text-lg font-bold text-secondary">{example.prix}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-sm text-gray-600 mt-6">
-            * Prix indicatifs fourniture et pose, devis personnalisé selon matériaux choisis
-          </p>
-        </div>
-
-        <RelatedServices slugs={["peinture-finitions", "renovation-interieure", "maconnerie-generale"]} />
-
-        {/* CTA */}
-        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Projet Carrelage à Pamfou ?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Devis gratuit • Large choix • Pose soignée
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/contact"
-              className="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Demander un devis
-            </Link>
-            <a 
-              href="tel:0695918103"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
-            >
-              06 95 91 81 03
-            </a>
-          </div>
-        </div>
-      </div>
+      <RelatedServices slugs={["peinture-finitions", "renovation-interieure", "maconnerie-generale"]} />
     </Container>
   );
 }

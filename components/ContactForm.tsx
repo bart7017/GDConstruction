@@ -36,19 +36,18 @@ export const ContactForm = () => {
 
   if (status === 'sent') {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-        <div className="text-3xl mb-3">✓</div>
-        <h3 className="text-lg font-semibold text-green-900 mb-2">
+      <div role="status" className="border-l-4 border-signal bg-chaux p-6">
+        <h3 className="display-title text-2xl text-ardoise">
           Votre demande est partie
         </h3>
-        <p className="text-green-800 text-sm mb-4">
+        <p className="mt-3 mb-4 text-ardoise/80">
           Nous vous rappelons sous 48 heures ouvrées. Pour une urgence, appelez
           directement le 06 95 91 81 03.
         </p>
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="text-sm text-green-900 underline"
+          className="font-semibold text-ardoise underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ardoise"
         >
           Envoyer une autre demande
         </button>
@@ -57,23 +56,23 @@ export const ContactForm = () => {
   }
 
   const field =
-    'w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 ' +
-    'focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none';
-  const label = 'block text-sm font-medium text-gray-700 mb-1.5';
+    'w-full rounded-xl border border-ardoise/20 bg-white px-4 py-3 text-ardoise placeholder:text-ardoise/45 ' +
+    'focus:border-ardoise focus:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ardoise';
+  const label = 'mb-2 block text-sm font-semibold text-ardoise';
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={onSubmit} className="space-y-5">
       {/* Piège à robots : un humain ne remplit pas un champ masqué. */}
       <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="hidden" />
 
       <div>
-        <label className={label} htmlFor="nom">Nom <span className="text-primary">*</span></label>
+        <label className={label} htmlFor="nom">Nom <span aria-hidden className="text-ardoise/60">*</span></label>
         <input className={field} id="nom" name="nom" type="text" required autoComplete="name" />
       </div>
 
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
-          <label className={label} htmlFor="email">E-mail <span className="text-primary">*</span></label>
+          <label className={label} htmlFor="email">E-mail <span aria-hidden className="text-ardoise/60">*</span></label>
           <input className={field} id="email" name="email" type="email" required autoComplete="email" />
         </div>
         <div>
@@ -88,7 +87,7 @@ export const ContactForm = () => {
       </div>
 
       <div>
-        <label className={label} htmlFor="projet">Votre projet <span className="text-primary">*</span></label>
+        <label className={label} htmlFor="projet">Votre projet <span aria-hidden className="text-ardoise/60">*</span></label>
         <textarea
           className={field}
           id="projet"
@@ -100,7 +99,7 @@ export const ContactForm = () => {
       </div>
 
       {status === 'error' && (
-        <p className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+        <p role="alert" className="rounded-xl border border-red-700/30 bg-red-50 px-4 py-3 text-sm text-red-800">
           L&apos;envoi a échoué. Réessayez, ou appelez le 06 95 91 81 03.
         </p>
       )}
@@ -108,12 +107,12 @@ export const ContactForm = () => {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-secondary transition-colors disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center rounded-full bg-signal px-7 py-4 font-semibold text-ardoise transition-[transform,filter] duration-150 hover:brightness-105 active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ardoise disabled:opacity-60 motion-reduce:transition-none"
       >
         {status === 'sending' ? 'Envoi…' : 'Demander un devis gratuit'}
       </button>
 
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-ardoise/70">
         Vos données servent uniquement à traiter votre demande et sont conservées
         3 ans maximum.{' '}
         <Link href="/mentions-legales" className="underline">

@@ -1,4 +1,5 @@
 import { Container } from "@components/Container";
+import { ButtonLink } from "@components/Button";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -17,13 +18,13 @@ const formulaireActif = Boolean(process.env.NEXT_PUBLIC_FORMSPREE_ID);
 export default function MentionsLegales() {
   return (
     <Container>
-      <div className="px-4 py-16 max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-800 mb-8">Mentions Légales</h1>
+      <div className="mx-auto max-w-3xl px-4 pb-24 pt-14 sm:pt-20">
+        <h1 className="display-title mb-14 text-[2.4rem] sm:text-6xl">Mentions légales</h1>
         
         {/* Éditeur du site */}
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Éditeur du site</h2>
-          <div className="bg-gray-50 p-6 rounded-lg">
+        <section className="mb-14 border-t border-ardoise/15 pt-8">
+          <h2 className="display-title mb-5 text-2xl sm:text-3xl">Éditeur du site</h2>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p><strong>Raison sociale :</strong> GD Construction</p>
             <p><strong>Adresse :</strong> 77830 Pamfou, Seine-et-Marne</p>
             <p><strong>Téléphone :</strong> 06 95 91 81 03</p>
@@ -38,14 +39,14 @@ export default function MentionsLegales() {
             ils n'ont pas encore été relevés sur l'attestation, et un changement de
             compagnie est prévu. Les ajouter est une mention obligatoire au sens de
             l'article L241-1 du code des assurances (assureur + zone géographique). */}
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Assurance Professionnelle</h2>
-          <div className="bg-gray-50 p-6 rounded-lg">
+        <section className="mb-14 border-t border-ardoise/15 pt-8">
+          <h2 className="display-title mb-5 text-2xl sm:text-3xl">Assurance Professionnelle</h2>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p>
               GD Construction est titulaire d'une <strong>assurance responsabilité
               civile décennale</strong> couvrant l'ensemble de ses interventions.
             </p>
-            <p className="mt-3 text-sm text-gray-600">
+            <p className="mt-3 text-sm text-ardoise/75">
               L'attestation d'assurance peut vous être transmise sur simple demande au
               06 95 91 81 03.
             </p>
@@ -53,13 +54,13 @@ export default function MentionsLegales() {
         </section>
 
         {/* Hébergement */}
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Hébergement</h2>
-          <div className="bg-gray-50 p-6 rounded-lg">
+        <section className="mb-14 border-t border-ardoise/15 pt-8">
+          <h2 className="display-title mb-5 text-2xl sm:text-3xl">Hébergement</h2>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p><strong>Hébergeur :</strong> Vercel Inc.</p>
             <p><strong>Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis</p>
-            <p><strong>Site :</strong> <a href="https://vercel.com" className="text-primary underline">vercel.com</a></p>
-            <p className="mt-3 text-sm text-gray-600">
+            <p><strong>Site :</strong> <a href="https://vercel.com" className="font-semibold text-ardoise underline underline-offset-2">vercel.com</a></p>
+            <p className="mt-3 text-sm text-ardoise/75">
               Les transferts de données hors Union européenne sont encadrés par les
               clauses contractuelles types de la Commission européenne.
             </p>
@@ -67,17 +68,17 @@ export default function MentionsLegales() {
         </section>
 
         {/* Protection des données personnelles */}
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Protection des Données Personnelles (RGPD)</h2>
+        <section className="mb-14 border-t border-ardoise/15 pt-8">
+          <h2 className="display-title mb-5 text-2xl sm:text-3xl">Protection des Données Personnelles (RGPD)</h2>
           
-          <h3 className="text-xl font-semibold text-gray-700 mb-3">Collecte des données</h3>
-          <div className="bg-gray-50 p-6 rounded-lg mb-4">
+          <h3 className="mb-2 mt-8 font-display text-lg font-bold [font-stretch:115%]">Collecte des données</h3>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             {formulaireActif ? (
               <>
                 <p className="mb-3">
                   Le formulaire de contact collecte les données suivantes :
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-gray-700 mb-3">
+                <ul className="list-disc list-inside space-y-1 text-ardoise/85 mb-3">
                   <li>Nom (obligatoire)</li>
                   <li>Adresse e-mail (obligatoire)</li>
                   <li>Numéro de téléphone (facultatif)</li>
@@ -88,7 +89,7 @@ export default function MentionsLegales() {
                   S'y ajoutent les informations que vous nous communiquez spontanément
                   lorsque vous nous appelez.
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-ardoise/75">
                   L'acheminement du formulaire est assuré par notre sous-traitant
                   Formspree Inc. (États-Unis), qui transmet le message par courriel sans
                   le conserver durablement. Ce transfert hors Union européenne est encadré
@@ -110,18 +111,18 @@ export default function MentionsLegales() {
             )}
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-700 mb-3">Finalité du traitement</h3>
-          <div className="bg-gray-50 p-6 rounded-lg mb-4">
+          <h3 className="mb-2 mt-8 font-display text-lg font-bold [font-stretch:115%]">Finalité du traitement</h3>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p>Ces données sont utilisées uniquement pour :</p>
-            <ul className="list-disc list-inside space-y-1 text-gray-700 mt-2">
+            <ul className="list-disc list-inside space-y-1 text-ardoise/85 mt-2">
               <li>Répondre à vos demandes de devis</li>
               <li>Vous contacter concernant nos services</li>
               <li>Assurer le suivi de votre projet</li>
             </ul>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-700 mb-3">Base légale</h3>
-          <div className="bg-gray-50 p-6 rounded-lg mb-4">
+          <h3 className="mb-2 mt-8 font-display text-lg font-bold [font-stretch:115%]">Base légale</h3>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p>
               Le traitement repose sur l'exécution de mesures précontractuelles prises à
               votre demande (article 6.1.b du RGPD) : l'établissement d'un devis et le
@@ -129,15 +130,15 @@ export default function MentionsLegales() {
             </p>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-700 mb-3">Durée de conservation</h3>
-          <div className="bg-gray-50 p-6 rounded-lg mb-4">
+          <h3 className="mb-2 mt-8 font-display text-lg font-bold [font-stretch:115%]">Durée de conservation</h3>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p>Vos données sont conservées pendant une durée de 3 ans maximum à compter de notre dernier contact, puis supprimées automatiquement.</p>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-700 mb-3">Vos droits</h3>
-          <div className="bg-gray-50 p-6 rounded-lg mb-4">
+          <h3 className="mb-2 mt-8 font-display text-lg font-bold [font-stretch:115%]">Vos droits</h3>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p className="mb-3">Conformément au RGPD, vous disposez des droits suivants :</p>
-            <ul className="list-disc list-inside space-y-1 text-gray-700">
+            <ul className="list-disc list-inside space-y-1 text-ardoise/85">
               <li><strong>Droit d'accès :</strong> obtenir une copie de vos données</li>
               <li><strong>Droit de rectification :</strong> corriger vos données inexactes</li>
               <li><strong>Droit d'effacement :</strong> supprimer vos données</li>
@@ -145,15 +146,15 @@ export default function MentionsLegales() {
               <li><strong>Droit à la limitation :</strong> geler l'utilisation de vos données</li>
               <li><strong>Droit à la portabilité :</strong> récupérer vos données</li>
             </ul>
-            <p className="mt-3 text-sm text-gray-600">
+            <p className="mt-3 text-sm text-ardoise/75">
               Pour exercer ces droits, contactez-nous par téléphone au 06 95 91 81 03.
             </p>
-            <p className="mt-3 text-sm text-gray-600">
+            <p className="mt-3 text-sm text-ardoise/75">
               Vous disposez également du droit d'introduire une réclamation auprès de la
               CNIL, autorité de contrôle française :{' '}
               <a
                 href="https://www.cnil.fr/fr/plaintes"
-                className="text-primary underline"
+                className="font-semibold text-ardoise underline underline-offset-2"
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -165,22 +166,22 @@ export default function MentionsLegales() {
         </section>
 
         {/* Cookies */}
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Politique des Cookies</h2>
+        <section className="mb-14 border-t border-ardoise/15 pt-8">
+          <h2 className="display-title mb-5 text-2xl sm:text-3xl">Politique des Cookies</h2>
           
-          <h3 className="text-xl font-semibold text-gray-700 mb-3">Cookies utilisés</h3>
-          <div className="bg-gray-50 p-6 rounded-lg mb-4">
+          <h3 className="mb-2 mt-8 font-display text-lg font-bold [font-stretch:115%]">Cookies utilisés</h3>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p className="mb-3">
               Ce site <strong>ne dépose aucun cookie</strong>. Il enregistre uniquement,
               dans le stockage local de votre navigateur, la réponse que vous donnez au
               bandeau d'information (clé <code>cookie-consent</code>), afin de ne pas
               vous le réafficher à chaque visite.
             </p>
-            <p className="text-sm text-gray-600 mb-3">
+            <p className="text-sm text-ardoise/75 mb-3">
               Aucun traceur publicitaire ni bouton de réseau social n'est utilisé. Cette
               préférence reste sur votre appareil et ne nous est jamais transmise.
             </p>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-ardoise/75">
               La fréquentation du site est mesurée par Vercel Analytics, sans cookie et
               sans identifiant permettant de vous reconnaître d'une visite à l'autre.
               Aucune donnée personnelle n'est produite par cette mesure, qui ne requiert
@@ -188,8 +189,8 @@ export default function MentionsLegales() {
             </p>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-700 mb-3">Gestion des cookies</h3>
-          <div className="bg-gray-50 p-6 rounded-lg mb-4">
+          <h3 className="mb-2 mt-8 font-display text-lg font-bold [font-stretch:115%]">Gestion des cookies</h3>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p>
               Vous pouvez à tout moment effacer cette préférence en vidant les données de
               site de votre navigateur, ou configurer celui-ci pour bloquer le stockage
@@ -199,44 +200,34 @@ export default function MentionsLegales() {
         </section>
 
         {/* Propriété intellectuelle */}
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Propriété Intellectuelle</h2>
-          <div className="bg-gray-50 p-6 rounded-lg">
+        <section className="mb-14 border-t border-ardoise/15 pt-8">
+          <h2 className="display-title mb-5 text-2xl sm:text-3xl">Propriété Intellectuelle</h2>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p>L'ensemble de ce site (structure, textes, images, logos) est protégé par le droit d'auteur. Toute reproduction totale ou partielle est interdite sans autorisation préalable.</p>
           </div>
         </section>
 
         {/* Responsabilité */}
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Limitation de Responsabilité</h2>
-          <div className="bg-gray-50 p-6 rounded-lg">
+        <section className="mb-14 border-t border-ardoise/15 pt-8">
+          <h2 className="display-title mb-5 text-2xl sm:text-3xl">Limitation de Responsabilité</h2>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
             <p>Les informations présentes sur ce site sont données à titre indicatif. GD Construction ne peut être tenu responsable des erreurs ou omissions, ni des conséquences de leur utilisation.</p>
           </div>
         </section>
 
         {/* Contact */}
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Contact</h2>
-          <div className="bg-primary/5 border border-primary/20 p-6 rounded-lg">
-            <p className="mb-3">Pour toute question concernant ces mentions légales ou l'utilisation de vos données :</p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="tel:0695918103"
-                className="bg-primary text-white px-6 py-2 rounded-lg text-center hover:bg-secondary transition-colors"
-              >
-                📞 06 95 91 81 03
-              </a>
-              <a
-                href="/contact"
-                className="border border-primary text-primary px-6 py-2 rounded-lg text-center hover:bg-primary hover:text-white transition-colors"
-              >
-                Formulaire de contact
-              </a>
+        <section className="mb-14 border-t border-ardoise/15 pt-8">
+          <h2 className="display-title mb-5 text-2xl sm:text-3xl">Contact</h2>
+          <div className="max-w-[68ch] leading-relaxed text-ardoise/85">
+            <p className="mb-5">Pour toute question concernant ces mentions légales ou l'utilisation de vos données :</p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <ButtonLink href="tel:+33695918103" variant="signal">06 95 91 81 03</ButtonLink>
+              <ButtonLink href="/contact" variant="line">Formulaire de contact</ButtonLink>
             </div>
           </div>
         </section>
 
-        <div className="text-sm text-gray-500 text-center pt-8 border-t border-gray-200">
+        <div className="border-t border-ardoise/15 pt-8 text-sm text-ardoise/70">
           {/* Date figée : `new Date()` affichait la date du dernier déploiement,
               ce qui laissait croire à une révision du texte à chaque mise en ligne. */}
           <p>Dernière mise à jour : 02/09/2026</p>

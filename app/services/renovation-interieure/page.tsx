@@ -3,6 +3,8 @@ import { ServiceJsonLd } from "@components/JsonLd";
 import { RelatedServices } from "@components/RelatedServices";
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { ButtonLink } from "@components/Button";
+import { Blocks, Gallery, PageHeader, Points, Section } from "@components/Page";
 
 export const metadata: Metadata = {
   title: 'Rénovation Intérieure à Pamfou',
@@ -38,9 +40,9 @@ const services = [
     details: [
       "Douche italienne et baignoires",
       "Plomberie sanitaire complète",
-      "Carrelage étanche et décoratif", 
       "Électricité sécurisée (normes NF C 15-100)",
       "VMC et aération",
+      "Carrelage étanche et décoratif",
       "Mobilier et accessoires"
     ]
   },
@@ -94,6 +96,8 @@ const services = [
   }
 ];
 
+const link = "font-semibold text-ardoise underline decoration-signal decoration-2 underline-offset-4 hover:decoration-ardoise";
+
 export default function RenovationInterieure() {
   return (
     <Container>
@@ -102,212 +106,116 @@ export default function RenovationInterieure() {
         description="Rénovation clé en main de cuisine, salle de bain, cloisons, menuiseries intérieures et adaptation du logement à Pamfou et en Seine-et-Marne."
         slug="renovation-interieure"
       />
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
-            <span className="text-4xl">🏠</span>
-            <span className="text-primary font-semibold">Rénovation Intérieure</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Rénovation Intérieure Complète à Pamfou
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            GD Construction repense vos pièces de vie en Seine-et-Marne : cuisine, salle de bain,
-            cloisons, menuiseries et rangements. Nous pilotons l'ensemble des corps d'état pour
-            que votre chantier avance dans le bon ordre, sans coordination à votre charge.
-          </p>
-        </div>
+      <PageHeader
+        kicker="Rénovation intérieure"
+        title="Rénovation intérieure complète à Pamfou"
+        intro="GD Construction repense vos pièces de vie en Seine-et-Marne : cuisine, salle de bain, cloisons, menuiseries et rangements. Nous pilotons l'ensemble des corps d'état pour que votre chantier avance dans le bon ordre, sans coordination à votre charge."
+        image="/images/renovation-cuisine-chantier.webp"
+        imageAlt="Ossature métallique d'un plafond en cours de pose"
+      >
+        <ButtonLink href="/contact" variant="signal">Demander un devis gratuit</ButtonLink>
+        <ButtonLink href="tel:+33695918103" variant="line">06 95 91 81 03</ButtonLink>
+      </PageHeader>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-6 border hover:shadow-xl transition-shadow">
-              <div className="text-center mb-4">
-                <span className="text-5xl">{service.icon}</span>
-                <h3 className="text-xl font-semibold text-gray-900 mt-3">
-                  {service.title}
-                </h3>
-              </div>
-              <p className="text-gray-600 mb-4 text-center text-sm leading-relaxed">
-                {service.description}
-              </p>
-              <ul className="space-y-2">
-                {service.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-start space-x-2">
-                    <span className="text-primary font-bold text-sm">•</span>
-                    <span className="text-gray-700 text-sm">{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+      <Section title="Nos prestations de rénovation intérieure">
+        <Blocks
+          cols={3}
+          items={services.map((service) => ({
+            title: service.title,
+            text: service.description,
+            children: <Points items={service.details} />,
+          }))}
+        />
+      </Section>
 
-        {/* Périmètre et prestations traitées ailleurs */}
-        <div className="bg-white border rounded-lg shadow-sm p-8 mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Les Lots Techniques de Votre Rénovation
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Une rénovation intérieure enchaîne plusieurs métiers. Nous les réalisons tous en
-            interne, chacun détaillé sur sa propre page — vous n'avez qu'un devis, qu'un planning
-            et qu'un interlocuteur.
-          </p>
-          <ul className="space-y-3 text-gray-700">
-            <li className="flex items-start space-x-2">
-              <span className="text-primary font-bold">•</span>
-              <span>
-                Carrelage, parquet, sols souples et ragréage :{" "}
-                <Link href="/services/carrelage-sols" className="text-primary font-semibold hover:underline">
-                  voir notre pôle carrelage et sols
-                </Link>
-              </span>
-            </li>
-            <li className="flex items-start space-x-2">
-              <span className="text-primary font-bold">•</span>
-              <span>
-                Peinture, enduits décoratifs et papier peint :{" "}
-                <Link href="/services/peinture-finitions" className="text-primary font-semibold hover:underline">
-                  voir notre pôle peinture et finitions
-                </Link>
-              </span>
-            </li>
-            <li className="flex items-start space-x-2">
-              <span className="text-primary font-bold">•</span>
-              <span>
-                Tableau, prises, éclairage et mise aux normes NF C 15-100 :{" "}
-                <Link href="/services/electricite" className="text-primary font-semibold hover:underline">
-                  voir notre pôle électricité
-                </Link>
-              </span>
-            </li>
-            <li className="flex items-start space-x-2">
-              <span className="text-primary font-bold">•</span>
-              <span>
-                Alimentation, évacuation et sanitaires :{" "}
-                <Link href="/services/plomberie" className="text-primary font-semibold hover:underline">
-                  voir notre pôle plomberie
-                </Link>
-              </span>
-            </li>
-          </ul>
-        </div>
+      <Section
+        tone="white"
+        title="Les lots techniques de votre rénovation"
+        intro="Une rénovation intérieure enchaîne plusieurs métiers. Nous les réalisons tous en interne, chacun détaillé sur sa propre page — vous n'avez qu'un devis, qu'un planning et qu'un interlocuteur."
+      >
+        <Points
+          className="max-w-3xl text-lg"
+          items={[
+            <>Carrelage, parquet, sols souples et ragréage :{" "}<Link href="/services/carrelage-sols" className={link}>voir notre pôle carrelage et sols</Link></>,
+            <>Peinture, enduits décoratifs et papier peint :{" "}<Link href="/services/peinture-finitions" className={link}>voir notre pôle peinture et finitions</Link></>,
+            <>Tableau, prises, éclairage et mise aux normes NF C 15-100 :{" "}<Link href="/services/electricite" className={link}>voir notre pôle électricité</Link></>,
+            <>Alimentation, évacuation et sanitaires :{" "}<Link href="/services/plomberie" className={link}>voir notre pôle plomberie</Link></>,
+          ]}
+        />
+      </Section>
 
-        {/* Process */}
-        <div className="bg-linear-to-r from-building-50 to-blue-50 rounded-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Notre Méthode de Rénovation Intérieure
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { step: "1", title: "Diagnostic", desc: "Visite technique et conseils personnalisés" },
-              { step: "2", title: "Conception", desc: "Plans 3D et devis détaillé gratuit" },
-              { step: "3", title: "Réalisation", desc: "Travaux coordonnés par nos équipes" },
-              { step: "4", title: "Finition", desc: "Contrôle qualité et nettoyage complet" }
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 font-bold text-xl">
-                  {item.step}
-                </div>
-                <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      <Section title="Notre méthode de rénovation intérieure">
+        <Blocks
+          cols={4}
+          items={[
+            { step: "1", title: "Diagnostic", desc: "Visite technique et conseils personnalisés" },
+            { step: "2", title: "Conception", desc: "Plans 3D et devis détaillé gratuit" },
+            { step: "3", title: "Réalisation", desc: "Travaux coordonnés par nos équipes" },
+            { step: "4", title: "Finition", desc: "Contrôle qualité et nettoyage complet" },
+          ].map((item) => ({ title: `${item.step}. ${item.title}`, text: item.desc }))}
+        />
+      </Section>
 
-        {/* Matériaux */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Matériaux et Équipements de Qualité
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold text-primary mb-4">Nos Partenaires :</h3>
-              <div className="space-y-3">
-                <p className="text-gray-700"><strong>Carrelage :</strong> Porcelanosa, Marazzi, Imola</p>
-                <p className="text-gray-700"><strong>Sanitaires :</strong> Grohe, Hansgrohe, Villeroy & Boch</p>
-                <p className="text-gray-700"><strong>Électricité :</strong> Legrand, Schneider Electric</p>
-                <p className="text-gray-700"><strong>Peinture :</strong> Seigneurie, Tollens, Dulux Valentine</p>
-              </div>
-            </div>
-            <div className="bg-primary/5 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-primary mb-4">Nos Garanties :</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Matériaux certifiés et garantis</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Main d'œuvre garantie 2 ans</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Assurance décennale</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-primary">✓</span>
-                  <span>Suivi post-chantier</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <Section tone="dark" title="Matériaux et équipements de qualité">
+        <Blocks
+          tone="dark"
+          items={[
+            {
+              title: "Nos partenaires",
+              children: (
+                <Points
+                  items={[
+                    <><strong className="text-chaux">Carrelage :</strong> Porcelanosa, Marazzi, Imola</>,
+                    <><strong className="text-chaux">Sanitaires :</strong> Grohe, Hansgrohe, Villeroy &amp; Boch</>,
+                    <><strong className="text-chaux">Électricité :</strong> Legrand, Schneider Electric</>,
+                    <><strong className="text-chaux">Peinture :</strong> Seigneurie, Tollens, Dulux Valentine</>,
+                  ]}
+                />
+              ),
+            },
+            {
+              title: "Nos garanties",
+              children: (
+                <Points
+                  items={["Matériaux certifiés et garantis", "Main d'œuvre garantie 2 ans", "Assurance décennale", "Suivi post-chantier"]}
+                />
+              ),
+            },
+          ]}
+        />
+      </Section>
 
-        {/* Exemples de réalisations */}
-        <div className="bg-linear-to-r from-building-100 to-blue-100 rounded-lg p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Exemples de Rénovations Intérieures
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { type: "Cuisine moderne", surface: "15m²", durée: "2 semaines", prix: "À partir de 8 000€" },
-              { type: "Salle de bain complète", surface: "6m²", durée: "1 semaine", prix: "À partir de 5 500€" },
-              { type: "Salon + carrelage", surface: "30m²", durée: "3 jours", prix: "À partir de 2 800€" }
-            ].map((example, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 shadow-md">
-                <h3 className="font-semibold text-lg text-primary mb-3">{example.type}</h3>
-                <div className="space-y-2 text-sm text-gray-600">
-                  <p><strong>Surface :</strong> {example.surface}</p>
-                  <p><strong>Durée :</strong> {example.durée}</p>
-                  <p><strong>Prix :</strong> {example.prix}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-sm text-gray-600 mt-6">
-            * Prix indicatifs, devis personnalisé selon vos besoins
-          </p>
-        </div>
+      <Section title="Exemples de rénovations intérieures" intro="Prix indicatifs, devis personnalisé selon vos besoins.">
+        <Blocks
+          cols={3}
+          items={[
+            { type: "Cuisine moderne", surface: "15m²", durée: "2 semaines", prix: "À partir de 8 000€" },
+            { type: "Salle de bain complète", surface: "6m²", durée: "1 semaine", prix: "À partir de 5 500€" },
+            { type: "Salon + carrelage", surface: "30m²", durée: "3 jours", prix: "À partir de 2 800€" },
+          ].map((example) => ({
+            title: example.type,
+            children: (
+              <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 tabular-nums">
+                <dt className="text-ardoise/60">Surface</dt><dd>{example.surface}</dd>
+                <dt className="text-ardoise/60">Durée</dt><dd>{example.durée}</dd>
+                <dt className="text-ardoise/60">Prix</dt><dd className="font-semibold">{example.prix}</dd>
+              </dl>
+            ),
+          }))}
+        />
+      </Section>
 
-        <RelatedServices slugs={["peinture-finitions", "carrelage-sols", "plomberie"]} />
+      <Section title="La rénovation intérieure en images" intro="Photos d'illustration des travaux que nous réalisons.">
+        <Gallery
+          photos={[
+            { src: "/images/renovation-salle-de-bain-douche.webp", alt: "Salle de bain avec douche à l'italienne", caption: "Salle de bain et douche à l'italienne" },
+            { src: "/images/renovation-salle-de-bain.webp", alt: "Salle de bain avec baignoire et douche", caption: "Salle de bain complète" },
+            { src: "/images/plafond-ossature.webp", alt: "Pose d'une ossature de faux plafond", caption: "Ossature de faux plafond" },
+          ]}
+        />
+      </Section>
 
-        {/* CTA */}
-        <div className="bg-linear-to-r from-primary to-secondary text-white rounded-lg p-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Projet de Rénovation Intérieure ?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Obtenez votre devis gratuit en 48h maximum
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/contact"
-              className="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Demander un devis
-            </Link>
-            <a 
-              href="tel:0695918103"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
-            >
-              06 95 91 81 03
-            </a>
-          </div>
-        </div>
-      </div>
+      <RelatedServices slugs={["peinture-finitions", "carrelage-sols", "plomberie"]} />
     </Container>
   );
 }
