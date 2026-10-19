@@ -43,13 +43,13 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
     tags: ['rénovation', 'cuisine', 'carrelage', 'plomberie', 'électricité'],
     images: [],
     challenges: [
-      'Ancien carrelage au plomb nécessitant un désamiantage',
+      'Ancien carrelage nécessitant un désamiantage',
       'Réseaux électriques vétustes à refaire entièrement',
       'Optimisation de l\'espace dans une surface contrainte',
       'Intégration harmonieuse avec le salon ouvert'
     ],
     solutions: [
-      'Désamiantage professionnel selon les normes en vigueur',
+      'Désamiantage réalisé par une entreprise certifiée, selon les normes en vigueur',
       'Création d\'un tableau électrique dédié à la cuisine',
       'Conception d\'un îlot central multifonction',
       'Choix de matériaux coordonnés avec l\'existant'
@@ -293,7 +293,7 @@ const realisationsData: Record<RealisationSlug, Realisation> = {
     ],
     techniques: [
       'Raccordement électrique triphasé',
-      'Liaisons frigorifiques cuivre isolées',
+      'Liaisons frigorifiques cuivre isolées, réalisées par un professionnel certifié',
       'Mise en service avec contrôle étanchéité',
       'Programmation régulation zones',
       'Tests performance selon NF'
